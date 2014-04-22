@@ -5,10 +5,10 @@
     "Jeff Lee <leejefon@gmail.com>",
     "Alex Chen <alexwchenpro@gmail.com>"
   ],
-  "description": "TestLegends",
+  "description": "TestLegends App",
   "main": "app.js",
   "license": "MIT",
-  "homepage": "http://testlegends.com",
+  "homepage": "http://app.testlegends.com",
   "private": true,
   "ignore": [
     "**/.*",

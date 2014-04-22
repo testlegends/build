@@ -20,22 +20,30 @@ var Html = require('../helpers/HtmlHelper.js');
 
 module.exports = (function(){
 
+    var helpers = { Html: Html };
+
 	function index (req, res) {
 		return res.view({
-			hello: 'world',
 			Html: Html
 		});
 	}
 
+    function tl_oauth_request (req, res) {
+
+    }
+
+    function tl_oauth_callback (req, res) {
+        res.view(_.extend({
+            accessToken: req.user.accessToken
+        }, helpers));
+    }
 
     return {
         index: index,
+        tl_oauth_request: tl_oauth_request,
+        tl_oauth_callback: tl_oauth_callback,
 
-    	/**
-    	 * Overrides for the settings in `config/controllers.js`
-    	 * (specific to HomeController)
-    	 */
-    	_config: {}
-    }
+        _config: {}
+    };
 
 })();
