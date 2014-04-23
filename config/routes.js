@@ -23,6 +23,11 @@ module.exports.routes = {
     '/oauth/callback': {
         controller: 'home',
         action: 'tl_oauth_callback'
+    },
+
+    '/oauth/logout': {
+        controller: 'home',
+        action: 'tl_oauth_logout'
     }
 
 };

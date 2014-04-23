@@ -1,3 +1,12 @@
+/**
+ * Passport
+ *
+ * @description ::
+ * @docs        :: https://github.com/coolaj86/example-oauth2orize-consumer
+ * @author      :: Jeff Lee
+ * @created     :: 2014/04/21
+ */
+
 var util = require('util'),
     Passport = require('passport'),
     OAuth2Strategy = require('passport-oauth').OAuth2Strategy,
@@ -15,14 +24,14 @@ Passport.deserializeUser(function(obj, done) {
 var TestLegendsStrategy = (function(){
     var oauth = {
         resourceOwner: {
-            authURL: 'http://testlegends.herokuapp.com/oauth/authorize',
-            tokenURL: 'http://testlegends.herokuapp.com/oauth/token'
-            // authURL: 'http://localhost:1338/oauth/authorize',
-            // tokenURL: 'http://localhost:1338/oauth/token'
+            // authURL: 'http://testlegends.herokuapp.com/oauth/authorize',
+            // tokenURL: 'http://testlegends.herokuapp.com/oauth/token'
+            authURL: 'http://localhost:1338/oauth/authorize',
+            tokenURL: 'http://localhost:1338/oauth/token'
         },
         resourceServer: {
-            url: 'http://api.testlegends.com'
-            // url: 'http://localhost:1339'
+            // url: 'http://api.testlegends.com'
+            url: 'http://localhost:1339'
         }
     };
 
@@ -76,10 +85,10 @@ var TestLegendsStrategy = (function(){
 })();
 
 Passport.use(new TestLegendsStrategy({
-    clientID: '1',
-    clientSecret: 'hellosecret',
-    callbackURL: 'http://app.testlegends.com/oauth/callback'
-    // callbackURL: 'http://localhost:1337/oauth/callback'
+    clientID: process.env.TESTLEGENDS_API_CLIENT_ID,
+    clientSecret: process.env.TESTLEGENDS_API_CLIENT_SECRET,
+    // callbackURL: 'http://app.testlegends.com/oauth/callback'
+    callbackURL: 'http://localhost:1337/oauth/callback'
 }, function (accessToken, refreshToken, profile, done) {
     return done(null, {
         name: profile._json.name,
