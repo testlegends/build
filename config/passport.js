@@ -12,6 +12,21 @@ var util = require('util'),
     OAuth2Strategy = require('passport-oauth').OAuth2Strategy,
     InternalOAuthError = require('passport-oauth').InternalOAuthError;
 
+var oauth = {
+    resourceOwner: {
+        authURL: process.env.TESTLEGENDS_OAUTH_SERVER_URL + '/oauth/authorize',
+        tokenURL: process.env.TESTLEGENDS_OAUTH_SERVER_URL + '/oauth/token'
+    },
+    resourceServer: {
+        url: process.env.TESTLEGENDS_API_SERVER_URL
+    },
+    client: {
+        clientID: process.env.TESTLEGENDS_API_CLIENT_ID,
+        clientSecret: process.env.TESTLEGENDS_API_CLIENT_SECRET,
+        callbackURL: process.env.PROJECT_URL + '/oauth/callback'
+    }
+};
+
 Passport.serializeUser(function(user, done) {
     done(null, user);
 });
@@ -22,19 +37,6 @@ Passport.deserializeUser(function(obj, done) {
 });
 
 var TestLegendsStrategy = (function(){
-    var oauth = {
-        resourceOwner: {
-            // authURL: 'http://testlegends.herokuapp.com/oauth/authorize',
-            // tokenURL: 'http://testlegends.herokuapp.com/oauth/token'
-            authURL: 'http://localhost:1338/oauth/authorize',
-            tokenURL: 'http://localhost:1338/oauth/token'
-        },
-        resourceServer: {
-            // url: 'http://api.testlegends.com'
-            url: 'http://localhost:1339'
-        }
-    };
-
     function Strategy (options, verify) {
         var me = this;
 
@@ -84,12 +86,7 @@ var TestLegendsStrategy = (function(){
 
 })();
 
-Passport.use(new TestLegendsStrategy({
-    clientID: process.env.TESTLEGENDS_API_CLIENT_ID,
-    clientSecret: process.env.TESTLEGENDS_API_CLIENT_SECRET,
-    // callbackURL: 'http://app.testlegends.com/oauth/callback'
-    callbackURL: 'http://localhost:1337/oauth/callback'
-}, function (accessToken, refreshToken, profile, done) {
+Passport.use(new TestLegendsStrategy(oauth.client, function (accessToken, refreshToken, profile, done) {
     return done(null, {
         name: profile._json.name,
         accessToken: accessToken
