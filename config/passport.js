@@ -31,8 +31,7 @@ Passport.serializeUser(function(user, done) {
     done(null, user);
 });
 
-Passport.deserializeUser(function(obj, done) {
-    var user = obj;
+Passport.deserializeUser(function(user, done) {
     done(null, user);
 });
 
@@ -64,7 +63,7 @@ var TestLegendsStrategy = (function(){
         me._oauth2.get(oauth.resourceServer.url + '/player', accessToken, function (err, body/*, res*/) {
             var json, profile = {};
 
-            if (err) { return done(new InternalOAuthError('failed to fetch user profileyyyy', err)); }
+            if (err) { return done(new InternalOAuthError('failed to fetch user profile', err)); }
 
             if ('string' === typeof body) {
                 try { json = JSON.parse(body); }

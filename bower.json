@@ -22,6 +22,7 @@
     "angular-route": "~1.2.15",
     "underscore": "~1.6.0",
     "requirejs": "~2.1.11",
-    "oauth-js": "~0.1.7"
+    "oauth-js": "~0.1.7",
+    "toastr": "~2.0.1"
   }
 }
