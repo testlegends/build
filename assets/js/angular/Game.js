@@ -21,9 +21,8 @@ require.config({
 
 require([
 	'angular',
-	'game/app',
-	'game/GameRoutes'
-], function (angular, app, routes) {
+	'game/app'
+], function (angular, app) {
 	'use strict';
 
 	angular.element(document).ready(function () {

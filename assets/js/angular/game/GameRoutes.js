@@ -5,14 +5,17 @@
 * @created     :: 2014/04/24
 */
 
-define(['angular', 'game/app'], function(angular, app) {
+define(['angular', 'angularRoute'], function(angular) {
 	'use strict';
 
-	return app.config(['$routeProvider', function($routeProvider) {
-		$routeProvider.when('/games', {
-			templateUrl: 'js/angular/game/partials/index.html',
-			controller: 'GameController'
-		});
-		$routeProvider.otherwise({redirectTo: '/games'});
-	}]);
+	return angular.module('Game.routes', ['ngRoute'])
+
+		.config(['$routeProvider', function($routeProvider) {
+			$routeProvider.when('/games', {
+				templateUrl: 'js/angular/game/partials/index.html',
+				controller: 'GameController'
+			});
+
+			$routeProvider.otherwise({redirectTo: '/games'});
+		}]);
 });

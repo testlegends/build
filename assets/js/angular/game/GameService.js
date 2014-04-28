@@ -9,6 +9,7 @@ define(['angular'], function (angular) {
 	'use strict';
 
 	return angular.module('Game.services', [])
+
 		.factory('games', function ($http) {
 			return {
 

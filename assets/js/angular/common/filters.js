@@ -2,6 +2,7 @@ define(['angular'], function (angular) {
 	'use strict';
 
 	return angular.module('Common.filters', [])
+
 		.filter('makeURL', function () {
 			return function (url) {
 				if (url !== null && url.length !== 0) {

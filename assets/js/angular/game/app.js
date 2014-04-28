@@ -7,22 +7,21 @@
 
 define([
 	'angular',
-	'angularRoute',
 	'angularLoadingBar',
 	'common/directives',
 	'common/filters',
     'game/GameService',
-	'game/GameController'
+	'game/GameController',
+    'game/GameRoutes'
 ], function (angular) {
 	'use strict';
 
 	return angular.module('app', [
-		'ngRoute',
 		'chieffancypants.loadingBar',
 		'Common.directives',
 		'Common.filters',
-		//'Game.filters',
 		'Game.services',
-		'Game.controllers'
+		'Game.controllers',
+        'Game.routes'
 	]);
 });
