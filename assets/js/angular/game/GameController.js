@@ -11,6 +11,7 @@ define(['angular', 'game/GameService'], function (angular) {
 	return angular.module('Game.controllers', ['Game.services'])
 
 		.controller('GameController', ['$scope', 'games', function ($scope, games) {
+
             $scope.name = "GameController";
 
 		}]);

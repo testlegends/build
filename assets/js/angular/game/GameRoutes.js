@@ -16,6 +16,6 @@ define(['angular', 'angularRoute'], function(angular) {
 				controller: 'GameController'
 			});
 
-			$routeProvider.otherwise({redirectTo: '/games'});
+			//$locationProvider.html5Mode(true);
 		}]);
 });

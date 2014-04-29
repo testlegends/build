@@ -16,7 +16,7 @@ define([
 ], function (angular) {
 	'use strict';
 
-	return angular.module('app', [
+	return angular.module('Game', [
 		'chieffancypants.loadingBar',
 		'Common.directives',
 		'Common.filters',
