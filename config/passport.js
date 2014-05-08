@@ -27,11 +27,11 @@ var oauth = {
     }
 };
 
-Passport.serializeUser(function(user, done) {
+Passport.serializeUser(function (user, done) {
     done(null, user);
 });
 
-Passport.deserializeUser(function(user, done) {
+Passport.deserializeUser(function (user, done) {
     done(null, user);
 });
 

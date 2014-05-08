@@ -1,8 +1,8 @@
 /**
- * Game App
+ * Theme App
  *
  * @author      :: Jeff Lee
- * @created     :: 2014/04/24
+ * @created     :: 2014/05/08
  */
 
 define([
@@ -10,18 +10,18 @@ define([
 	'angularLoadingBar',
 	'common/directives',
 	'common/filters',
-    'game/GameService',
-	'game/GameController',
-    'game/GameRoutes'
+    'theme/ThemeService',
+	'theme/ThemeController',
+    'theme/ThemeRoutes'
 ], function (angular) {
 	'use strict';
 
-	return angular.module('Game', [
+	return angular.module('Theme', [
 		'chieffancypants.loadingBar',
 		'Common.directives',
 		'Common.filters',
-		'Game.services',
-		'Game.controllers',
-        'Game.routes'
+		'Theme.services',
+		'Theme.controllers',
+        'Theme.routes'
 	]);
 });

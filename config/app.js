@@ -8,6 +8,6 @@
 
 module.exports = {
 
-    appName : 'TestLegends App'
+    appName : 'TestLegends Build'
 
 };

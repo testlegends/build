@@ -10,24 +10,12 @@
 
 module.exports.routes = {
 
-    '/': {
-        controller: 'home',
-        action: 'index'
-    },
+    '/':          'HomeController.index',
+    '/questions': 'HomeController.index',
+    '/themes':    'HomeController.index',
 
-    '/oauth': {
-        controller: 'home',
-        action: 'tl_oauth_request'
-    },
-
-    '/oauth/callback': {
-        controller: 'home',
-        action: 'tl_oauth_callback'
-    },
-
-    '/oauth/logout': {
-        controller: 'home',
-        action: 'tl_oauth_logout'
-    }
+    '/oauth':          'HomeController.tl_oauth_request',
+    '/oauth/callback': 'HomeController.tl_oauth_callback',
+    '/oauth/logout':   'HomeController.tl_oauth_logout'
 
 };

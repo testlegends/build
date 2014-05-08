@@ -8,14 +8,14 @@
 define([
     'angular',
     'angularLoadingBar',
-    'map/MapController',
-    'map/MapRoutes'
+    'question/QuestionController',
+    'question/QuestionRoutes'
 ], function (angular) {
     'use strict';
 
-    return angular.module('Map', [
+    return angular.module('Question', [
         'chieffancypants.loadingBar',
-        'Map.controllers',
-        'Map.routes'
+        'Question.controllers',
+        'Question.routes'
     ]);
 });

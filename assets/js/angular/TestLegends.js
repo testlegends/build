@@ -1,5 +1,5 @@
 /**
-* TestLegends
+* TestLegends Build
 *
 * @author      :: Jeff Lee
 * @created     :: 2014/04/28
@@ -21,13 +21,12 @@ require.config({
 
 require([
     'angular',
-    'map/app',
-    'world/app',
-    'game/app'
-], function (angular, mapApp, worldApp, gameApp) {
+    'question/app',
+    'theme/app'
+], function (angular, questionApp, themeApp) {
     'use strict';
 
     angular.element(document).ready(function () {
-        angular.bootstrap(document, [mapApp.name, worldApp.name, gameApp.name]);
+        angular.bootstrap(document, [questionApp.name, themeApp.name]);
     });
 });
