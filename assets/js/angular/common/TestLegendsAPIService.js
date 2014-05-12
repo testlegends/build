@@ -11,9 +11,11 @@ define(['angular', 'angularCookies'], function (angular) {
     return angular.module('Common.services', ['ngCookies'])
 
         .constant('Globals', {
-            api_url: 'http://localhost:1339',
+            //api_url: 'http://localhost:1339',
+            api_url: 'http://api.testlegends.com',
             user: (function(){
-                // get user obj from server
+                // get user obj from server, maybe need to change to factory
+                // or can just get cookie manually
             })()
         })
 
