@@ -7,26 +7,31 @@
 
 require.config({
     paths: {
+        jquery: '//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min',
+        jqueryUI: '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min',
         angular: '../vendor/angular/angular',
         angularRoute: '../vendor/angular-route/angular-route',
-        angularLoadingBar: '../vendor/angular-loading-bar/build/loading-bar'
+        angularLoadingBar: '../vendor/angular-loading-bar/build/loading-bar',
+        angularUISortable: '../vendor/angular-ui-sortable/sortable.min',
     },
     shim: {
         'angular': { 'exports': 'angular' },
         'angularRoute': ['angular'],
-        'angularLoadingBar': ['angular']
+        'angularLoadingBar': ['angular'],
+        'angularUISortable': ['angular', 'jquery', 'jqueryUI']
     },
     priority: ['angular']
 });
 
 require([
     'angular',
+    'game/app',
     'question/app',
     'theme/app'
-], function (angular, questionApp, themeApp) {
+], function (angular, gameApp, questionApp, themeApp) {
     'use strict';
 
     angular.element(document).ready(function () {
-        angular.bootstrap(document, [questionApp.name, themeApp.name]);
+        angular.bootstrap(document, [gameApp.name, questionApp.name, themeApp.name]);
     });
 });

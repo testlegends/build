@@ -1,1 +1,75 @@
-{{name}}
+<h3>Game Content Setup</h3>
+
+<div class="row">
+    <div class="col-lg-9" id="questions" ui-sortable ng-model="questions">
+        <question></question>
+        <question></question>
+    </div>
+
+    <div class="col-lg-3" id="sidebar">
+        <div class="panel panel-default" style="border: none; box-shadow: none">
+            <div class="panel-body" style="padding: 0">
+                <div style="text-align: right">
+                    <button class="btn btn-success" onclick="toastr.success('Content Saved Successfully!')">Save</button>
+                    <button class="btn btn-primary">Publish</button>
+                </div>
+            </div>
+        </div>
+
+        <stats></stats>
+        <master></master>
+        <game-options></game-options>
+    </div>
+</div>
+
+<script src="js/angular/question/partials/js/app.js"></script>
+
+<style type="text/css">
+#questions .panel {
+    border: none;
+    box-shadow: none;
+}
+
+#questions .panel-heading {
+    cursor: move;
+}
+
+#questions .panel-body .col-lg-7 {
+    margin-top: 3px;
+}
+
+#questions .panel-body .col-lg-4 {
+    margin-top: 7px;
+}
+
+#questions .qnum {
+    font-size: 14px;
+}
+
+.has-success input {
+    background-color: #F8FFEE;
+    border-color: #11B200;
+}
+
+.panel-heading {
+    font-family: "Raleway";
+}
+
+.select2-container.form-control {
+    border: none;
+    box-shadow: none;
+    padding: 0;
+    height: auto;
+}
+
+.select2-container .select2-choice {
+    height: 30px;
+    padding-top: 1px;
+    background: white;
+}
+
+.select2-container .select2-choice .select2-arrow {
+    background: white;
+}
+
+</style>

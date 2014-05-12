@@ -14,5 +14,10 @@ define(['angular', 'question/QuestionService'], function (angular) {
 
             $scope.name = "QuestionController";
 
-		}]);
+            $scope.sortableOptions = {
+                update: function(e, ui) { },
+                stop: function(e, ui) { }
+            };
+
+        }]);
 });

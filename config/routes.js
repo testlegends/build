@@ -11,6 +11,7 @@
 module.exports.routes = {
 
     '/':          'HomeController.index',
+    '/games':     'HomeController.index',
     '/questions': 'HomeController.index',
     '/themes':    'HomeController.index',
 

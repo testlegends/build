@@ -16,8 +16,6 @@ define(['angular', 'angularRoute'], function(angular) {
                 controller: 'QuestionController'
             });
 
-            $routeProvider.otherwise({redirectTo: '/questions'});
-
             $locationProvider.html5Mode(true);
         }]);
 });

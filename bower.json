@@ -22,7 +22,9 @@
     "angular-route": "~1.2.15",
     "underscore": "~1.6.0",
     "requirejs": "~2.1.11",
-    "oauth-js": "~0.1.7",
-    "toastr": "~2.0.1"
+    "toastr": "~2.0.1",
+    "select2": "~3.4.8",
+    "jquery-autosize": "~1.18.7",
+    "angular-ui-sortable": "~0.12.6"
   }
 }

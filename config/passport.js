@@ -60,7 +60,7 @@ var TestLegendsStrategy = (function(){
     Strategy.prototype.userProfile = function (accessToken, done) {
         var me = this;
 
-        me._oauth2.get(oauth.resourceServer.url + '/player', accessToken, function (err, body/*, res*/) {
+        me._oauth2.get(oauth.resourceServer.url + '/user', accessToken, function (err, body/*, res*/) {
             var json, profile = {};
 
             if (err) { return done(new InternalOAuthError('failed to fetch user profile', err)); }

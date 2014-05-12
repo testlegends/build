@@ -10,9 +10,9 @@ define(['angular'], function (angular) {
 
 	return angular.module('Theme.services', [])
 
-		.factory('themes', function ($http) {
+		.factory('themes', ['$http', function ($http) {
 			return {
 
 			};
-		});
+		}]);
 });

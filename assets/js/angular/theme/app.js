@@ -8,20 +8,16 @@
 define([
 	'angular',
 	'angularLoadingBar',
-	'common/directives',
-	'common/filters',
-    'theme/ThemeService',
 	'theme/ThemeController',
+    'theme/ThemeService',
     'theme/ThemeRoutes'
 ], function (angular) {
 	'use strict';
 
 	return angular.module('Theme', [
 		'chieffancypants.loadingBar',
-		'Common.directives',
-		'Common.filters',
-		'Theme.services',
 		'Theme.controllers',
+		'Theme.services',
         'Theme.routes'
 	]);
 });

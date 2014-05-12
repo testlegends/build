@@ -8,14 +8,20 @@
 define([
     'angular',
     'angularLoadingBar',
+    'angularUISortable',
+    'question/QuestionDirectives',
     'question/QuestionController',
-    'question/QuestionRoutes'
+    'question/QuestionService',
+    'question/QuestionRoutes',
 ], function (angular) {
     'use strict';
 
     return angular.module('Question', [
         'chieffancypants.loadingBar',
+        'ui.sortable',
+        'Question.directives',
         'Question.controllers',
+        'Question.services',
         'Question.routes'
     ]);
 });

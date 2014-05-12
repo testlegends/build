@@ -10,9 +10,9 @@ define(['angular'], function (angular) {
 
 	return angular.module('Question.services', [])
 
-		.factory('questions', function ($http) {
+		.factory('questions', ['$http', function ($http) {
 			return {
 
 			};
-		});
+		}]);
 });

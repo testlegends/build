@@ -1,3 +1,8 @@
+@font-face {
+    font-family: SHOWG;
+    src: url('SHOWG.TTF');
+}
+
 /* Sticky footer styles */
 html, body {
     height: 100%;
@@ -10,9 +15,6 @@ html, body {
     height: 100%;
     /* Negative indent footer by it's height */
     margin: 0 auto -60px;
-}
-#wrap > .container {
-    padding-top: 20px;
 }
 
 /* Set the fixed height of the footer here */
@@ -40,7 +42,11 @@ footer {
 
 
 body {
-	padding-top: 60px;
+	padding-top: 40px;
+}
+
+h1,h2,h3,h4,h5,h6,.h1,.h2,.h3,.h4,.h5,.h6 {
+    font-family: "Raleway";
 }
 
 h2, h3, h4 {
@@ -61,3 +67,46 @@ a:hover {
 
 
 /** Custom CSS **/
+.navbar {
+    min-height: 40px;
+    background: #181C4B;
+}
+
+.navbar-brand.h5 {
+    height: 40px;
+    padding-top: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.navbar-brand.h5 span {
+    font-family: 'SHOWG';
+    font-size: 26px;
+    padding-top: 2px;
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+.navbar-with-img {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+}
+
+.navbar-with-img > span {
+    top: 2px;
+    position: relative;
+}
+
+.navbar-without-img {
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+}
+
+.navbar-right {
+    font-size: 16px;
+}
+
+.navbar-right img {
+    border-radius: 20px;
+    margin-left: 8px;
+}
