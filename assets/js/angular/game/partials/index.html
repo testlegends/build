@@ -1,1 +1,21 @@
-{{games[0]}}
+<h3>Games</h3>
+
+<table class="table table-striped table-hover table-bordered">
+    <thead>
+        <th>Name</th>
+        <th>Date Created</th>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="game in games">
+            <td>{{ game.name }}  <label name="{{ game.meta.status }}"></label> <label name="{{ game.meta.scope }}"></label></td>
+            <td>{{ game.createdAt | date: longDate }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<script src="js/angular/game/partials/js/app.js"></script>
+
+<style type="text/css">
+
+</style>

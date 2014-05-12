@@ -13,7 +13,8 @@ define(['angular', 'angularRoute'], function(angular) {
 		.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 			$routeProvider.when('/themes', {
 				templateUrl: 'js/angular/theme/partials/index.html',
-				controller: 'ThemeController'
+				controller: 'ThemeController',
+				needAuthentication: true
 			});
 
 			$locationProvider.html5Mode(true);

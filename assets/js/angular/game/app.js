@@ -8,6 +8,7 @@
 define([
 	'angular',
 	'angularLoadingBar',
+    'common/LabelDirective',
 	'game/GameController',
     'game/GameRoutes'
 ], function (angular) {
@@ -15,6 +16,7 @@ define([
 
 	return angular.module('Game', [
 		'chieffancypants.loadingBar',
+        'Common.directives',
 		'Game.controllers',
         'Game.routes'
 	]);

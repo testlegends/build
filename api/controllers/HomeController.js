@@ -25,7 +25,7 @@ module.exports = (function(){
 
     function tl_oauth_callback (req, res) {
         res.cookie('access_token', req.user.accessToken, {
-            maxAge: 900000
+            maxAge: 90000000
         });
         res.redirect('/');
     }

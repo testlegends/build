@@ -13,7 +13,8 @@ define(['angular', 'angularRoute'], function(angular) {
         .config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
             $routeProvider.when('/questions', {
                 templateUrl: 'js/angular/question/partials/index.html',
-                controller: 'QuestionController'
+                controller: 'QuestionController',
+                needAuthentication: true
             });
 
             $locationProvider.html5Mode(true);

@@ -13,10 +13,11 @@ define(['angular', 'angularRoute'], function(angular) {
 		.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 			$routeProvider.when('/games', {
 				templateUrl: 'js/angular/game/partials/index.html',
-				controller: 'GameController'
+				controller: 'GameController',
+				needAuthentication: true
 			});
 
-			$routeProvider.otherwise({redirectTo: '/games' });
+			$routeProvider.otherwise({ redirectTo: '/games' });
 
 			$locationProvider.html5Mode(true);
 		}]);

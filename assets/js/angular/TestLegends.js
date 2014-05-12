@@ -22,7 +22,8 @@ require.config({
         'angularLoadingBar': ['angular'],
         'angularUISortable': ['angular', 'jquery', 'jqueryUI']
     },
-    priority: ['angular']
+    priority: ['angular'],
+    urlArgs: { 'bust': Date.now() }
 });
 
 require([
