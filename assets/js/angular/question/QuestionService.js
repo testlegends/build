@@ -5,14 +5,20 @@
  * @created     :: 2014/05/08
  */
 
-define(['angular'], function (angular) {
+define(['angular', 'common/TestLegendsAPIService'], function (angular) {
 	'use strict';
 
-	return angular.module('Question.services', [])
+	return angular.module('Question.services', ['Common.services'])
 
-		.factory('questions', ['$http', function ($http) {
+		.factory('questions', ['TestLegendsAPI', function (TestLegendsAPI) {
 			return {
+                list: function (gameId) {
 
+                },
+
+                get: function (id) {
+
+                }
 			};
 		}]);
 });

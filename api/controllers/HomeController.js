@@ -24,13 +24,15 @@ module.exports = (function(){
     }
 
     function tl_oauth_callback (req, res) {
-        res.view(_.extend({
-            accessToken: req.user.accessToken
-        }, helpers));
+        res.cookie('access_token', req.user.accessToken, {
+            maxAge: 900000
+        });
+        res.redirect('/');
     }
 
     function tl_oauth_logout (req, res) {
         req.logout();
+        res.clearCookie('access_token');
         res.redirect('/');
     }
 

@@ -87,7 +87,7 @@ var TestLegendsStrategy = (function(){
 
 Passport.use(new TestLegendsStrategy(oauth.client, function (accessToken, refreshToken, profile, done) {
     return done(null, {
-        name: profile._json.name,
+        name: profile.user,
         accessToken: accessToken
     });
 }));

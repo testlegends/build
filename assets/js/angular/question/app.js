@@ -11,7 +11,6 @@ define([
     'angularUISortable',
     'question/QuestionDirectives',
     'question/QuestionController',
-    'question/QuestionService',
     'question/QuestionRoutes',
 ], function (angular) {
     'use strict';
@@ -21,7 +20,6 @@ define([
         'ui.sortable',
         'Question.directives',
         'Question.controllers',
-        'Question.services',
         'Question.routes'
     ]);
 });

@@ -8,7 +8,6 @@
 define([
 	'angular',
 	'angularLoadingBar',
-    'game/GameService',
 	'game/GameController',
     'game/GameRoutes'
 ], function (angular) {
@@ -16,7 +15,6 @@ define([
 
 	return angular.module('Game', [
 		'chieffancypants.loadingBar',
-		'Game.services',
 		'Game.controllers',
         'Game.routes'
 	]);
