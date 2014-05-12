@@ -2,13 +2,15 @@
 
 <table class="table table-striped table-hover table-bordered">
     <thead>
+        <th>&nbsp;</th>
         <th>Name</th>
         <th>Date Created</th>
     </thead>
 
     <tbody>
         <tr ng-repeat="game in games">
-            <td>{{ game.name }}  <label name="{{ game.meta.status }}"></label> <label name="{{ game.meta.scope }}"></label></td>
+            <td><a href="/game/{{game.id}}" title="Edit game"><i class="fa fa-pencil"></i></a></td>
+            <td>{{ game.name }}  <tl-label tl-name="{{ game.meta.status }}"></tl-label> <tl-label tl-name="{{ game.meta.scope }}"></tl-label></td>
             <td>{{ game.createdAt | date: longDate }}</td>
         </tr>
     </tbody>

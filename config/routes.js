@@ -12,7 +12,7 @@ module.exports.routes = {
 
     '/':          'HomeController.index',
     '/games':     'HomeController.index',
-    '/questions': 'HomeController.index',
+    '/game/:id':    'HomeController.index',
     '/themes':    'HomeController.index',
 
     '/oauth':          'HomeController.tl_oauth_request',

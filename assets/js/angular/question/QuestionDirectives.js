@@ -14,7 +14,7 @@ define(['angular'], function (angular) {
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'js/angular/question/partials/question.html'
+                templateUrl: '/js/angular/question/partials/question.html'
             };
         }])
 
@@ -26,7 +26,7 @@ define(['angular'], function (angular) {
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'js/angular/question/partials/stats.html'
+                templateUrl: '/js/angular/question/partials/stats.html'
             };
         }])
 
@@ -34,7 +34,7 @@ define(['angular'], function (angular) {
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'js/angular/question/partials/master.html'
+                templateUrl: '/js/angular/question/partials/master.html'
             };
         }])
 
@@ -42,7 +42,7 @@ define(['angular'], function (angular) {
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'js/angular/question/partials/gameOptions.html'
+                templateUrl: '/js/angular/question/partials/gameOptions.html'
             };
         }]);
 });

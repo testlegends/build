@@ -12,7 +12,7 @@ define(['angular', 'angularRoute'], function(angular) {
 
 		.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 			$routeProvider.when('/themes', {
-				templateUrl: 'js/angular/theme/partials/index.html',
+				templateUrl: '/js/angular/theme/partials/index.html',
 				controller: 'ThemeController',
 				needAuthentication: true
 			});

@@ -12,7 +12,7 @@ define(['angular', 'angularRoute'], function(angular) {
 
 		.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
 			$routeProvider.when('/games', {
-				templateUrl: 'js/angular/game/partials/index.html',
+				templateUrl: '/js/angular/game/partials/index.html',
 				controller: 'GameController',
 				needAuthentication: true
 			});

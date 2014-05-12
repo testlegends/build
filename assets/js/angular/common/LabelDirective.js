@@ -10,12 +10,12 @@ define(['angular'], function (angular) {
 
     return angular.module('Common.directives', [])
 
-        .directive('label', [function(){
+        .directive('tlLabel', [function(){
             return {
                 restrict: 'E',
-                require: '^name',
+                require: '^tlName',
                 scope: {
-                    name: '@',
+                    name: '@tlName',
                     type: '&type'
                 },
                 template: '<span class="label label-{{ type }}">{{ name }}</span>',
@@ -33,7 +33,7 @@ define(['angular'], function (angular) {
             };
         }])
 
-        .directive('name', [function(){
+        .directive('tlName', [function(){
             return {
                 restrict: 'A',
                 controller: function () {}
