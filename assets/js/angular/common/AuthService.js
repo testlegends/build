@@ -12,16 +12,12 @@ define(['common/services'], function (commonServices) {
 
         .factory('Auth', ['$rootScope', '$route', '$location', '$cookies', function ($rootScope, $route, $location, $cookies) {
 
-            $rootScope.$on('$routeChangeSuccess', function (next, current) {
-                var authRequired = $route.current && $route.current.needAuthentication;
+            // TODO Check if token cookie exists, auto login
 
-                // TODO Check if token cookie exists, auto login
-
-                if (authRequired && !$rootScope.isAuthenticated) {
-                    $location.url('/');
-                }
-            });
-
-            return null;
+            return {
+                isAuthenticated: null,
+                isAuthorized: null,
+                user: null
+            };
         }]);
 });

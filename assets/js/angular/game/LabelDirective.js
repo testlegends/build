@@ -14,11 +14,11 @@ define(['game/directives'], function (gameDirectives) {
             return {
                 restrict: 'E',
                 require: '^tlName',
+                template: '<span class="label label-{{ type }}">{{ name }}</span>',
                 scope: {
                     name: '@tlName',
                     type: '&type'
                 },
-                template: '<span class="label label-{{ type }}">{{ name }}</span>',
                 link: function (scope, elem, attrs) {
                     if (scope.name === 'private') {
                         scope.type = 'danger';

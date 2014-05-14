@@ -9,6 +9,7 @@ define([
     'angular',
     'angularLoadingBar',
     'angularUISortable',
+    'question/QuestionDirective',
     'question/SidebarDirectives',
     'question/Controller',
     'question/Routes',

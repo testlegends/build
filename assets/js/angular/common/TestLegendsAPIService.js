@@ -11,12 +11,8 @@ define(['common/services'], function (commonServices) {
     return commonServices
 
         .constant('Globals', {
-            //api_url: 'http://localhost:1339',
-            api_url: 'http://api.testlegends.com',
-            user: (function(){
-                // get user obj from server, maybe need to change to factory
-                // or can just get cookie manually
-            })()
+            //api_url: 'http://localhost:1339'
+            api_url: 'http://api.testlegends.com'
         })
 
         .factory('TestLegendsAPI', ['$http', '$cookies', 'Globals', function ($http, $cookies, Globals) {

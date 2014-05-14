@@ -16,9 +16,6 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
                     return TestLegendsAPI.get('/games')
                         .success(function (data) {
                             cb(data);
-                        })
-                        .error(function (data, status){
-
                         });
                 },
 
@@ -30,9 +27,6 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
                     return TestLegendsAPI.put('/games')
                         .success(function (data) {
                             cb(data);
-                        })
-                        .error(function (data, status) {
-
                         });
                 },
 

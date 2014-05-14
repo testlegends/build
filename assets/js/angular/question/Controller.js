@@ -10,16 +10,19 @@ define(['angular', 'question/Service'], function (angular) {
 
 	return angular.module('Question.controllers', ['Question.services'])
 
-		.controller('QuestionController', ['$scope', 'questions', function ($scope, questions) {
+		.controller('QuestionController', ['$scope', '$routeParams', 'questions', function ($scope, $routeParams, questions) {
 
             $scope.name = "QuestionController";
-
-            $scope.questions = [];
 
             $scope.sortableOptions = {
                 update: function(e, ui) { },
                 stop: function(e, ui) { }
             };
+
+            $scope.questions = [];
+            questions.list($routeParams.gameId, function (response) {
+                $scope.questions = response.data;
+            });
 
         }]);
 });

@@ -12,11 +12,21 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
 
 		.factory('questions', ['TestLegendsAPI', function (TestLegendsAPI) {
 			return {
-                list: function (gameId) {
+                list: function (gameId, cb) {
+                    return TestLegendsAPI({
+                        url: '/questions',
+                        method: 'GET',
+                        params: { gameId: gameId }
+                    }).success(function (data) {
+                        cb(data);
+                    });
+                },
+
+                get: function (id, cb) {
 
                 },
 
-                get: function (id) {
+                updateOrder: function (list, cb) {
 
                 }
 			};

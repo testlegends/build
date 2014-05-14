@@ -26,11 +26,11 @@ define(['game/directives', 'bootstrap'], function (gameDirectives) {
                             $('body').removeClass('modal-open');
                             $('.modal-backdrop').remove();
 
-                            if (response.status === 'OK') {
+                            if (response.err) {
+                                toastr.error(response.msg);
+                            } else {
                                 toastr.success('Game successfully created!');
                                 $scope.$parent.games.push(response.data);
-                            } else {
-                                toastr.error(response.msg);
                             }
                         });
                     };

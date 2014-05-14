@@ -1,24 +1,16 @@
 /**
- * QuestionDirectives
+ * SidebarDirectives
  *
  * @author      :: Jeff Lee
  * @created     :: 2014/05/09
  */
 
-define(['angular'], function (angular) {
+define(['question/directives'], function (questionDirectives) {
     'use strict';
 
-    return angular.module('Question.directives', [])
+    return questionDirectives
 
-        .directive('question', [function () {
-            return {
-                restrict: 'E',
-                replace: true,
-                templateUrl: '/js/angular/question/partials/question.html'
-            };
-        }])
-
-        .directive('addQuestion', ['$compile', function ($compile) {
+        .directive('addQuestion', [function () {
 
         }])
 
