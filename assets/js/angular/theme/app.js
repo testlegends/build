@@ -8,8 +8,8 @@
 define([
 	'angular',
 	'angularLoadingBar',
-	'theme/ThemeController',
-    'theme/ThemeRoutes'
+	'theme/Controller',
+    'theme/Routes'
 ], function (angular) {
 	'use strict';
 

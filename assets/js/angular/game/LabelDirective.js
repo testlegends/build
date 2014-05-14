@@ -1,14 +1,14 @@
 /**
- * LabelFilter
+ * GameLabelDirective
  *
  * @author      :: Jeff Lee
  * @created     :: 2014/05/12
  */
 
-define(['angular'], function (angular) {
+define(['game/directives'], function (gameDirectives) {
     'use strict';
 
-    return angular.module('Common.directives', [])
+    return gameDirectives
 
         .directive('tlLabel', [function(){
             return {

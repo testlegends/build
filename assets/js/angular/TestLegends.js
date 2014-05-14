@@ -10,6 +10,7 @@ require.config({
     paths: {
         jquery: '//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min',
         jqueryUI: '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min',
+        bootstrap: '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min',
         angular: '../vendor/angular/angular',
         angularCookies: '../vendor/angular-cookies/angular-cookies.min',
         angularRoute: '../vendor/angular-route/angular-route',
@@ -17,14 +18,14 @@ require.config({
         angularUISortable: '../vendor/angular-ui-sortable/sortable.min'
     },
     shim: {
-        'angular': { 'exports': 'angular' },
-        'angularCookies': ['angular'],
-        'angularRoute': ['angular'],
-        'angularLoadingBar': ['angular'],
-        'angularUISortable': ['jquery', 'jqueryUI', 'angular']
+        bootstrap: ['jquery'],
+        angular: { 'exports': 'angular' },
+        angularCookies: ['angular'],
+        angularRoute: ['angular'],
+        angularLoadingBar: ['angular'],
+        angularUISortable: ['jquery', 'jqueryUI', 'angular']
     },
-    priority: ['angular'],
-    urlArgs: { 'bust': Date.now() }
+    priority: ['angular']
 });
 
 require([

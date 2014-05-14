@@ -5,10 +5,10 @@
  * @created     :: 2014/05/12
  */
 
-define(['angular', 'angularCookies'], function (angular) {
+define(['common/services'], function (commonServices) {
     'use strict';
 
-    return angular.module('Common.services', ['ngCookies'])
+    return commonServices
 
         .factory('Auth', ['$rootScope', '$route', '$location', '$cookies', function ($rootScope, $route, $location, $cookies) {
 

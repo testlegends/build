@@ -1,5 +1,5 @@
 /**
- * Map App
+ * Question App
  *
  * @author      :: Jeff Lee
  * @created     :: 2014/04/28
@@ -9,9 +9,9 @@ define([
     'angular',
     'angularLoadingBar',
     'angularUISortable',
-    'question/QuestionDirectives',
-    'question/QuestionController',
-    'question/QuestionRoutes',
+    'question/SidebarDirectives',
+    'question/Controller',
+    'question/Routes',
 ], function (angular) {
     'use strict';
 

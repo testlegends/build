@@ -5,7 +5,7 @@
  * @created     :: 2014/04/24
  */
 
-define(['angular', 'angularCookies', 'game/GameService'], function (angular) {
+define(['angular', 'angularCookies', 'game/Service'], function (angular) {
 	'use strict';
 
 	return angular.module('Game.controllers', ['Game.services', 'ngCookies'])
@@ -14,7 +14,13 @@ define(['angular', 'angularCookies', 'game/GameService'], function (angular) {
 
             $scope.name = "GameController";
 
-            games.list(function(data){
+            $scope.delete = function (gameId) {
+                games.delete(gameId, function (response) {
+
+                });
+            };
+
+            games.list(function (data) {
                 $scope.games = data;
             });
 
