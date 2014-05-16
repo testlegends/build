@@ -26,6 +26,19 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
 
                 },
 
+                create: function (params, cb) {
+                    cb({
+                        data: {
+                            type: params.type,
+                            difficulty: params.difficulty,
+                            meta: {
+                                gameId: params.meta.gameId,
+                                order: params.meta.order
+                            }
+                        }
+                    });
+                },
+
                 updateOrder: function (list, cb) {
 
                 }

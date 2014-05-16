@@ -19,14 +19,15 @@
   ],
   "dependencies": {
     "angular": "~1.2.16",
-    "angular-loading-bar": "~0.3.0",
     "angular-route": "~1.2.15",
     "angular-cookies": "~1.2.16",
+    "angular-loading-bar": "~0.3.0",
+    "angular-ui-select2": "~0.0.5",
     "angular-ui-sortable": "~0.12.6",
     "jquery": "~2.1.0",
     "jquery-autosize": "~1.18.7",
-    "toastr": "~2.0.1",
     "select2": "~3.4.8",
+    "toastr": "~2.0.1",
     "underscore": "~1.6.0",
     "requirejs": "~2.1.11"
   }

@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="col-lg-1">
+                <span class="fa-stack fa-lg" ng-click="add()">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-plus fa-stack-1x fa-inverse"></i>
+                </span>
+            </div>
+
+            <div class="col-lg-7">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <select ui-select2 class="form-control" data-placeholder="Difficulty" ng-model="new_question.difficulty">
+                            <option value=""></option>
+                            <option ng-repeat="option in question_settings.difficulties" value="{{ option.value }}">{{ option.text }}</option>
+                        </select>
+                    </div>
+                    <div class="col-lg-5">
+                        <select ui-select2 class="form-control" data-placeholder="Type" ng-model="new_question.type">
+                            <option value=""></option>
+                            <option ng-repeat="option in question_settings.types" value="{{ option.value }}">{{ option.text }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <span style="margin-left: -90px;">Add multiple choice question</span>
+            </div>
+        </div>
+    </div>
+</div>

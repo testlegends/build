@@ -20,11 +20,14 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
                 },
 
                 get: function (id, cb) {
-
+                    return TestLegendsAPI.get('/game/' + id)
+                        .success(function (data) {
+                            cb(data);
+                        });
                 },
 
                 create: function (params, cb) {
-                    return TestLegendsAPI.put('/games')
+                    return TestLegendsAPI.put('/games', params)
                         .success(function (data) {
                             cb(data);
                         });

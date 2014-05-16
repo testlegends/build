@@ -20,8 +20,8 @@ define(['angular', 'angularCookies', 'game/Service'], function (angular) {
                 });
             };
 
-            games.list(function (data) {
-                $scope.games = data;
+            games.list(function (response) {
+                $scope.games = response.data;
             });
 
 		}]);

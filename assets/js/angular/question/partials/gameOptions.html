@@ -4,28 +4,31 @@
         <form class="form-horizontal">
             <div class="form-group">
                 <div class="col-sm-4">
-                    <input type="number" class="form-control" id="numForStage" placeholder="Enter a number" value="10" />
+                    <input type="number" class="form-control" id="qPerStage" placeholder="Enter a number" ng-model="game.meta.questions_per_stage" />
                 </div>
-                <label for="numForStage" class="control-label col-sm-6" style="text-align: left; padding-left:0; padding-right: 0; font-size: 13px;">Questions per Stage</label>
+                <label for="qPerStage" class="control-label col-sm-6" style="text-align: left; padding-left:0; padding-right: 0; font-size: 13px;">Questions per Stage</label>
             </div>
         </form>
 
         <form class="form-horizontal">
             <div class="form-group">
                 <div class="col-sm-4">
-                    <input type="number" class="form-control" id="numForStage" placeholder="Enter a number" value="10" />
+                    <input type="number" class="form-control" id="numStages" placeholder="Enter a number" value="10" />
                 </div>
-                <label for="numForStage" class="control-label col-sm-6" style="text-align: left; padding-left:0">Stages</label>
+                <label for="numStages" class="control-label col-sm-6" style="text-align: left; padding-left:0">Stages</label>
             </div>
         </form>
 
         <div class="form-group">
-            <label for="numForStage" class="control-label">Time per Question</label>
+            <label for="timePerQuestion" class="control-label">Time per Question</label>
             <br />
             <div class="col-sm-5">
-                <input type="number" class="form-control" style="height: 30px; padding-top: 4px; text-align: center;" id="numForStage" placeholder="Enter a number" value="20" />
+                <input type="number" class="form-control" style="height: 30px; padding-top: 4px; text-align: center;" id="timePerQuestion" placeholder="Enter a number" ng-model="game.meta.time_per_question" />
             </div>
-            <select class="col-sm-7"><option>seconds</option><option>minutes></option></select>
+            <select class="col-sm-7"><option>seconds</option><option>minutes</option></select>
         </div>
     </div>
 </div>
+
+<!-- TODO questions_per_stage and total_stages need to be calculated -->
+<!-- TODO time for second/minutes need to be calculated

@@ -10,15 +10,14 @@ define(['question/directives'], function (questionDirectives) {
 
     return questionDirectives
 
-        .directive('addQuestion', [function () {
-
-        }])
-
         .directive('stats', [function () {
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: '/js/angular/question/partials/stats.html'
+                templateUrl: '/js/angular/question/partials/stats.html',
+                controller: function ($scope) {
+                    // TODO maybe setinterval to retrieve data every minute or so
+                }
             };
         }])
 
@@ -26,15 +25,21 @@ define(['question/directives'], function (questionDirectives) {
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: '/js/angular/question/partials/master.html'
+                templateUrl: '/js/angular/question/partials/master.html',
+                controller: function ($scope) {
+                    // TODO save the master question settings
+                }
             };
         }])
 
         .directive('gameOptions', [function () {
             return {
                 restrict: 'E',
-                replace: true,
-                templateUrl: '/js/angular/question/partials/gameOptions.html'
+                //replace: true,
+                templateUrl: '/js/angular/question/partials/gameOptions.html',
+                controller: function ($scope) {
+                    // TODO save the game options
+                }
             };
         }]);
 });
