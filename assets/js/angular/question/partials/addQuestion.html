@@ -1,8 +1,8 @@
 <div class="row">
     <div class="panel panel-default">
         <div class="panel-body">
-            <div class="col-lg-1">
-                <span class="fa-stack fa-lg" ng-click="add()">
+            <div class="col-lg-1" id="plusBtn" ng-click="addQuestion()">
+                <span class="fa-stack fa-lg">
                     <i class="fa fa-circle fa-stack-2x"></i>
                     <i class="fa fa-plus fa-stack-1x fa-inverse"></i>
                 </span>
@@ -30,4 +30,10 @@
             </div>
         </div>
     </div>
+
+    <style type="text/css">
+        #plusBtn {
+            cursor: pointer;
+        }
+    </style>
 </div>

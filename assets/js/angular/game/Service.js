@@ -33,6 +33,14 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
                         });
                 },
 
+                save: function (params, cb) {
+                    return TestLegendsAPI.post('/games' + params.id, {
+
+                    }).success(function (data) {
+
+                    });
+                },
+
                 delete: function (id, cb) {
                     alert("Delete " + id);
                 }

@@ -23,7 +23,7 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
             ]
         })
 
-        .directive('question', ['QuestionSettings', function (QuestionSettings) {
+        .directive('question', ['questions', 'QuestionSettings', function (questions, QuestionSettings) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -38,8 +38,30 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
 
                     // TODO save question when change, throttle every 10 seconds or so
                     $scope.$watch('question', _.throttle(function(){
-                        console.log("changed + saved");
-                    }, 1000), true);
+                        questions.save({
+                            id: $scope.question.id,
+                            difficulty: $scope.question.difficulty,
+                            type: $scope.question.type,
+                            content: $scope.question.content,
+                            options: {
+                                correct: $scope.question.options.correct,
+                                wrong: $scope.question.options.wrong
+                            }
+                        }, function (response) {
+                            // change the button to saved
+                            console.log("Saved");
+                        });
+                    }, 5000), true);
+
+                    $scope.addOption = function () {
+                        $scope.question.options.wrong.push({ text: "" });
+                    };
+
+                    $scope.deleteQuestion = function () {
+                        question.delete($scope.question.id, function (response) {
+                            console.log(response.status);
+                        });
+                    };
                 }]
             };
         }])
@@ -51,30 +73,34 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
             };
         }])
 
-        .directive('addQuestion', ['$compile', 'questions', 'QuestionSettings', function ($compile, questions, QuestionSettings) {
+        .directive('addQuestion', ['questions', 'QuestionSettings', function (questions, QuestionSettings) {
             return {
                 restrict: 'E',
                 replace: true,
+                scope: true,
                 templateUrl: '/js/angular/question/partials/addQuestion.html',
-                controller: function ($scope, $element) {
+                controller: function ($scope) {
                     $scope.question_settings = QuestionSettings;
                     $scope.new_question = {
                         difficulty: 'easy',
                         type: 'multiple_choice'
                     };
 
-                    $scope.add = function(){
+                    $scope.addQuestion = function(){
                         questions.create({
                             difficulty: 'easy',
                             type: 'multiple_choice',
+                            options: {
+                                wrong: $scope.game.meta.default_options_per_question - 1
+                            },
                             meta: {
                                 gameId: $scope.game.id,
                                 order: $scope.questions.length + 1
                             }
                         }, function (response) {
-                            //$scope.$parent.questions.push(response.data);
-                            var newQuestion = $compile("<question q-data='" + JSON.stringify(response.data) + "'></question>")($scope);
-                            $element.prev().append(newQuestion);
+                            //var newQuestion = $compile("<question q-data='" + JSON.stringify(response.data) + "'></question>")($scope);
+                            //$element.prev().append(newQuestion);
+                            $scope.$parent.questions.push(response.data);
                         });
                     };
                 }
