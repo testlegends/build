@@ -7,8 +7,20 @@
  * @created     :: 2014/02/08
  */
 
-module.exports = {
+module.exports = (function(){
 
-    tableName: 'feedbacks'
+    var tableName = 'feedbacks';
 
-};
+    var attributes = {
+
+    };
+
+    if (process.env.NODE_ENV === 'development') {
+        tableName += '_test';
+    }
+
+    return {
+        tableName: tableName,
+        attributes: attributes
+    };
+})();
