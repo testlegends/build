@@ -37,7 +37,7 @@ module.exports = (function(){
 
     var http = {
         get: function (uri, query, cb) {
-            var headers = null;//{ 'Authorization': oauth2.buildAuthHeader(access_token) };
+            var headers = { 'Authorization': oauth2.buildAuthHeader(access_token) };
             uri = oauth.resourceServer.url + uri + '?' + Object.keys(query).map(function (key) {
                 return encodeURIComponent(key) + '=' + encodeURIComponent(query[key]);
             }).join('&');

@@ -26,7 +26,8 @@ module.exports = (function(){
 
         QuizletService.search('physics class', function (err, result) {
             return res.json({
-                quizlet_access_token: req.session.quizlet.access_token
+                search: 'physics class',
+                result: result
             });
         });
     }
