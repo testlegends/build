@@ -81,7 +81,7 @@ module.exports.controllers = {
      *
      * `rest` blueprints are enabled by default, and suitable for a production scenario.
      */
-    rest: true,
+    rest: false,
 
 
     /**
@@ -93,7 +93,7 @@ module.exports.controllers = {
      *
      * `shortcuts` are enabled by default, but SHOULD BE DISABLED IN PRODUCTION!!!!!
      */
-    shortcuts: true,
+    shortcuts: false,
 
 
     /**

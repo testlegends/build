@@ -10,13 +10,15 @@
 
 module.exports.routes = {
 
-    '/':          'HomeController.index',
-    '/games':     'HomeController.index',
-    '/game/:id':    'HomeController.index',
-    '/themes':    'HomeController.index',
+    '/'        : 'HomeController.index',
+    '/games'   : 'HomeController.index',
+    '/game/:id': 'HomeController.index',
+    '/themes'  : 'HomeController.index',
 
-    '/oauth':          'HomeController.tl_oauth_request',
+    '/oauth'         : 'HomeController.tl_oauth_request',
     '/oauth/callback': 'HomeController.tl_oauth_callback',
-    '/oauth/logout':   'HomeController.tl_oauth_logout'
+    '/oauth/logout'  : 'HomeController.tl_oauth_logout',
 
+    '/quizlet'         : 'HomeController.quizlet',
+    '/quizlet/callback': 'HomeController.quizlet_oauth_callback'
 };

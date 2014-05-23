@@ -8,7 +8,7 @@
  * @created     :: 2014/04/21
  */
 
-module.exports = (function ensureLoggedIn(options) {
+module.exports = (function (options) {
     if (typeof options === 'string') {
         options = { redirectTo: options };
     }

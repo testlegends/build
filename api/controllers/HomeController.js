@@ -19,8 +19,20 @@ module.exports = (function(){
 		});
 	}
 
-    function tl_oauth_request (req, res) {
+    function quizlet (req, res) {
+        if (!req.session.quizlet) {
+            return res.redirect(QuizletService.getAuthorizeUrl());
+        }
 
+        QuizletService.search('physics class', function (err, result) {
+            return res.json({
+                quizlet_access_token: req.session.quizlet.access_token
+            });
+        });
+    }
+
+    function tl_oauth_request (req, res) {
+        // Do nothing, handled in TestLegendsOAuthRequest policy
     }
 
     function tl_oauth_callback (req, res) {
@@ -36,11 +48,30 @@ module.exports = (function(){
         res.redirect('/');
     }
 
+    function quizlet_oauth_callback (req, res) {
+        if (req.query && req.query.code) {
+            QuizletService.getAccessToken(req.query.code, function (data) {
+                req.session.quizlet = {
+                    username: data.user_id,
+                    access_token: data.access_token
+                };
+
+                return res.redirect('/quizlet');
+            });
+        } else {
+            return res.redirect('/');
+        }
+    }
+
     return {
         index: index,
+        quizlet: quizlet,
+
         tl_oauth_request: tl_oauth_request,
         tl_oauth_callback: tl_oauth_callback,
         tl_oauth_logout: tl_oauth_logout,
+
+        quizlet_oauth_callback: quizlet_oauth_callback,
 
         _config: {}
     };
