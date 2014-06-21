@@ -5,7 +5,7 @@
     "Jeff Lee <leejefon@gmail.com>",
     "Alex Chen <alexwchenpro@gmail.com>"
   ],
-  "description": "TestLegends Build",
+  "description": "Game Builder for TestLegends",
   "main": "app.js",
   "license": "MIT",
   "homepage": "http://build.testlegends.com",

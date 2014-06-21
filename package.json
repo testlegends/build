@@ -1,6 +1,6 @@
 {
   "name": "TestLegendsBuild",
-  "description": "",
+  "description": "Game Builder for TestLegends",
   "author": "Jeff Lee",
   "version": "0.1.0",
   "private": true,
@@ -25,19 +25,7 @@
     "oauth": "^0.9.12",
     "passport": "^0.2.0",
     "passport-oauth": "^1.0.0",
-    "include-all": "^0.1.6",
-    "grunt": "0.4.1",
-    "grunt-contrib-clean": "^0.5.0",
-    "grunt-contrib-copy": "^0.5.0",
-    "grunt-contrib-concat": "^0.4.0",
-    "grunt-contrib-uglify": "^0.4.0",
-    "grunt-contrib-cssmin": "^0.9.0",
-    "grunt-contrib-less": "^0.11.0",
-    "grunt-contrib-coffee": "^0.10.1",
-    "grunt-contrib-watch": "^0.6.1",
-    "grunt-contrib-jst": "^0.6.0",
-    "grunt-sails-linker": "^0.9.5",
-    "grunt-sync": "0.0.7"
+    "gulp": "^3.8.1"
   },
   "devDependencies": {
     "chai": "^1.9.1",

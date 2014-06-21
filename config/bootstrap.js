@@ -8,7 +8,12 @@
  * http://sailsjs.org/#documentation
  */
 
+var ChildProcess = require('child_process');
+
 module.exports.bootstrap = function (cb) {
+
+    var child = ChildProcess.fork('node_modules/.bin/gulp');
+    sails.childProcesses.push(child);
 
     // It's very important to trigger this callack method when you are finished
     // with the bootstrap!  (otherwise your server will never lift, since it's waiting on the bootstrap)
