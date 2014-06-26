@@ -60,16 +60,16 @@ module.exports = (function(){
         }
     };
 
-    var state = null;
-
     var access_token = null;
+
+    var state = null;
 
     function getAuthorizeUrl () {
         var authUrl = oauth2.getAuthorizeUrl({
             response_type: 'code',
             redirect_uri: oauth.client.callbackURL,
             scope: 'read',
-            state: getState()
+            state: _getState()
         });
 
         return authUrl;
@@ -81,20 +81,14 @@ module.exports = (function(){
                 grant_type: 'authorization_code',
                 redirect_uri: oauth.client.callbackURL
             },
-            function (err, access_token, refresh_token, results) {
-                access_token = access_token;
-                cb(results);
+            function (err, token, refresh_token, results) {
+                access_token = token;
+                cb(err, results);
             }
         );
     }
 
-    function search (query, cb) {
-        http.get('/search/classes', { q: query }, function (err, result) {
-            cb(err, result);
-        });
-    }
-
-    function getState (length) {
+    function _getState (length) {
         if (state) {
             return state;
         }
@@ -112,9 +106,57 @@ module.exports = (function(){
         return state;
     }
 
+    function searchSets (params, cb) {
+        http.get('/search/sets', { q: params.query, page: params.page, per_page: params.per_page }, function (err, result) {
+            cb(err, _sanitizeResult(result));
+        });
+    }
+
+    function getSetById (id, cb) {
+        http.get('/set/' + id, null, function (err, result) {
+            cb(err, _sanitizeSet(result));
+        });
+    }
+
+    function _sanitizeResult (result) {
+        if (typeof result === 'string') {
+            result = JSON.parse(result);
+        }
+
+        var sanitizedSets = [];
+        for (var i in result.sets) {
+            sanitizedSets.push(_sanitizeSet(result.sets[i]));
+        }
+
+        return {
+            total: result.total_results,
+            pages: result.total_pages,
+            page: result.page,
+            sets: sanitizedSets
+        };
+    }
+
+    function _sanitizeSet (set) {
+        if (typeof set === 'string') {
+            set = JSON.parse(set);
+        }
+
+        return {
+            id: set.id,
+            title: set.title,
+            desc: set.description
+        };
+    }
+
+    function generateQuestions () {
+
+    }
+
     return {
         getAuthorizeUrl: getAuthorizeUrl,
         getAccessToken: getAccessToken,
-        search: search
+        searchSets: searchSets,
+        getSetById: getSetById,
+        generateQuestions: generateQuestions
     };
 })();

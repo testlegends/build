@@ -10,7 +10,7 @@ define(['angular', 'angularRoute'], function(angular) {
 
 	return angular.module('Game.routes', ['ngRoute'])
 
-		.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+		.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
 			$routeProvider.when('/games', {
 				templateUrl: '/js/angular/game/partials/index.html',
 				controller: 'GameController',

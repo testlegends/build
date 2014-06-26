@@ -14,11 +14,15 @@ module.exports.routes = {
     '/games'   : 'HomeController.index',
     '/game/:id': 'HomeController.index',
     '/themes'  : 'HomeController.index',
+    '/quizlet' : 'HomeController.index',
+    '/track'   : 'HomeController.index',
 
-    '/oauth'         : 'HomeController.tl_oauth_request',
-    '/oauth/callback': 'HomeController.tl_oauth_callback',
-    '/oauth/logout'  : 'HomeController.tl_oauth_logout',
+    '/oauth'         : 'HomeController.oauth_request',
+    '/oauth/callback': 'HomeController.oauth_callback',
+    '/oauth/logout'  : 'HomeController.oauth_logout',
 
-    '/quizlet'         : 'HomeController.quizlet',
-    '/quizlet/callback': 'HomeController.quizlet_oauth_callback'
+    '/quizlet/login'    : 'QuizletController.login',
+    '/quizlet/loggedIn' : 'QuizletController.loggedIn',
+    '/quizlet/callback' : 'QuizletController.oauth_callback',
+    '/quizlet/search'   : 'QuizletController.search'
 };

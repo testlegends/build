@@ -12,7 +12,7 @@ define([
     'question/QuestionDirective',
     'question/SidebarDirectives',
     'question/Controller',
-    'question/Routes',
+    'question/Routes'
 ], function (angular) {
     'use strict';
 

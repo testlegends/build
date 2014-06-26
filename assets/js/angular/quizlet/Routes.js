@@ -1,19 +1,19 @@
 /**
-* QuestionRoutes
+* QuizletRoutes
 *
 * @author      :: Jeff Lee
-* @created     :: 2014/05/08
+* @created     :: 2014/06/24
 */
 
 define(['angular', 'angularRoute'], function(angular) {
     'use strict';
 
-    return angular.module('Question.routes', ['ngRoute'])
+    return angular.module('Quizlet.routes', ['ngRoute'])
 
         .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-            $routeProvider.when('/game/:gameId', {
-                templateUrl: '/js/angular/question/partials/index.html',
-                controller: 'QuestionController',
+            $routeProvider.when('/quizlet', {
+                templateUrl: '/js/angular/quizlet/partials/index.html',
+                controller: 'QuizletController',
                 needAuthentication: true
             });
 

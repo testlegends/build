@@ -11,7 +11,7 @@ define(['common/services'], function (commonServices) {
     return commonServices
 
         .constant('Globals', {
-            //api_url: 'http://localhost:1339'
+            //api_url: 'http://leejefon.local:1339'
             api_url: 'http://api.testlegends.com'
         })
 

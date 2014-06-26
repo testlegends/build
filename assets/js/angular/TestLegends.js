@@ -39,11 +39,13 @@ require([
     'angular',
     'game/app',
     'question/app',
-    'theme/app'
-], function (angular, gameApp, questionApp, themeApp) {
+    'theme/app',
+    'track/app',
+    'quizlet/app'
+], function (angular, gameApp, questionApp, themeApp, trackApp, quizletApp) {
     'use strict';
 
     angular.element(document).ready(function () {
-        angular.bootstrap(document, [gameApp.name, questionApp.name, themeApp.name]);
+        angular.bootstrap(document, [gameApp.name, questionApp.name, themeApp.name, trackApp.name, quizletApp.name]);
     });
 });
