@@ -50,7 +50,7 @@ module.exports = (function(){
         var per_page = req.query.per_page || 30;
 
         if (!isNaN(parseFloat(query)) && isFinite(query)) {
-            QuizletService.getSetById(id, function (err, result) {
+            QuizletService.getSetById(query, function (err, result) {
                 return res.json({
                     search: query,
                     result: {

@@ -17,6 +17,12 @@ define(['angular', 'angularRoute'], function(angular) {
                 needAuthentication: true
             });
 
+            $routeProvider.when('/quizlet/:setId', {
+                templateUrl: '/js/angular/quizlet/partials/set.html',
+                controller: 'QuizletSetController',
+                needAuthentication: true
+            });
+
             $locationProvider.html5Mode(true);
         }]);
 });

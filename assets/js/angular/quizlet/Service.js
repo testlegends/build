@@ -12,10 +12,13 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
 
 		.factory('quizlet', ['$http', 'TestLegendsAPI', function ($http, TestLegendsAPI) {
 			return {
-				loggedIn: function (cb) {
+				// From local server -> Quizlet API Server
+				loggedIn: function () {
 					return $http.get('/quizlet/loggedIn')
-						.success(function (data) {
-							cb(data);
+						.success(function (response) {
+							if (!response.loggedIn) {
+								window.location = '/quizlet/login';
+							}
 						});
 				},
                 search: function (params, cb) {
@@ -24,10 +27,23 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
 							cb(data);
 						});
                 },
+				getSet: function (id, cb) {
+					return $http.get('/quizlet/search?' + $.param({ q: id }))
+						.success(function (data) {
+							cb(data.result.sets[0]);
+						});
+				},
 
+				// From API Server
+				list: function (cb) {
+
+				},
                 save: function (params, cb) {
 
-                }
+                },
+				generate: function (cb) {
+
+				}
 			};
 		}]);
 });

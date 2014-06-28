@@ -28,6 +28,10 @@ module.exports = (function(){
         res.redirect('/');
     }
 
+    function oauth_loggedIn (req, res) {
+
+    }
+
     function oauth_logout (req, res) {
         req.logout();
         res.clearCookie('access_token');
@@ -38,6 +42,7 @@ module.exports = (function(){
         index: index,
         oauth_request: oauth_request,
         oauth_callback: oauth_callback,
+        oauth_loggedIn: oauth_loggedIn,
         oauth_logout: oauth_logout,
 
         _config: {}

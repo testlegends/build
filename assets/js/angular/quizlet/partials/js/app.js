@@ -18,10 +18,29 @@ require.config({
 require([
     'jquery'
 ], function ($) {
-    $(document).ready(function(){
+    (function ($) {
 
-        toastr.options = {
-            positionClass: "toast-bottom-right"
+        $.fn.bindr = function (config) {
+            config = $.extend({
+                target: null
+            }, config);
+
+            var input = $(this);
+            var target = $(config.target);
+
+            input.keyup(function(e){
+                var code = (e.keyCode ? e.keyCode : e.which);
+                if (code === 13) {
+                    target.click();
+                }
+            });
         };
+
+    })(jQuery);
+
+    $(document).ready(function(){
+        $('#quizlet_search').bindr({
+            target: '#quizlet_search_btn'
+        });
     });
 });

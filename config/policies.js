@@ -17,8 +17,8 @@ module.exports.policies = {
     '*': true,
 
     HomeController: {
-        tl_oauth_request: 'TestLegendsOAuthRequest',
-        tl_oauth_callback: 'TestLegendsOAuthCallback'
+        oauth_request: 'TestLegendsOAuthRequest',
+        oauth_callback: 'TestLegendsOAuthCallback'
     }
 
 };

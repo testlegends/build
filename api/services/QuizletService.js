@@ -36,12 +36,25 @@ module.exports = (function(){
     );
 
     var http = {
-        get: function (uri, query, cb) {
-            var headers = { 'Authorization': oauth2.buildAuthHeader(access_token) };
-            uri = oauth.resourceServer.url + uri + '?' + Object.keys(query).map(function (key) {
-                return encodeURIComponent(key) + '=' + encodeURIComponent(query[key]);
-            }).join('&');
-            oauth2._request("GET", uri, headers, null, access_token, cb);
+        get: function (uri, query, auth, cb) {
+            if (typeof auth === 'function') {
+                cb = auth;
+                auth = false;
+            }
+
+            if (auth) {
+                var headers = { 'Authorization': oauth2.buildAuthHeader(access_token) };
+                uri = oauth.resourceServer.url + uri + '?' + Object.keys(query).map(function (key) {
+                    return encodeURIComponent(key) + '=' + encodeURIComponent(query[key]);
+                }).join('&');
+                oauth2._request("GET", uri, headers, null, access_token, cb);
+            } else {
+                query.client_id = oauth.client.clientID;
+                uri = oauth.resourceServer.url + uri + '?' + Object.keys(query).map(function (key) {
+                    return encodeURIComponent(key) + '=' + encodeURIComponent(query[key]);
+                }).join('&');
+                oauth2._request("GET", uri, null, null, null, cb);
+            }
         },
         put: function (uri, data, cb) {
             var headers= { 'Authorization': oauth2.buildAuthHeader(access_token) };
@@ -113,7 +126,7 @@ module.exports = (function(){
     }
 
     function getSetById (id, cb) {
-        http.get('/set/' + id, null, function (err, result) {
+        http.get('/sets/' + id, {}, function (err, result) {
             cb(err, _sanitizeSet(result));
         });
     }
@@ -144,7 +157,8 @@ module.exports = (function(){
         return {
             id: set.id,
             title: set.title,
-            desc: set.description
+            desc: set.description,
+            terms: set.terms
         };
     }
 

@@ -4,9 +4,9 @@
     <div class="col-lg-2">&nbsp;</div>
     <div class="col-lg-8">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="ex: physics" ng-model="search_params.q" />
+            <input type="text" class="form-control" placeholder="ex: physics" ng-model="search_params.q" id="quizlet_search" />
             <span class="input-group-btn">
-                <button class="btn btn-primary" type="button" ng-click="search()">Search</button>
+                <button class="btn btn-primary" type="button" ng-click="search()" id="quizlet_search_btn">Search</button>
             </span>
         </div>
     </div>
@@ -21,10 +21,38 @@
         <td>Description</td>
     </tr>
     <tr ng-repeat="set in search_result.sets">
-        <td>{{ set.title }}</td>
+        <td><a href="/quizlet/{{ set.id }}">{{ set.title }}</a></td>
         <td>{{ set.desc }}</td>
     </tr>
 </table>
+
+<ul class="pagination" ng-if="search_result.pages > 1">
+    <li><a href="#" ng-click="gotoPage(1)" ng-if="curr_page != 1">&laquo;</a></li>
+    <li><a href="#" ng-click="gotoPage('prev')" ng-if="curr_page != 1">&lt;</a></li>
+    <li ng-repeat="page in makeArray(search_result.pages) track by $index" ng-if="$index + 1 < curr_page && $index > curr_page - 6">
+        <a href="#" ng-click="gotoPage($index + 1)">{{ $index + 1 }}</a>
+    </li>
+    <li class="active">
+        <a href="#" onclick="return false">{{ curr_page }}</a>
+    </li>
+    <li ng-repeat="page in makeArray(search_result.pages) track by $index" ng-if="$index + 1 > curr_page && $index < curr_page + 5">
+        <a href="#" ng-click="gotoPage($index + 1)">{{ $index + 1 }}</a>
+    </li>
+    <!--li ng-repeat="page in makeArray(search_result.pages) track by $index" ng-if="curr_page < 5">
+        <a href="#" ng-click="gotoPage($index + 1)" ng-if="$index + 1 == curr_page" class="active">{{ $index + 1 }}</a>
+        <a href="#" ng-click="gotoPage($index + 1)" ng-if="$index + 1 != curr_page && $index < 10">{{ $index + 1 }}</a>
+    </li>
+    <li ng-repeat="page in makeArray(search_result.pages) track by $index" ng-if="curr_page >= 5 && curr_page <= search_result.pages - 5">
+        <a href="#" ng-click="gotoPage($index + 1)" ng-if="$index + 1 == curr_page" class="active">{{ $index + 1 }}</a>
+        <a href="#" ng-click="gotoPage($index + 1)" ng-if="$index + 1 != curr_page && $index > curr_page - 4 && $index < curr_page + 5">{{ $index + 1 }}</a>
+    </li>
+    <li ng-repeat="page in makeArray(search_result.pages) track by $index" ng-if="curr_page > search_result.pages - 5">
+        <a href="#" ng-click="gotoPage($index + 1)" ng-if="$index + 1 == curr_page" class="active">{{ $index + 1 }}</a>
+        <a href="#" ng-click="gotoPage($index + 1)" ng-if="$index + 1 != curr_page && $index > search_result.pages - 10">{{ $index + 1 }}</a>
+    </li-->
+    <li><a href="#" ng-click="gotoPage('next')" ng-if="curr_page < search_result.pages">&gt;</a></li>
+    <li><a href="#" ng-click="gotoPage(search_result.pages)" ng-if="curr_page < search_result.pages">&raquo;</a></li>
+</ul>
 
 <script src="/js/angular/quizlet/partials/js/app.js"></script>
 
