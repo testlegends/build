@@ -9,12 +9,9 @@
 		<%- Html.meta('icon') %>
 
 		<%- Html.css([
-				'//fonts.googleapis.com/css?family=Raleway',
 				'//netdna.bootstrapcdn.com/bootswatch/3.1.1/cerulean/bootstrap.min.css',
 				'//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css',
-				'../js/vendor/toastr/toastr.min.css',
-				'../js/vendor/select2/select2.css',
-				'style.css'
+				'style.min.css'
 		]) %>
 
 		<%- Html.script([
@@ -36,6 +33,17 @@
 						</a>
 
 						<a href="/" class="navbar-brand h5"><span>TestLegends</span>&nbsp; Build</a>
+					</div>
+
+					<div class="collapse navbar-collapse navbar-left">
+						<ul class="nav navbar-nav">
+							<% if (!req.isAuthenticated()) { %>
+
+							<% } else { %>
+								<li><a href="/lists" target="_self" class="navbar-without-img"><i class="fa fa-list-ul"></i> Lists</a></li>
+								<li><a href="/games" target="_self" class="navbar-without-img"><i class="fa fa-shield"></i> Games</a></li>
+							<% } %>
+						</ul>
 					</div>
 
 					<div class="collapse navbar-collapse navbar-right">

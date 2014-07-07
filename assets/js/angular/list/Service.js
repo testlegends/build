@@ -10,18 +10,39 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
 
 	return angular.module('List.services', ['Common.services'])
 
-		.factory('list', ['$http', 'TestLegendsAPI', function ($http, TestLegendsAPI) {
+		.factory('lists', ['TestLegendsAPI', function ($TestLegendsAPI) {
 			return {
 				search: function (params, cb) {
 
 				},
-
-				// From API Server
 				list: function (cb) {
-
+					$TestLegendsAPI({
+						url: '/lists',
+						method: 'GET'
+					}).success(function (response) {
+						if (response.status === 'OK') {
+							cb(null, response.data);
+						} else {
+							cb(response.error, null);
+						}
+					});
 				},
 				save: function (params, cb) {
-
+					$TestLegendsAPI({
+						url: '/lists',
+						method: 'PUT',
+						data: {
+							title: params.title,
+							desc: params.desc,
+							terms: params.terms
+						}
+					}).success(function (response) {
+						if (response.status === 'OK') {
+							cb(null, response.data);
+						} else {
+							cb(response.error, null);
+						}
+					});
 				},
 				generate: function (cb) {
 

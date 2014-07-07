@@ -10,7 +10,7 @@ define(['angular', 'angularCookies', 'list/Service', 'common/QuizletService'], f
 
 	return angular.module('List.controllers', ['List.services', 'Common.services', 'ngCookies'])
 
-		.controller('ListController', ['$scope', '$location', 'quizlet', function ($scope, $location, quizlet) {
+		.controller('ListController', ['$scope', '$location', 'lists', 'quizlet', function ($scope, $location, lists, quizlet) {
 
             $scope.name = "ListController";
 
