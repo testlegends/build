@@ -1,12 +1,12 @@
-<h3>Quizlet Import</h3>
+<h3>Search Lists</h3>
 
 <div class="row">
     <div class="col-lg-2">&nbsp;</div>
     <div class="col-lg-8">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="ex: physics" ng-model="search_params.q" id="quizlet_search" />
+            <input type="text" class="form-control" placeholder="ex: physics" ng-model="search_params.q" id="list_search" />
             <span class="input-group-btn">
-                <button class="btn btn-primary" type="button" ng-click="search()" id="quizlet_search_btn">Search</button>
+                <button class="btn btn-primary" type="button" ng-click="search()" id="list_search_btn">Search</button>
             </span>
         </div>
     </div>
@@ -20,9 +20,9 @@
         <td>Title</td>
         <td>Description</td>
     </tr>
-    <tr ng-repeat="set in search_result.sets">
-        <td><a href="/quizlet/{{ set.id }}">{{ set.title }}</a></td>
-        <td>{{ set.desc }}</td>
+    <tr ng-repeat="list in search_result.sets">
+        <td><a href="/list/{{ list.id }}">{{ list.title }}</a></td>
+        <td>{{ list.desc }}</td>
     </tr>
 </table>
 
@@ -54,7 +54,7 @@
     <li><a href="#" ng-click="gotoPage(search_result.pages)" ng-if="curr_page < search_result.pages">&raquo;</a></li>
 </ul>
 
-<script src="/js/angular/quizlet/partials/js/app.js"></script>
+<script src="/js/angular/list/partials/js/app.js"></script>
 
 <style type="text/css">
 

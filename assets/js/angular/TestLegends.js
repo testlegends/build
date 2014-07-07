@@ -37,15 +37,27 @@ require.config({
 
 require([
     'angular',
+    'list/app',
+    'term/app',
     'game/app',
     'question/app',
+    'item/app',
     'theme/app',
     'track/app',
-    'quizlet/app'
-], function (angular, gameApp, questionApp, themeApp, trackApp, quizletApp) {
+    'user/app'
+], function (angular, listApp, termApp, gameApp, questionApp, itemApp, themeApp, trackApp, userApp) {
     'use strict';
 
     angular.element(document).ready(function () {
-        angular.bootstrap(document, [gameApp.name, questionApp.name, themeApp.name, trackApp.name, quizletApp.name]);
+        angular.bootstrap(document, [
+            listApp.name,
+            termApp.name,
+            gameApp.name,
+            questionApp.name,
+            itemApp.name,
+            themeApp.name,
+            trackApp.name,
+            userApp.name
+        ]);
     });
 });

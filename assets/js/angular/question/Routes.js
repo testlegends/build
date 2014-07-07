@@ -11,8 +11,14 @@ define(['angular', 'angularRoute'], function(angular) {
     return angular.module('Question.routes', ['ngRoute'])
 
         .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-            $routeProvider.when('/game/:gameId', {
+            $routeProvider.when('/game/:gameId/questions', {
                 templateUrl: '/js/angular/question/partials/index.html',
+                controller: 'QuestionController',
+                needAuthentication: true
+            });
+
+            $routeProvider.when('/game/:gameId/questions/edit', {
+                templateUrl: '/js/angular/question/partials/edit.html',
                 controller: 'QuestionController',
                 needAuthentication: true
             });

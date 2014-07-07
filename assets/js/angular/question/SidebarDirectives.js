@@ -14,10 +14,10 @@ define(['question/directives'], function (questionDirectives) {
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: '/js/angular/question/partials/stats.html',
-                controller: function ($scope) {
+                templateUrl: '/js/angular/question/partials/elem-stats.html',
+                controller: ['$scope', function ($scope) {
                     // TODO maybe setinterval to retrieve data every minute or so
-                }
+                }]
             };
         }])
 
@@ -25,10 +25,10 @@ define(['question/directives'], function (questionDirectives) {
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: '/js/angular/question/partials/master.html',
-                controller: function ($scope) {
+                templateUrl: '/js/angular/question/partials/elem-master.html',
+                controller: ['$scope', function ($scope) {
                     // TODO save the master question settings
-                }
+                }]
             };
         }])
 
@@ -36,10 +36,10 @@ define(['question/directives'], function (questionDirectives) {
             return {
                 restrict: 'E',
                 //replace: true,
-                templateUrl: '/js/angular/question/partials/gameOptions.html',
-                controller: function ($scope) {
+                templateUrl: '/js/angular/question/partials/elem-gameOptions.html',
+                controller: ['$scope', function ($scope) {
                     // TODO save the game options
-                }
+                }]
             };
         }]);
 });

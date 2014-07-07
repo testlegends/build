@@ -1,18 +1,18 @@
 /**
- * QuizletController
+ * ListControllers
  *
  * @author      :: Jeff Lee
  * @created     :: 2014/06/24
  */
 
-define(['angular', 'angularCookies', 'quizlet/Service'], function (angular) {
+define(['angular', 'angularCookies', 'list/Service', 'common/QuizletService'], function (angular) {
 	'use strict';
 
-	return angular.module('Quizlet.controllers', ['Quizlet.services', 'ngCookies'])
+	return angular.module('List.controllers', ['List.services', 'Common.services', 'ngCookies'])
 
-		.controller('QuizletController', ['$scope', '$location', 'quizlet', function ($scope, $location, quizlet) {
+		.controller('ListController', ['$scope', '$location', 'quizlet', function ($scope, $location, quizlet) {
 
-            $scope.name = "QuizletController";
+            $scope.name = "ListController";
 
 			$scope.search = function () {
 				$location.search('q', $scope.search_params.q);
@@ -61,26 +61,5 @@ define(['angular', 'angularCookies', 'quizlet/Service'], function (angular) {
 			};
 
 			$scope.init();
-		}])
-
-		.controller('QuizletSetController', ['$scope', '$routeParams', 'quizlet', function ($scope, $routeParams, quizlet) {
-
-			$scope.name = "QuizletSetController";
-
-			$scope.setId = $routeParams.setId;
-
-			quizlet.getSet($scope.setId, function (response) {
-				$scope.set = response;
-			});
-
-			$scope.save = function () {
-				$scope.saved = true;
-			};
-
-			$scope.generate = function () {
-				if (!$scope.saved) {
-					return false;
-				}
-			};
 		}]);
 });

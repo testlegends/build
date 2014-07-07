@@ -1,19 +1,19 @@
 /**
-* ThemeRoutes
+* ItemRoutes
 *
 * @author      :: Jeff Lee
-* @created     :: 2014/05/08
+* @created     :: 2014/07/06
 */
 
 define(['angular', 'angularRoute'], function(angular) {
 	'use strict';
 
-	return angular.module('Theme.routes', ['ngRoute'])
+	return angular.module('Item.routes', ['ngRoute'])
 
 		.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-			$routeProvider.when('/game/:gameId/theme', {
-				templateUrl: '/js/angular/theme/partials/index.html',
-				controller: 'ThemeController',
+			$routeProvider.when('/game/:gameId/items', {
+				templateUrl: '/js/angular/item/partials/index.html',
+				controller: 'ItemController',
 				needAuthentication: true
 			});
 

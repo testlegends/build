@@ -24,12 +24,18 @@ module.exports.routes = {
     '/quizlet/callback' : 'QuizletController.oauth_callback',
     '/quizlet/search'   : 'QuizletController.search',
 
-    '/'            : 'HomeController.index',
-    '/games'       : 'HomeController.index',
-    '/game/:id'    : 'HomeController.index',
-    '/themes'      : 'HomeController.index',
-    '/quizlet'     : 'HomeController.index',
-    '/quizlet/:id' : 'HomeController.index',
-    '/track'       : 'HomeController.index'
+    // Angular Routes
+    '/'                        : 'HomeController.index',
+    '/lists'                   : 'HomeController.index',
+    '/list/create'             : 'HomeController.index',
+    '/list/:id'                : 'HomeController.index',
+    '/list/:id/edit'           : 'HomeController.index',
+    '/games'                   : 'HomeController.index',
+    '/game/:id/questions'      : 'HomeController.index',
+    '/game/:id/questions/edit' : 'HomeController.index',
+    '/game/:id/items'          : 'HomeController.index',
+    '/game/:id/theme'          : 'HomeController.index',
+    '/track'                   : 'HomeController.index',
+    '/user'                    : 'HomeController.index'
 
 };

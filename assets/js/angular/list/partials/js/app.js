@@ -1,5 +1,5 @@
 /**
- * Quizlet.app
+ * List.app
  *
  * @author      :: Jeff Lee
  * @created     :: 2014/06/24
@@ -39,8 +39,8 @@ require([
     })(jQuery);
 
     $(document).ready(function(){
-        $('#quizlet_search').bindr({
-            target: '#quizlet_search_btn'
+        $('#list_search').bindr({
+            target: '#list_search_btn'
         });
     });
 });

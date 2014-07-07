@@ -17,8 +17,6 @@ define(['angular', 'angularRoute'], function(angular) {
 				needAuthentication: true
 			});
 
-			$routeProvider.otherwise({ redirectTo: '/games' });
-
 			$locationProvider.html5Mode(true);
 		}]);
 });

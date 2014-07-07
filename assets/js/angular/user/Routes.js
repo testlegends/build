@@ -1,19 +1,19 @@
 /**
-* ThemeRoutes
+* UserRoutes
 *
 * @author      :: Jeff Lee
-* @created     :: 2014/05/08
+* @created     :: 2014/07/06
 */
 
 define(['angular', 'angularRoute'], function(angular) {
 	'use strict';
 
-	return angular.module('Theme.routes', ['ngRoute'])
+	return angular.module('User.routes', ['ngRoute'])
 
 		.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-			$routeProvider.when('/game/:gameId/theme', {
-				templateUrl: '/js/angular/theme/partials/index.html',
-				controller: 'ThemeController',
+			$routeProvider.when('/user', {
+				templateUrl: '/js/angular/user/partials/index.html',
+				controller: 'UserController',
 				needAuthentication: true
 			});
 

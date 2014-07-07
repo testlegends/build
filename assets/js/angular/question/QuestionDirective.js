@@ -28,7 +28,7 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
                 restrict: 'E',
                 replace: true,
                 require: '^qData',
-                templateUrl: '/js/angular/question/partials/question.html',
+                templateUrl: '/js/angular/question/partials/elem-question.html',
                 scope: {
                     qData: '@'
                 },
@@ -69,7 +69,9 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
         .directive('qData', [function () {
             return {
                 restrict: 'A',
-                controller: function () {}
+                controller: [function () {
+
+                }]
             };
         }])
 
@@ -78,8 +80,8 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
                 restrict: 'E',
                 replace: true,
                 scope: true,
-                templateUrl: '/js/angular/question/partials/addQuestion.html',
-                controller: function ($scope) {
+                templateUrl: '/js/angular/question/partials/elem-addQuestion.html',
+                controller: ['$scope', function ($scope) {
                     $scope.question_settings = QuestionSettings;
                     $scope.new_question = {
                         difficulty: 'easy',
@@ -103,7 +105,7 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
                             $scope.$parent.questions.push(response.data);
                         });
                     };
-                }
+                }]
             };
         }]);
 
