@@ -15,13 +15,13 @@ define(['angular', 'angularCookies', 'game/Service'], function (angular) {
             $scope.name = "GameController";
 
             $scope.delete = function (gameId) {
-                games.delete(gameId, function (response) {
+                games.delete(gameId, function (err, data) {
 
                 });
             };
 
-            games.list(function (response) {
-                $scope.games = response.data;
+            games.list(function (err, data) {
+                $scope.games = data;
             });
 
 		}]);

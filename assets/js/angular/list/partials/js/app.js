@@ -4,43 +4,28 @@
  * @author      :: Jeff Lee
  * @created     :: 2014/06/24
  */
+(function ($) {
 
-require.config({
-    baseUrl: '/js/angular',
-    paths: {
-        jquery: "//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min"
-    },
-    shim: {
+    $.fn.bindr = function (config) {
+        config = $.extend({
+            target: null
+        }, config);
 
-    }
-});
+        var input = $(this);
+        var target = $(config.target);
 
-require([
-    'jquery'
-], function ($) {
-    (function ($) {
-
-        $.fn.bindr = function (config) {
-            config = $.extend({
-                target: null
-            }, config);
-
-            var input = $(this);
-            var target = $(config.target);
-
-            input.keyup(function(e){
-                var code = (e.keyCode ? e.keyCode : e.which);
-                if (code === 13) {
-                    target.click();
-                }
-            });
-        };
-
-    })(jQuery);
-
-    $(document).ready(function(){
-        $('#list_search').bindr({
-            target: '#list_search_btn'
+        input.keyup(function(e){
+            var code = (e.keyCode ? e.keyCode : e.which);
+            if (code === 13) {
+                target.click();
+            }
         });
+    };
+
+})(jQuery);
+
+$(document).ready(function(){
+    $('#list_search').bindr({
+        target: '#list_search_btn'
     });
 });

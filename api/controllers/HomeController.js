@@ -22,8 +22,9 @@ module.exports = (function(){
     }
 
     function oauth_callback (req, res) {
+        var thirtyMinutes = 30 * 60 * 1000;
         res.cookie('access_token', req.user.accessToken, {
-            maxAge: 90000000
+            maxAge: thirtyMinutes
         });
         res.redirect('/');
     }

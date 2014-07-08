@@ -8,7 +8,6 @@
 define([
     'angular',
     'angularLoadingBar',
-    'angularUISortable',
     'question/QuestionDirective',
     'question/SidebarDirectives',
     'question/Controller',
@@ -18,7 +17,6 @@ define([
 
     return angular.module('Question', [
         'chieffancypants.loadingBar',
-        'ui.sortable',
         'Question.directives',
         'Question.controllers',
         'Question.routes'

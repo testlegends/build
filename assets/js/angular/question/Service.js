@@ -17,8 +17,12 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
                         url: '/questions',
                         method: 'GET',
                         params: { gameId: gameId }
-                    }).success(function (data) {
-                        cb(data);
+                    }).success(function (response) {
+                        if (response.status === 'OK') {
+							cb(null, response.data);
+						} else {
+							cb(response.error, null);
+						}
                     });
                 },
 
@@ -37,8 +41,12 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
                             type: params.type,
                             difficulty: params.difficulty
                         }
-                    }).success(function (data) {
-                        cb(data);
+                    }).success(function (response) {
+						if (response.status === 'OK') {
+							cb(null, response.data);
+						} else {
+							cb(response.error, null);
+						}
                     });
                 },
 
@@ -62,8 +70,12 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
                             correct: params.options.correct,
                             wrong: wrongAnswers
                         }
-                    }).success(function (data) {
-                        cb(data);
+                    }).success(function (response) {
+						if (response.status === 'OK') {
+							cb(null, response.data);
+						} else {
+							cb(response.error, null);
+						}
                     });
                 },
 
@@ -71,8 +83,12 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
                     return $TestLegendsAPI({
                         url: '/question/' + params.id,
                         method: 'DELETE'
-                    }).success(function (data) {
-                        cb(data);
+                    }).success(function (response) {
+						if (response.status === 'OK') {
+							cb(null, response.data);
+						} else {
+							cb(response.error, null);
+						}
                     });
                 },
 

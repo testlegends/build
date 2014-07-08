@@ -8,14 +8,14 @@
 require.config({
     baseUrl: '/js/angular',
     paths: {
-        jquery: '../vendor/jquery/dist/jquery.min',
+        jquery: '../vendor/jquery/dist/jquery',
         jqueryUI: '../vendor/jquery-ui/ui/minified/jquery-ui.min',
-        bootstrap: '//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min',
+        bootstrap: '../vendor/bootstrap/dist/js/bootstrap',
         select2: "../vendor/select2/select2.min",
         underscore: '../vendor/underscore/underscore',
 
         angular: '../vendor/angular/angular',
-        angularCookies: '../vendor/angular-cookies/angular-cookies.min',
+        angularCookies: '../vendor/angular-cookies/angular-cookies',
         angularRoute: '../vendor/angular-route/angular-route',
         angularLoadingBar: '../vendor/angular-loading-bar/build/loading-bar',
         angularUISelect2: '../vendor/angular-ui-select2/src/select2',

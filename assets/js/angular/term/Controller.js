@@ -5,27 +5,31 @@
  * @created     :: 2014/07/06
  */
 
-define(['angular', 'term/Service', 'list/Service', 'common/QuizletService'], function (angular) {
+define(['angular', 'term/Service', 'list/Service', 'common/AuthService', 'common/QuizletService'], function (angular) {
 	'use strict';
 
 	return angular.module('Term.controllers', ['Term.services', 'List.services', 'Common.services'])
 
-		.controller('TermController', ['$scope', '$routeParams', 'terms', 'lists', 'quizlet', function ($scope, $routeParams, terms, lists, quizlet) {
+		.controller('TermController', ['$scope', '$routeParams', 'terms', 'lists', 'Auth', 'Quizlet', function ($scope, $routeParams, terms, lists, Auth, Quizlet) {
 
 			$scope.name = "TermController";
 
 			$scope.listId = $routeParams.listId;
 
-			quizlet.getSet($scope.listId, function (response) {
-				$scope.list = response;
+			Quizlet.getSet($scope.listId, function (err, data) {
+				$scope.list = data;
 			});
 
-			//TODO: put this from auth service
-			$scope.loggedIn = function () {
-				return true;
+			$scope.login = function () {
+				Auth.login();
 			};
 
-			$scope.isCreator = function () {
+			$scope.loggedIn = function () {
+				return Auth.isAuthenticated() && Auth.isAuthorized();
+			};
+
+			$scope.isCreator = function (listId) {
+				console.log(listId);
 				return false;
 			};
 

@@ -52,12 +52,15 @@ module.exports = (function(){
         if (!isNaN(parseFloat(query)) && isFinite(query)) {
             QuizletService.getSetById(query, function (err, result) {
                 return res.json({
-                    search: query,
-                    result: {
-                        total: 1,
-                        pages: 1,
-                        page: 1,
-                        sets: [result]
+                    status: 'OK',
+                    data: {
+                        search: query,
+                        result: {
+                            total: 1,
+                            pages: 1,
+                            page: 1,
+                            sets: [result]
+                        }
                     }
                 });
             });
@@ -68,8 +71,11 @@ module.exports = (function(){
                 per_page: per_page
             }, function (err, result) {
                 return res.json({
-                    search: query,
-                    result: result
+                    status: 'OK',
+                    data: {
+                        search: query,
+                        result: result
+                    }
                 });
             });
         }

@@ -76,6 +76,9 @@ a:hover {
 	vertical-align: middle;
 }
 
+.clearfix {
+    clear: both;
+}
 
 /** Custom CSS **/
 .navbar {

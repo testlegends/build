@@ -1,8 +1,11 @@
-<h3>{{ list.title }}</h3>
+<h3 class="pull-left">{{ list.title }}</h3>
 
 <div class="pull-right">
-    <button class="btn btn-primary" ng-click="save()" ng-if="loggedIn() && !isCreator()">Save List</button>
+    <button class="btn btn-primary" ng-click="login()" ng-if="!loggedIn()">Login to Save List</button>
+    <button class="btn btn-primary" ng-click="save()" ng-if="loggedIn() && !isCreator(list.id)">Save List</button>
 </div>
+
+<hr class="clearfix" />
 
 <table class="table table-striped table-hover table-bordered">
     <tr>

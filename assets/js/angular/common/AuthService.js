@@ -14,9 +14,26 @@ define(['common/services'], function (commonServices) {
 
             // TODO Check if token cookie exists, auto login
 
+            function login () {
+                window.location.href = '/login';
+            }
+
+            function isAuthenticated () {
+                if ($cookies.access_token) {
+                    return true;
+                }
+
+                return false;
+            }
+
+            function isAuthorized () {
+                return true;
+            }
+
             return {
-                isAuthenticated: null,
-                isAuthorized: null,
+                login: login,
+                isAuthenticated: isAuthenticated,
+                isAuthorized: isAuthorized,
                 user: null
             };
         }]);

@@ -8,8 +8,8 @@ var paths = {
 	target: '.tmp/public',
 	assets: [
 		'assets/**',
-		'!assets/js/angular/*.js',
-		'!assets/js/angular/*/*.js',
+//		'!assets/js/angular/*.js',
+//		'!assets/js/angular/*/*.js',
 		'!assets/styles/*.css'
 	],
 	assetsToWatch: [

@@ -20,13 +20,13 @@ define(['angular', 'question/Service', 'game/Service'], function (angular) {
             };
 
             $scope.game = null;
-            games.get($routeParams.gameId, function (response) {
-                $scope.game = response.data;
+            games.get($routeParams.gameId, function (err, data) {
+                $scope.game = data;
             });
 
             $scope.questions = [];
-            questions.list($routeParams.gameId, function (response) {
-                $scope.questions = response.data;
+            questions.list($routeParams.gameId, function (err, data) {
+                $scope.questions = data;
             });
 
         }]);

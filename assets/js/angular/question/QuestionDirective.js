@@ -47,7 +47,7 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
                                 correct: $scope.question.options.correct,
                                 wrong: $scope.question.options.wrong
                             }
-                        }, function (response) {
+                        }, function (err, data) {
                             // change the button to saved
                             console.log("Saved");
                         });
@@ -58,8 +58,8 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
                     };
 
                     $scope.deleteQuestion = function () {
-                        question.delete($scope.question.id, function (response) {
-                            console.log(response.status);
+                        questions.delete($scope.question.id, function (err, data) {
+                            console.log('Deleted');
                         });
                     };
                 }]
@@ -99,10 +99,10 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
                                 gameId: $scope.game.id,
                                 order: $scope.questions.length + 1
                             }
-                        }, function (response) {
+                        }, function (err, data) {
                             //var newQuestion = $compile("<question q-data='" + JSON.stringify(response.data) + "'></question>")($scope);
                             //$element.prev().append(newQuestion);
-                            $scope.$parent.questions.push(response.data);
+                            $scope.$parent.questions.push(data);
                         });
                     };
                 }]

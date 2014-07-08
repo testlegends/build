@@ -10,9 +10,8 @@ define(['common/services'], function (commonServices) {
 
     return commonServices
 
-    .factory('quizlet', ['$http', function ($http) {
+    .factory('Quizlet', ['$http', function ($http) {
         return {
-            // From local server -> Quizlet API Server
             loggedIn: function () {
                 return $http.get('/quizlet/loggedIn')
                     .success(function (response) {
@@ -23,14 +22,22 @@ define(['common/services'], function (commonServices) {
             },
             search: function (params, cb) {
                 return $http.get('/quizlet/search?' + $.param(params))
-                    .success(function (data) {
-                        cb(data);
+                    .success(function (response) {
+                        if (response.status === 'OK') {
+                            cb(null, response.data);
+                        } else {
+                            cb(response.error, null);
+                        }
                     });
             },
             getSet: function (id, cb) {
                 return $http.get('/quizlet/search?' + $.param({ q: id }))
-                    .success(function (data) {
-                        cb(data.result.sets[0]);
+                    .success(function (response) {
+                        if (response.status === 'OK') {
+                            cb(null, response.data.result.sets[0]);
+                        } else {
+                            cb(response.error, null);
+                        }
                     });
             }
         };

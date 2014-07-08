@@ -23,7 +23,7 @@ require([
 ], function ($) {
     $(document).ready(function(){
         $('textarea').autosize();
-        $('select').select2();
+        $('select').select2(); //TODO: to be removed after using ui-select2 in sidebar directives
 
         toastr.options = {
             positionClass: "toast-bottom-right"

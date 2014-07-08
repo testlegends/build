@@ -10,14 +10,14 @@ define(['angular', 'angularCookies', 'list/Service', 'common/QuizletService'], f
 
 	return angular.module('List.controllers', ['List.services', 'Common.services', 'ngCookies'])
 
-		.controller('ListController', ['$scope', '$location', 'lists', 'quizlet', function ($scope, $location, lists, quizlet) {
+		.controller('ListController', ['$scope', '$location', 'lists', 'Quizlet', function ($scope, $location, lists, Quizlet) {
 
             $scope.name = "ListController";
 
 			$scope.search = function () {
 				$location.search('q', $scope.search_params.q);
-				quizlet.search($scope.search_params, function (response) {
-					$scope.search_result = response.result;
+				Quizlet.search($scope.search_params, function (err, data) {
+					$scope.search_result = data.result;
 					$scope.curr_page = 1;
 				});
 			};
@@ -39,8 +39,8 @@ define(['angular', 'angularCookies', 'list/Service', 'common/QuizletService'], f
 				});
 
 				$scope.search_params.page = page;
-				quizlet.search($scope.search_params, function (response) {
-					$scope.search_result = response.result;
+				Quizlet.search($scope.search_params, function (err, data) {
+					$scope.search_result = data.result;
 					$scope.curr_page = page;
 				});
 

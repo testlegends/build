@@ -21,16 +21,16 @@ define(['game/directives', 'bootstrap'], function (gameDirectives) {
                         games.create({
                             name: $scope.newGameName,
                             scope: $scope.newGameScope
-                        }, function (response) {
+                        }, function (err, data) {
                             $('#gameCreateModal').modal('hide');
                             $('body').removeClass('modal-open');
                             $('.modal-backdrop').remove();
 
-                            if (response.err) {
-                                toastr.error(response.msg);
+                            if (err) {
+                                toastr.error(err);
                             } else {
                                 toastr.success('Game successfully created!');
-                                $scope.$parent.games.push(response.data);
+                                $scope.$parent.games.push(data);
                             }
                         });
                     };

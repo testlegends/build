@@ -14,30 +14,46 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
 			return {
                 list: function (cb) {
                     return TestLegendsAPI.get('/games')
-                        .success(function (data) {
-                            cb(data);
+                        .success(function (response) {
+							if (response.status === 'OK') {
+								cb(null, response.data);
+							} else {
+								cb(response.error, null);
+							}
                         });
                 },
 
                 get: function (id, cb) {
                     return TestLegendsAPI.get('/game/' + id)
-                        .success(function (data) {
-                            cb(data);
+                        .success(function (response) {
+							if (response.status === 'OK') {
+								cb(null, response.data);
+							} else {
+								cb(response.error, null);
+							}
                         });
                 },
 
                 create: function (params, cb) {
                     return TestLegendsAPI.put('/games', params)
-                        .success(function (data) {
-                            cb(data);
+                        .success(function (response) {
+							if (response.status === 'OK') {
+								cb(null, response.data);
+							} else {
+								cb(response.error, null);
+							}
                         });
                 },
 
                 save: function (params, cb) {
                     return TestLegendsAPI.post('/games' + params.id, {
 
-                    }).success(function (data) {
-
+                    }).success(function (response) {
+						if (response.status === 'OK') {
+							cb(null, response.data);
+						} else {
+							cb(response.error, null);
+						}
                     });
                 },
 

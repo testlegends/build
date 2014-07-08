@@ -1,5 +1,5 @@
 /**
-* UserRoutes
+* TermRoutes
 *
 * @author      :: Jeff Lee
 * @created     :: 2014/07/06
