@@ -2,7 +2,8 @@
 
 <div class="pull-right">
     <button class="btn btn-primary" ng-click="login()" ng-if="!loggedIn()">Login to Save List</button>
-    <button class="btn btn-primary" ng-click="save()" ng-if="loggedIn() && !isCreator(list.id)">Save List</button>
+    <button class="btn btn-primary" ng-click="create()" ng-if="loggedIn() && !isCreator(list.id)">Save List</button>
+    <a class="btn btn-primary" href="/list/{{ list.id }}/edit"><i class="fa fa-pencil"></i></a>
 </div>
 
 <hr class="clearfix" />

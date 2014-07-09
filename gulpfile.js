@@ -8,8 +8,8 @@ var paths = {
 	target: '.tmp/public',
 	assets: [
 		'assets/**',
-//		'!assets/js/angular/*.js',
-//		'!assets/js/angular/*/*.js',
+		'!assets/js/angular/*.js',
+		'!assets/js/angular/*/*.js',
 		'!assets/styles/*.css'
 	],
 	assetsToWatch: [
@@ -31,7 +31,7 @@ gulp.task('uglifyJs', function () {
 		mainConfigFile: "assets/js/angular/TestLegends.js",
 		out: "testlegends.min.js"
 	})
-	//.pipe(uglifyJs())
+	.pipe(uglifyJs())
 	.pipe(gulp.dest(paths.target + '/js/angular'));
 });
 

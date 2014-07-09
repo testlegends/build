@@ -8,7 +8,7 @@
 require.config({
     baseUrl: '/js/angular',
     paths: {
-        jquery: "//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min",
+        jquery: "../vendor/jquery/dist/jquery",
         autosize: "../vendor/jquery-autosize/jquery.autosize.min"
     },
     shim: {

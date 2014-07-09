@@ -36,8 +36,11 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
                     $scope.question_settings = QuestionSettings;
                     $scope.question = $.parseJSON($scope.qData);
 
-                    // TODO save question when change, throttle every 10 seconds or so
-                    $scope.$watch('question', _.throttle(function(){
+                    $scope.$watch('question', _.debounce(function(){
+                        $scope.save();
+                    }, 500), true);
+
+                    $scope.save = function () {
                         questions.save({
                             id: $scope.question.id,
                             difficulty: $scope.question.difficulty,
@@ -51,7 +54,7 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
                             // change the button to saved
                             console.log("Saved");
                         });
-                    }, 5000), true);
+                    };
 
                     $scope.addOption = function () {
                         $scope.question.options.wrong.push({ text: "" });

@@ -17,12 +17,6 @@ define(['angular', 'angularRoute'], function(angular) {
 				needAuthentication: false
 			});
 
-			$routeProvider.when('/list/:listId/create', {
-				templateUrl: '/js/angular/term/partials/create.html',
-				controller: 'TermController',
-				needAuthentication: true
-			});
-
 			$routeProvider.when('/list/:listId/edit', {
 				templateUrl: '/js/angular/term/partials/edit.html',
 				controller: 'TermController',

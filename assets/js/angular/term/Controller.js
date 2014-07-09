@@ -14,12 +14,6 @@ define(['angular', 'term/Service', 'list/Service', 'common/AuthService', 'common
 
 			$scope.name = "TermController";
 
-			$scope.listId = $routeParams.listId;
-
-			Quizlet.getSet($scope.listId, function (err, data) {
-				$scope.list = data;
-			});
-
 			$scope.login = function () {
 				Auth.login();
 			};
@@ -29,20 +23,41 @@ define(['angular', 'term/Service', 'list/Service', 'common/AuthService', 'common
 			};
 
 			$scope.isCreator = function (listId) {
-				console.log(listId);
 				return false;
 			};
 
-			$scope.save = function () {
-				lists.save({
+			$scope.create = function () {
+				// For Quizlet
+				$scope.list.desc = $scope.list.desc || $scope.list.description;
+
+				lists.create({
 					title: $scope.list.title,
-					desc: $scope.list.description,
+					desc: $scope.list.desc,
 					terms: $scope.list.terms
 				}, function (err, response) {
 					if (!err) {
 						$scope.saved = true;
-						console.log(response);
 					}
+				});
+			};
+
+			$scope.save = function () {
+				lists.save({
+					id: $scope.listId,
+					title: $scope.list.title,
+					desc: $scope.list.desc,
+					terms: $scope.list.terms
+				}, function (err, response) {
+					if (!err) {
+						$scope.saved = true;
+					}
+				});
+			};
+
+			$scope.addTerm = function () {
+				$scope.list.terms.push({
+					term: '',
+					definition: ''
 				});
 			};
 
@@ -51,6 +66,29 @@ define(['angular', 'term/Service', 'list/Service', 'common/AuthService', 'common
 					return false;
 				}
 			};
+
+			$scope.init = function () {
+				$scope.listId = $routeParams.listId;
+
+				/** HACK: Assumes Quizlet set id is all number and TestLegends list id contains string */
+				if (isNaN($scope.listId)) {
+					lists.getList($scope.listId, function (err, data) {
+						$scope.list = data;
+					});
+				} else {
+					Quizlet.getSet($scope.listId, function (err, data) {
+						$scope.list = data;
+					});
+				}
+
+				$scope.$watch('list', _.debounce(function () {
+					if ($scope.list) {
+						$scope.save();
+					}
+				}, 300), true);
+			};
+
+			$scope.init();
 		}]);
 
 });

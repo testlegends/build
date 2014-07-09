@@ -11,7 +11,7 @@ require.config({
         jquery: '../vendor/jquery/dist/jquery',
         jqueryUI: '../vendor/jquery-ui/ui/minified/jquery-ui.min',
         bootstrap: '../vendor/bootstrap/dist/js/bootstrap',
-        select2: "../vendor/select2/select2.min",
+        select2: "../vendor/select2/select2",
         underscore: '../vendor/underscore/underscore',
 
         angular: '../vendor/angular/angular',
@@ -22,10 +22,11 @@ require.config({
         angularUISortable: '../vendor/angular-ui-sortable/sortable.min'
     },
     shim: {
+        jquery: { exports: '$' },
         bootstrap: ['jquery'],
         select2: ['jquery'],
-        underscore: { 'exports': '_' },
-        angular: { 'exports': 'angular' },
+        underscore: { exports: '_' },
+        angular: { exports: 'angular', deps: ['jquery'] },
         angularCookies: ['angular'],
         angularRoute: ['angular'],
         angularLoadingBar: ['angular'],

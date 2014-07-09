@@ -15,7 +15,19 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
 				search: function (params, cb) {
 
 				},
-				list: function (cb) {
+				getList: function (id, cb) {
+					$TestLegendsAPI({
+						url: '/list/' + id,
+						method: 'GET'
+					}).success(function (response) {
+						if (response.status === 'OK') {
+							cb(null, response.data);
+						} else {
+							cb(response.error, null);
+						}
+					});
+				},
+				getLists: function (cb) {
 					$TestLegendsAPI({
 						url: '/lists',
 						method: 'GET'
@@ -28,6 +40,33 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
 					});
 				},
 				save: function (params, cb) {
+					$TestLegendsAPI({
+						url: '/list/' + params.id,
+						method: 'POST',
+						data: {
+							title: params.title,
+							desc: params.desc,
+							terms: params.terms
+						}
+					}).success(function (response) {
+						if (response.status === 'OK') {
+							cb(null, response.data);
+						} else {
+							cb(response.error, null);
+						}
+					});
+				},
+				create: function (params, cb) {
+					if (typeof params === 'function') {
+						cb = params;
+						params = {
+							title: 'New List',
+							desc: 'New List',
+							terms: []
+						};
+
+					}
+
 					$TestLegendsAPI({
 						url: '/lists',
 						method: 'PUT',

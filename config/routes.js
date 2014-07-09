@@ -27,7 +27,6 @@ module.exports.routes = {
     // Angular Routes
     '/'                        : 'HomeController.index',
     '/lists'                   : 'HomeController.index',
-    '/list/create'             : 'HomeController.index',
     '/list/:id'                : 'HomeController.index',
     '/list/:id/edit'           : 'HomeController.index',
     '/games'                   : 'HomeController.index',
