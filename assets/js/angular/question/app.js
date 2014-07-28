@@ -8,8 +8,8 @@
 define([
     'angular',
     'angularLoadingBar',
-    'question/QuestionDirective',
-    'question/SidebarDirectives',
+    'question/directives/Question',
+    'question/directives/Sidebar',
     'question/Controller',
     'question/Routes'
 ], function (angular) {

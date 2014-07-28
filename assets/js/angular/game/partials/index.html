@@ -18,11 +18,13 @@
             <tbody>
                 <tr ng-repeat="game in games">
                     <td>
-                        <a href="/game/{{game.id}}/questions" title="Edit game"><i class="fa fa-eye"></i></a>
                         <a href="/game/{{game.id}}/questions/edit" title="Edit game"><i class="fa fa-pencil"></i></a>
-                        <a href="#" ng-click="delete(game.id)" title="Delete game"><i class="fa fa-times"></i></a>
+                        <a href="#" ng-click="deleteGame(game.id)" title="Delete game"><i class="fa fa-times"></i></a>
                     </td>
-                    <td>{{ game.name }}  <tl-label tl-name="{{ game.meta.status }}"></tl-label> <tl-label tl-name="{{ game.meta.scope }}"></tl-label></td>
+                    <td>
+                        <a href="/game/{{game.id}}/questions" title="{{ game.name }}">{{ game.name }}</a>
+                        <tl-label tl-name="{{ game.meta.status }}"></tl-label> <tl-label tl-name="{{ game.meta.scope }}"></tl-label>
+                    </td>
                     <td>{{ game.createdAt | date: longDate }}</td>
                 </tr>
             </tbody>

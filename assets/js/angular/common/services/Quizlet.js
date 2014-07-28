@@ -39,6 +39,10 @@ define(['common/services'], function (commonServices) {
                             cb(response.error, null);
                         }
                     });
+            },
+            isQuizlet: function (id) {
+                /** HACK: Assumes Quizlet set id is all number and TestLegends list id contains string */
+                return !isNaN(id);
             }
         };
     }]);

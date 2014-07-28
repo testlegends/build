@@ -5,7 +5,7 @@
  * @created     :: 2014/06/24
  */
 
-define(['angular', 'common/TestLegendsAPIService'], function (angular) {
+define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 	'use strict';
 
 	return angular.module('List.services', ['Common.services'])
@@ -13,6 +13,9 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
 		.factory('lists', ['TestLegendsAPI', function ($TestLegendsAPI) {
 			return {
 				search: function (params, cb) {
+
+				},
+				generate: function (cb) {
 
 				},
 				getList: function (id, cb) {
@@ -31,23 +34,6 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
 					$TestLegendsAPI({
 						url: '/lists',
 						method: 'GET'
-					}).success(function (response) {
-						if (response.status === 'OK') {
-							cb(null, response.data);
-						} else {
-							cb(response.error, null);
-						}
-					});
-				},
-				save: function (params, cb) {
-					$TestLegendsAPI({
-						url: '/list/' + params.id,
-						method: 'POST',
-						data: {
-							title: params.title,
-							desc: params.desc,
-							terms: params.terms
-						}
 					}).success(function (response) {
 						if (response.status === 'OK') {
 							cb(null, response.data);
@@ -83,8 +69,34 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
 						}
 					});
 				},
-				generate: function (cb) {
-
+				save: function (params, cb) {
+					$TestLegendsAPI({
+						url: '/list/' + params.id,
+						method: 'POST',
+						data: {
+							title: params.title,
+							desc: params.desc,
+							terms: params.terms
+						}
+					}).success(function (response) {
+						if (response.status === 'OK') {
+							cb(null, response.data);
+						} else {
+							cb(response.error, null);
+						}
+					});
+				},
+				delete: function (id, cb) {
+					$TestLegendsAPI({
+						url: '/list/' + id,
+						method: 'DELETE'
+					}).success(function (response) {
+						if (response.status === 'OK') {
+							cb(null);
+						} else {
+							cb(response.error);
+						}
+					});
 				}
 			};
 		}]);

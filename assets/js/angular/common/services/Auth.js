@@ -12,7 +12,7 @@ define(['common/services'], function (commonServices) {
 
         .factory('Auth', ['$rootScope', '$route', '$location', '$cookies', function ($rootScope, $route, $location, $cookies) {
 
-            // TODO Check if token cookie exists, auto login
+            // TODO: Check route params for needAuthentication
 
             function login () {
                 window.location.href = '/login';
@@ -30,11 +30,18 @@ define(['common/services'], function (commonServices) {
                 return true;
             }
 
+            function user () {
+                return {
+                    id: "1",
+                    email: ""
+                };
+            }
+
             return {
                 login: login,
                 isAuthenticated: isAuthenticated,
                 isAuthorized: isAuthorized,
-                user: null
+                user: user
             };
         }]);
 });

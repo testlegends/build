@@ -5,7 +5,7 @@
  * @created     :: 2014/07/06
  */
 
-define(['angular', 'term/Service', 'list/Service', 'common/AuthService', 'common/QuizletService'], function (angular) {
+define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'common/services/Quizlet'], function (angular) {
 	'use strict';
 
 	return angular.module('Term.controllers', ['Term.services', 'List.services', 'Common.services'])
@@ -20,10 +20,6 @@ define(['angular', 'term/Service', 'list/Service', 'common/AuthService', 'common
 
 			$scope.loggedIn = function () {
 				return Auth.isAuthenticated() && Auth.isAuthorized();
-			};
-
-			$scope.isCreator = function (listId) {
-				return false;
 			};
 
 			$scope.create = function () {
@@ -61,6 +57,10 @@ define(['angular', 'term/Service', 'list/Service', 'common/AuthService', 'common
 				});
 			};
 
+			$scope.removeTerm = function (id) {
+
+			};
+
 			$scope.generate = function () {
 				if (!$scope.saved) {
 					return false;
@@ -70,14 +70,17 @@ define(['angular', 'term/Service', 'list/Service', 'common/AuthService', 'common
 			$scope.init = function () {
 				$scope.listId = $routeParams.listId;
 
-				/** HACK: Assumes Quizlet set id is all number and TestLegends list id contains string */
-				if (isNaN($scope.listId)) {
-					lists.getList($scope.listId, function (err, data) {
-						$scope.list = data;
-					});
-				} else {
+				if (Quizlet.isQuizlet($scope.listId)) {
 					Quizlet.getSet($scope.listId, function (err, data) {
 						$scope.list = data;
+						$scope.list.isOwner = false;
+						$scope.list.isCreator = false;
+					});
+				} else {
+					lists.getList($scope.listId, function (err, data) {
+						$scope.list = data;
+						$scope.list.isOwner = data.meta.userId === Auth.user().id;
+						$scope.list.isCreator = data.meta.creatorId === Auth.user().id;
 					});
 				}
 

@@ -13,7 +13,10 @@
         <td>Description</td>
     </tr>
     <tr ng-repeat="list in userLists.created">
-        <td><a href="/list/{{ list.id }}/edit"><i class="fa fa-pencil"></i></a></td>
+        <td>
+            <a href="/list/{{ list.id }}/edit" title="Edit List"><i class="fa fa-pencil"></i></a>
+            <a href="#" ng-click="deleteList(list.id, 'created')" title="Delete List"><i class="fa fa-times"></i></a>
+        </td>
         <td><a href="/list/{{ list.id }}">{{ list.title }}</a></td>
         <td>{{ list.desc }}</td>
     </tr>
@@ -30,7 +33,10 @@
         <td>Description</td>
     </tr>
     <tr ng-repeat="list in userLists.saved">
-        <td><a href="/list/{{ list.id }}/edit"><i class="fa fa-pencil"></i></a></td>
+        <td>
+            <a href="/list/{{ list.id }}/edit" title="Edit List"><i class="fa fa-pencil"></i></a>
+            <a href="#" ng-click="deleteList(list.id, 'saved')" title="Delete List"><i class="fa fa-times"></i></a>
+        </td>
         <td><a href="/list/{{ list.id }}">{{ list.title }}</a></td>
         <td>{{ list.desc }}</td>
     </tr>

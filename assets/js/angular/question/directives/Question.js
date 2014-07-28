@@ -60,6 +60,10 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
                         $scope.question.options.wrong.push({ text: "" });
                     };
 
+                    $scope.removeOption = function (id) {
+
+                    };
+
                     $scope.deleteQuestion = function () {
                         questions.delete($scope.question.id, function (err, data) {
                             console.log('Deleted');

@@ -5,7 +5,7 @@
  * @created     :: 2014/05/08
  */
 
-define(['angular', 'common/TestLegendsAPIService'], function (angular) {
+define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 	'use strict';
 
 	return angular.module('Question.services', ['Common.services'])

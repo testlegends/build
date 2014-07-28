@@ -8,8 +8,8 @@
 define([
 	'angular',
 	'angularLoadingBar',
-    'game/LabelDirective',
-    'game/CreateModalDirective',
+    'game/directives/Label',
+    'game/directives/CreateModal',
 	'game/Controller',
     'game/Routes'
 ], function (angular) {

@@ -12,12 +12,7 @@ define(['angular'], function (angular) {
 
 		.factory('terms', ['$http', function ($http) {
 			return {
-				edit: function (params, cb) {
 
-				},
-				delete: function (params, cb) {
-					
-				}
 			};
 		}]);
 });

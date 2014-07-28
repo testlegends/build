@@ -18,18 +18,18 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "~1.2.16",
-    "angular-route": "~1.2.15",
-    "angular-cookies": "~1.2.16",
+    "angular": "~1.2.20",
+    "angular-route": "~1.2.20",
+    "angular-cookies": "~1.2.20",
     "angular-loading-bar": "~0.3.0",
     "angular-ui-select2": "~0.0.5",
-    "angular-ui-sortable": "~0.12.6",
-    "jquery": "~2.1.0",
+    "angular-ui-sortable": "~0.12.8",
+    "jquery": "~2.1.1",
     "jquery-autosize": "~1.18.7",
-    "select2": "~3.4.8",
     "bootstrap": "~3.2.0",
-    "toastr": "~2.0.1",
+    "toastr": "~2.0.3",
+    "select2": "~3.4.8",
     "underscore": "~1.6.0",
-    "requirejs": "~2.1.11"
+    "requirejs": "~2.1.14"
   }
 }

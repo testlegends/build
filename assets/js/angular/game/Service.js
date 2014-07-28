@@ -5,7 +5,7 @@
  * @created     :: 2014/04/24
  */
 
-define(['angular', 'common/TestLegendsAPIService'], function (angular) {
+define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 	'use strict';
 
 	return angular.module('Game.services', ['Common.services'])
@@ -13,7 +13,7 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
 		.factory('games', ['TestLegendsAPI', function (TestLegendsAPI) {
 			return {
                 list: function (cb) {
-                    return TestLegendsAPI.get('/games')
+                    TestLegendsAPI.get('/games')
                         .success(function (response) {
 							if (response.status === 'OK') {
 								cb(null, response.data);
@@ -24,7 +24,7 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
                 },
 
                 get: function (id, cb) {
-                    return TestLegendsAPI.get('/game/' + id)
+                    TestLegendsAPI.get('/game/' + id)
                         .success(function (response) {
 							if (response.status === 'OK') {
 								cb(null, response.data);
@@ -35,7 +35,7 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
                 },
 
                 create: function (params, cb) {
-                    return TestLegendsAPI.put('/games', params)
+                    TestLegendsAPI.put('/games', params)
                         .success(function (response) {
 							if (response.status === 'OK') {
 								cb(null, response.data);
@@ -46,7 +46,7 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
                 },
 
                 save: function (params, cb) {
-                    return TestLegendsAPI.post('/games' + params.id, {
+                    TestLegendsAPI.post('/games' + params.id, {
 
                     }).success(function (response) {
 						if (response.status === 'OK') {
@@ -58,7 +58,14 @@ define(['angular', 'common/TestLegendsAPIService'], function (angular) {
                 },
 
                 delete: function (id, cb) {
-                    alert("Delete " + id);
+					TestLegends.delete('/games' + params.id)
+						.success(function (response) {
+							if (response.status === 'OK') {
+								cb(null);
+							} else {
+								cb(response.error);
+							}
+						});
                 }
 			};
 		}]);

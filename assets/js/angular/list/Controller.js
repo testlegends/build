@@ -5,7 +5,7 @@
  * @created     :: 2014/06/24
  */
 
-define(['angular', 'angularCookies', 'list/Service', 'common/AuthService', 'common/QuizletService'], function (angular) {
+define(['angular', 'angularCookies', 'list/Service', 'common/services/Auth', 'common/services/Quizlet'], function (angular) {
 	'use strict';
 
 	return angular.module('List.controllers', ['List.services', 'Common.services', 'ngCookies'])
@@ -54,6 +54,20 @@ define(['angular', 'angularCookies', 'list/Service', 'common/AuthService', 'comm
 			$scope.createList = function () {
 				lists.create(function (err, data) {
 					window.location.href = '/list/' + data.id + '/edit';
+				});
+			};
+
+			$scope.deleteList = function (id, type) {
+				lists.delete(id, function (err) {
+					if (type === 'saved') {
+						$scope.userLists.saved = $scope.userLists.saved.filter(function (list) {
+							return list.id !== id;
+						});
+					} else {
+						$scope.userLists.created = $scope.userLists.created.filter(function (list) {
+							return list.id !== id;
+						});
+					}
 				});
 			};
 
