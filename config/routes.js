@@ -11,16 +11,13 @@
 module.exports.routes = {
 
     '/login'          : 'HomeController.oauth_request',
-    '/loggedIn'       : 'HomeController.oauth_loggedIn',
     '/logout'         : 'HomeController.oauth_logout',
 
     '/oauth'          : 'HomeController.oauth_request',
-    '/oauth/loggedIn' : 'HomeController.oauth_loggedIn',
-    '/oauth/callback' : 'HomeController.oauth_callback',
     '/oauth/logout'   : 'HomeController.oauth_logout',
+    '/oauth/callback' : 'HomeController.oauth_callback',
 
     '/quizlet/login'    : 'QuizletController.login',
-    '/quizlet/loggedIn' : 'QuizletController.loggedIn',
     '/quizlet/callback' : 'QuizletController.oauth_callback',
     '/quizlet/search'   : 'QuizletController.search',
 
@@ -35,6 +32,8 @@ module.exports.routes = {
     '/game/:id/items'          : 'HomeController.index',
     '/game/:id/theme'          : 'HomeController.index',
     '/track'                   : 'HomeController.index',
-    '/user'                    : 'HomeController.index'
+    '/user'                    : 'HomeController.index',
+    '/user/login'              : 'HomeController.index',
+    '/user/logout'             : 'HomeController.index'
 
 };

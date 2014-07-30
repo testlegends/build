@@ -1,7 +1,7 @@
 <h3 class="pull-left">{{ list.title }}</h3>
 
 <div class="pull-right">
-    <button class="btn btn-primary" ng-click="login()" ng-if="!loggedIn()">Login to Save List</button>
+    <a href="/user/login" class="btn btn-primary" ng-if="!loggedIn()">Login to Save List</a>
     <button class="btn btn-primary" ng-click="create()" ng-if="loggedIn() && !list.isCreator">Save List</button>
     <a class="btn btn-primary" href="/list/{{ list.id }}/edit" ng-if="list.isOwner"><i class="fa fa-pencil"></i></a>
 </div>

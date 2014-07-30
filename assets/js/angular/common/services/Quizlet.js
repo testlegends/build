@@ -12,14 +12,6 @@ define(['common/services'], function (commonServices) {
 
     .factory('Quizlet', ['$http', function ($http) {
         return {
-            loggedIn: function () {
-                return $http.get('/quizlet/loggedIn')
-                    .success(function (response) {
-                        if (!response.loggedIn) {
-                            window.location = '/quizlet/login';
-                        }
-                    });
-            },
             search: function (params, cb) {
                 return $http.get('/quizlet/search?' + $.param(params))
                     .success(function (response) {

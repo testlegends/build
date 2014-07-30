@@ -17,18 +17,6 @@ module.exports = (function(){
         return res.redirect(QuizletService.getAuthorizeUrl());
     }
 
-    function loggedIn (req, res) {
-        if (!req.session.quizlet) {
-            return res.json({
-                loggedIn: false
-            });
-        } else {
-            return res.json({
-                loggedIn: true
-            });
-        }
-    }
-
     function oauth_callback (req, res) {
         if (req.query && req.query.code) {
             QuizletService.getAccessToken(req.query.code, function (err, data) {
@@ -83,7 +71,6 @@ module.exports = (function(){
 
     return {
         login: login,
-        loggedIn: loggedIn,
         oauth_callback: oauth_callback,
         search: search
     };

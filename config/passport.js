@@ -72,7 +72,7 @@ var TestLegendsStrategy = (function(){
                 json = body;
             }
 
-            profile.user = json.name;
+            profile.user = json;
             profile.provider = me.name;
             profile._raw = body;
             profile._json = json;
@@ -87,7 +87,10 @@ var TestLegendsStrategy = (function(){
 
 Passport.use(new TestLegendsStrategy(oauth.client, function (accessToken, refreshToken, profile, done) {
     return done(null, {
-        name: profile.user,
+        id: profile.user.id,
+        name: profile.user.name,
+        email: profile.user.email,
+        role: profile.user.role,
         accessToken: accessToken
     });
 }));

@@ -23,6 +23,7 @@ require.config({
     },
     shim: {
         jquery: { exports: '$' },
+        jqueryUI: ['jquery'] ,
         bootstrap: ['jquery'],
         select2: ['jquery'],
         underscore: { exports: '_' },

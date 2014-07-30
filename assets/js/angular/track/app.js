@@ -8,10 +8,14 @@
 define([
     'angular',
     'angularLoadingBar',
+    'track/Controller',
+    'track/Routes'
 ], function (angular) {
     'use strict';
 
     return angular.module('Track', [
-        'chieffancypants.loadingBar'
+        'chieffancypants.loadingBar',
+        'Track.controllers',
+        'Track.routes'
     ]);
 });

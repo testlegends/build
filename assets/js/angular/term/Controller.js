@@ -14,10 +14,6 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 
 			$scope.name = "TermController";
 
-			$scope.login = function () {
-				Auth.login();
-			};
-
 			$scope.loggedIn = function () {
 				return Auth.isAuthenticated() && Auth.isAuthorized();
 			};
