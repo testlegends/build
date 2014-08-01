@@ -25,10 +25,12 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 				lists.create({
 					title: $scope.list.title,
 					desc: $scope.list.desc,
-					terms: $scope.list.terms
+					terms: $scope.list.terms,
+					oldListId: $scope.list.id
 				}, function (err, response) {
 					if (!err) {
-						$scope.saved = true;
+						$scope.list = response;
+						$scope.list.isOwner = true;
 					}
 				});
 			};
@@ -41,7 +43,7 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 					terms: $scope.list.terms
 				}, function (err, response) {
 					if (!err) {
-						$scope.saved = true;
+						// TODO: show saved msg
 					}
 				});
 			};
@@ -49,18 +51,25 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 			$scope.addTerm = function () {
 				$scope.list.terms.push({
 					term: '',
-					definition: ''
+					definition: '',
+					options: []
 				});
 			};
 
-			$scope.removeTerm = function (id) {
-
+			$scope.removeTerm = function (term) {
+				angular.forEach($scope.list.terms, function (value, key) {
+					if (value.term === term) {
+						$scope.list.terms.splice(key, 1);
+					}
+				});
 			};
 
-			$scope.generate = function () {
-				if (!$scope.saved) {
-					return false;
-				}
+			$scope.generateAndPlay = function () {
+				lists.generateGame($scope.list, function (err, data) {
+					// Play the demo game
+					console.log(data);
+					//window.location.href = 'http://app.testlegends.com/game/' + data.id;
+				});
 			};
 
 			$scope.init = function () {
@@ -70,13 +79,11 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 					Quizlet.getSet($scope.listId, function (err, data) {
 						$scope.list = data;
 						$scope.list.isOwner = false;
-						$scope.list.isCreator = false;
 					});
 				} else {
 					lists.getList($scope.listId, function (err, data) {
 						$scope.list = data;
 						$scope.list.isOwner = data.meta.userId === Auth.user().id;
-						$scope.list.isCreator = data.meta.creatorId === Auth.user().id;
 					});
 				}
 

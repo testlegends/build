@@ -2,18 +2,23 @@
 
 <div class="pull-right">
     <a href="/user/login" class="btn btn-primary" ng-if="!loggedIn()">Login to Save List</a>
-    <button class="btn btn-primary" ng-click="create()" ng-if="loggedIn() && !list.isCreator">Save List</button>
-    <a class="btn btn-primary" href="/list/{{ list.id }}/edit" ng-if="list.isOwner"><i class="fa fa-pencil"></i></a>
+    <button class="btn btn-primary" ng-click="create()" ng-if="loggedIn() && !list.isOwner">Save List</button>
+    <a class="btn btn-primary" href="/list/{{ list.id }}/edit" ng-if="list.isOwner"><i class="fa fa-pencil"></i> Edit</a>
+    <button class="btn btn-primary" ng-click="generateAndPlay()" ng-if="list.isOwner"><i class="fa fa-gamepad"></i> Play</a>
 </div>
 
 <hr class="clearfix" />
 
 <table class="table table-striped table-hover table-bordered">
     <tr>
+        <td ng-if="list.isOwner">&nbsp;</td>
         <td>Term</td>
         <td>Definition</td>
     </tr>
     <tr ng-repeat="term in list.terms">
+        <td ng-if="list.isOwner">
+            <a href="#" ng-click="removeTerm(term.term)" title="Remove Term"><i class="fa fa-times"></i></a>
+        </td>
         <td>{{ term.term }}</td>
         <td>{{ term.definition }}</td>
     </tr>

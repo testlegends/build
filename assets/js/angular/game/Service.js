@@ -22,7 +22,6 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 							}
                         });
                 },
-
                 get: function (id, cb) {
                     TestLegendsAPI.get('/game/' + id)
                         .success(function (response) {
@@ -33,7 +32,6 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 							}
                         });
                 },
-
                 create: function (params, cb) {
                     TestLegendsAPI.put('/games', params)
                         .success(function (response) {
@@ -44,7 +42,6 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 							}
                         });
                 },
-
                 save: function (params, cb) {
                     TestLegendsAPI.post('/games' + params.id, {
 
@@ -56,7 +53,6 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 						}
                     });
                 },
-
                 delete: function (id, cb) {
 					TestLegends.delete('/games' + params.id)
 						.success(function (response) {

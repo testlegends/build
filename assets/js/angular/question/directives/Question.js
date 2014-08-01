@@ -51,8 +51,7 @@ define(['question/directives', 'underscore'], function (questionDirectives) {
                                 wrong: $scope.question.options.wrong
                             }
                         }, function (err, data) {
-                            // change the button to saved
-                            console.log("Saved");
+                            //TODO: change the button to saved
                         });
                     };
 

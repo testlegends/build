@@ -51,7 +51,7 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
                 },
 
                 save: function (params, cb) {
-                    var wrongAnswers = (function(wrongOptions){
+                    var wrongAnswers = (function (wrongOptions) {
                         var result = '';
                         for (var i in wrongOptions) {
                             result += i === '0' ? '' : ',';

@@ -15,9 +15,6 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 				search: function (params, cb) {
 
 				},
-				generate: function (cb) {
-
-				},
 				getList: function (id, cb) {
 					$TestLegendsAPI({
 						url: '/list/' + id,
@@ -48,18 +45,20 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 						params = {
 							title: 'New List',
 							desc: 'New List',
-							terms: []
+							terms: [],
+							oldListId: null
 						};
-
 					}
 
+					//TODO: need to pass in if it's quizlet
 					$TestLegendsAPI({
 						url: '/lists',
 						method: 'PUT',
 						data: {
 							title: params.title,
 							desc: params.desc,
-							terms: params.terms
+							terms: params.terms,
+							oldListId: params.oldListId
 						}
 					}).success(function (response) {
 						if (response.status === 'OK') {
@@ -95,6 +94,21 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 							cb(null);
 						} else {
 							cb(response.error);
+						}
+					});
+				},
+				generateGame: function (params, cb) {
+					$TestLegendsAPI({
+						url: '/games',
+						method: 'PUT',
+						data: {
+							list: params
+						}
+					}).success(function (response) {
+						if (response.status === 'OK') {
+							cb(null, response.data);
+						} else {
+							cb(response.error, null);
 						}
 					});
 				}

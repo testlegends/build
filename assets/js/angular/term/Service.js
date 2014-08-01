@@ -10,7 +10,7 @@ define(['angular'], function (angular) {
 
 	return angular.module('Term.services', [])
 
-		.factory('terms', ['$http', function ($http) {
+		.factory('terms', [function () {
 			return {
 
 			};

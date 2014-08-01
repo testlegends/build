@@ -35,6 +35,8 @@ module.exports = (function(){
     }
 
     function oauth_logout (req, res) {
+        //TODO: remote logout home
+
         req.logout();
         res.clearCookie('access_token');
         res.clearCookie('user');

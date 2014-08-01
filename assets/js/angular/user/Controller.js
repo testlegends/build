@@ -23,11 +23,7 @@ define(['angular', 'user/Service', 'common/services/Auth'], function (angular) {
 			};
 
 			$scope.logout = function () {
-				if (Auth.user()) {
-					Auth.logout();
-				} else {
-					window.location.href = '/';
-				}
+				Auth.logout();
 			};
 
 			$scope.init = function () {

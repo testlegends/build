@@ -71,7 +71,7 @@ define(['angular', 'angularCookies', 'list/Service', 'common/services/Auth', 'co
 				});
 			};
 
-			// Should put this in a filter
+			//TODO: Should put this in a filter or service
 			$scope.makeArray = function (num) {
 				return new Array(num);
 			};
