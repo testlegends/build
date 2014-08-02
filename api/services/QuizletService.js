@@ -89,16 +89,12 @@ module.exports = (function(){
     }
 
     function getAccessToken (code, cb) {
-        oauth2.getOAuthAccessToken(code,
-            {
-                grant_type: 'authorization_code',
-                redirect_uri: oauth.client.callbackURL
-            },
-            function (err, token, refresh_token, results) {
-                access_token = token;
-                cb(err, results);
-            }
-        );
+        oauth2.getOAuthAccessToken(code, {
+            grant_type: 'authorization_code' // doesn't really matter...
+        }, function (err, token, refresh_token, results) {
+            access_token = token;
+            cb(err, results);
+        });
     }
 
     function _getState (length) {

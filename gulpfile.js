@@ -19,6 +19,7 @@ var paths = {
 };
 
 var cssFiles = [
+	'assets/js/vendor/angular-loading-bar/build/loading-bar.min.css',
 	'assets/js/vendor/toastr/toastr.min.css',
 	'assets/js/vendor/select2/select2.css',
 	'assets/styles/style.css'

@@ -67,8 +67,8 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 			$scope.generateAndPlay = function () {
 				lists.generateGame($scope.list, function (err, data) {
 					// Play the demo game
-					console.log(data);
-					//window.location.href = 'http://app.testlegends.com/game/' + data.id;
+					// window.location.href = 'http://leejefon.local:1337/game/' + data.id;
+					window.location.href = 'http://app.testlegends.com/game/' + data.id;
 				});
 			};
 
