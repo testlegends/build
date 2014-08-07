@@ -17,10 +17,10 @@ define(['angular', 'angularRoute'], function(angular) {
 				needAuthentication: false
 			});
 
-			$routeProvider.when('/list/:listId/edit', {
-				templateUrl: '/js/angular/term/partials/edit.html',
+			$routeProvider.when('/import/:listId', {
+				templateUrl: '/js/angular/term/partials/import-view.html',
 				controller: 'TermController',
-				needAuthentication: true
+				needAuthentication: false
 			});
 
 			$locationProvider.html5Mode(true);

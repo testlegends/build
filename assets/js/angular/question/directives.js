@@ -7,7 +7,6 @@
 
 define([
     'angular',
-    'angularUISelect2',
     'angularUISortable',
     'game/Service',
     'question/Service'
@@ -15,7 +14,6 @@ define([
     'use strict';
 
     return angular.module('Question.directives', [
-        'ui.select2',
         'ui.sortable',
         'Game.services',
         'Question.services'

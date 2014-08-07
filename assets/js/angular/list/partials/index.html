@@ -1,7 +1,8 @@
 <h3 class="pull-left">Created Lists</h3>
 
 <div class="pull-right">
-    <button class="btn btn-primary" ng-click="createList()" ng-if="loggedIn()"><i class="fa fa-plus"></i> Create New List</button>
+    <button class="btn btn-primary" ng-click="createList()"><i class="fa fa-plus"></i> Create New List</button>
+    <button class="btn btn-primary" ng-click="importList()"><i class="fa fa-plus"></i> Import List</button>
 </div>
 
 <hr class="clearfix" />
@@ -14,7 +15,6 @@
     </tr>
     <tr ng-repeat="list in userLists.created">
         <td>
-            <a href="/list/{{ list.id }}/edit" title="Edit List"><i class="fa fa-pencil"></i></a>
             <a href="#" ng-click="deleteList(list.id, 'created')" title="Delete List"><i class="fa fa-times"></i></a>
         </td>
         <td><a href="/list/{{ list.id }}">{{ list.title }}</a></td>
@@ -41,3 +41,5 @@
         <td>{{ list.desc }}</td>
     </tr>
 </table>
+
+<play-sidebar></play-sidebar>

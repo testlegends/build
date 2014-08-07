@@ -12,8 +12,6 @@ define(['angular', 'user/Service', 'common/services/Auth'], function (angular) {
 
 		.controller('UserController', ['$scope', '$route', 'user', 'Auth', function ($scope, $route, user, Auth) {
 
-            $scope.name = "UserController";
-
 			$scope.login = function () {
 				if (Auth.user()) {
 					Auth.login(true);

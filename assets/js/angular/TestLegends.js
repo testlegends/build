@@ -11,30 +11,26 @@ require.config({
         jquery: '../vendor/jquery/dist/jquery',
         jqueryUI: '../vendor/jquery-ui/ui/minified/jquery-ui.min',
         bootstrap: '../vendor/bootstrap/dist/js/bootstrap',
-        select2: "../vendor/select2/select2",
         underscore: '../vendor/underscore/underscore',
 
         angular: '../vendor/angular/angular',
         angularCookies: '../vendor/angular-cookies/angular-cookies',
         angularRoute: '../vendor/angular-route/angular-route',
         angularLoadingBar: '../vendor/angular-loading-bar/build/loading-bar',
-        angularUISelect2: '../vendor/angular-ui-select2/src/select2',
         angularUISortable: '../vendor/angular-ui-sortable/sortable.min'
     },
     shim: {
         jquery: { exports: '$' },
         jqueryUI: ['jquery'] ,
         bootstrap: ['jquery'],
-        select2: ['jquery'],
         underscore: { exports: '_' },
         angular: { exports: 'angular', deps: ['jquery'] },
         angularCookies: ['angular'],
         angularRoute: ['angular'],
         angularLoadingBar: ['angular'],
-        angularUISelect2: ['jquery', 'select2', 'angular'],
         angularUISortable: ['jquery', 'jqueryUI', 'angular']
     },
-    priority: ['jquery', 'jqueryUI', 'select2', 'angular']
+    priority: ['jquery', 'jqueryUI', 'angular']
 });
 
 require([

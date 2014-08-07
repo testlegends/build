@@ -8,6 +8,8 @@
 define([
     'angular',
     'angularLoadingBar',
+    'list/directives/PlaySidebar',
+    'list/directives/ImportSidebar',
     'list/Controller',
     'list/Routes'
 ], function (angular) {
@@ -15,6 +17,7 @@ define([
 
     return angular.module('List', [
         'chieffancypants.loadingBar',
+        'List.directives',
         'List.controllers',
         'List.routes'
     ]);

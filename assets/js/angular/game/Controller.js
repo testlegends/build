@@ -12,8 +12,6 @@ define(['angular', 'angularCookies', 'game/Service'], function (angular) {
 
 		.controller('GameController', ['$scope', 'games', function ($scope, games) {
 
-            $scope.name = "GameController";
-
             $scope.deleteGame = function (gameId) {
                 games.delete(gameId, function (err, data) {
 					$scope.games = $scope.games.filter(function (game) {

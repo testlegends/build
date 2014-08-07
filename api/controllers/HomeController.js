@@ -14,6 +14,10 @@ module.exports = (function(){
     var helpers = { Html: Html };
 
 	function index (req, res) {
+        if (!req.user) {
+            // return res.redirect(process.env.TESTLEGENDS_OAUTH_SERVER_URL) // a.k.a Home Page
+            return res.redirect('/login');
+        }
 		return res.view(helpers);
 	}
 
@@ -31,7 +35,7 @@ module.exports = (function(){
             email: req.user.email
         }), { maxAge: thirtyMinutes });
 
-        res.redirect('/user/login');
+        res.redirect('/user/login'); // /user/login Handles the after login random stuff
     }
 
     function oauth_logout (req, res) {

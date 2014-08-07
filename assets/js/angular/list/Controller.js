@@ -5,18 +5,12 @@
  * @created     :: 2014/06/24
  */
 
-define(['angular', 'angularCookies', 'list/Service', 'common/services/Auth', 'common/services/Quizlet'], function (angular) {
+define(['angular', 'angularCookies', 'list/Service', 'common/services/Quizlet'], function (angular) {
 	'use strict';
 
 	return angular.module('List.controllers', ['List.services', 'Common.services', 'ngCookies'])
 
-		.controller('ListController', ['$scope', '$location', 'lists', 'Auth', 'Quizlet', function ($scope, $location, lists, Auth, Quizlet) {
-
-            $scope.name = "ListController";
-
-			$scope.loggedIn = function () {
-				return Auth.isAuthenticated() && Auth.isAuthorized();
-			};
+		.controller('ListController', ['$scope', '$location', 'lists', 'Quizlet', function ($scope, $location, lists, Quizlet) {
 
 			$scope.search = function () {
 				$location.search('q', $scope.search_params.q);
@@ -53,8 +47,12 @@ define(['angular', 'angularCookies', 'list/Service', 'common/services/Auth', 'co
 
 			$scope.createList = function () {
 				lists.create(function (err, data) {
-					window.location.href = '/list/' + data.id + '/edit';
+					window.location.href = '/list/' + data.id;
 				});
+			};
+
+			$scope.importList = function () {
+				window.location.href = '/import';
 			};
 
 			$scope.deleteList = function (id, type) {
@@ -77,7 +75,7 @@ define(['angular', 'angularCookies', 'list/Service', 'common/services/Auth', 'co
 			};
 
 			$scope.init = function () {
-				if ($location.url() === '/lists') {
+				if ($location.url() === '/') {
 					// Lists page init
 					lists.getLists(function (err, data) {
 						$scope.userLists = {

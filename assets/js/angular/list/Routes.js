@@ -12,13 +12,13 @@ define(['angular', 'angularRoute'], function(angular) {
 
         .config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
             $routeProvider.when('/', {
-                templateUrl: '/js/angular/list/partials/search.html',
+                templateUrl: '/js/angular/list/partials/index.html',
                 controller: 'ListController',
-                needAuthentication: false
+                needAuthentication: true
             });
 
-            $routeProvider.when('/lists', {
-                templateUrl: '/js/angular/list/partials/lists.html',
+            $routeProvider.when('/import', {
+                templateUrl: '/js/angular/list/partials/import.html',
                 controller: 'ListController',
                 needAuthentication: true
             });

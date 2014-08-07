@@ -102,7 +102,9 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 						url: '/games',
 						method: 'PUT',
 						data: {
-							list: params
+							listId: params.listId,
+							heroHealth: params.heroHealth,
+							timer: params.timer
 						}
 					}).success(function (response) {
 						if (response.status === 'OK') {

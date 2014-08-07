@@ -22,10 +22,10 @@ module.exports.routes = {
     '/quizlet/search'   : 'QuizletController.search',
 
     // Angular Routes
-    '/'                        : 'HomeController.index',
-    '/lists'                   : 'HomeController.index',
-    '/list/:id'                : 'HomeController.index',
-    '/list/:id/edit'           : 'HomeController.index',
+    '/'                        : 'HomeController.index', // (1)
+    '/list/:id'                : 'HomeController.index', // (3)
+    '/import'                  : 'HomeController.index', // (6)
+    '/import/:id'              : 'HomeController.index', // (7)
     '/games'                   : 'HomeController.index',
     '/game/:id/questions'      : 'HomeController.index',
     '/game/:id/questions/edit' : 'HomeController.index',

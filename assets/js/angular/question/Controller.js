@@ -5,14 +5,12 @@
  * @created     :: 2014/05/08
  */
 
-define(['angular', 'question/Service', 'game/Service'], function (angular) {
+define(['angular', 'question/Service', 'game/Service', 'common/services/TestLegendsURL'], function (angular) {
 	'use strict';
 
-	return angular.module('Question.controllers', ['Question.services', 'Game.services'])
+	return angular.module('Question.controllers', ['Question.services', 'Game.services', 'Common.services'])
 
-		.controller('QuestionController', ['$scope', '$routeParams', 'questions', 'games', function ($scope, $routeParams, questions, games) {
-
-            $scope.name = "QuestionController";
+		.controller('QuestionController', ['$scope', '$routeParams', 'questions', 'games', 'TestLegendsURL', function ($scope, $routeParams, questions, games, TestLegendsURL) {
 
             $scope.sortableOptions = {
                 update: function(e, ui) { },
@@ -28,6 +26,10 @@ define(['angular', 'question/Service', 'game/Service'], function (angular) {
             questions.list($routeParams.gameId, function (err, data) {
                 $scope.questions = data;
             });
+
+			$scope.play = function () {
+				window.location.href = TestLegendsURL.app + '/game/' + $scope.game.id;
+			};
 
         }]);
 });

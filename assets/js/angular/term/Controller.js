@@ -12,29 +12,6 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 
 		.controller('TermController', ['$scope', '$routeParams', 'terms', 'lists', 'Auth', 'Quizlet', function ($scope, $routeParams, terms, lists, Auth, Quizlet) {
 
-			$scope.name = "TermController";
-
-			$scope.loggedIn = function () {
-				return Auth.isAuthenticated() && Auth.isAuthorized();
-			};
-
-			$scope.create = function () {
-				// For Quizlet
-				$scope.list.desc = $scope.list.desc || $scope.list.description;
-
-				lists.create({
-					title: $scope.list.title,
-					desc: $scope.list.desc,
-					terms: $scope.list.terms,
-					oldListId: $scope.list.id
-				}, function (err, response) {
-					if (!err) {
-						$scope.list = response;
-						$scope.list.isOwner = true;
-					}
-				});
-			};
-
 			$scope.save = function () {
 				lists.save({
 					id: $scope.listId,
@@ -61,14 +38,6 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 					if (value.term === term) {
 						$scope.list.terms.splice(key, 1);
 					}
-				});
-			};
-
-			$scope.generateAndPlay = function () {
-				lists.generateGame($scope.list, function (err, data) {
-					// Play the demo game
-					// window.location.href = 'http://leejefon.local:1337/game/' + data.id;
-					window.location.href = 'http://app.testlegends.com/game/' + data.id;
 				});
 			};
 

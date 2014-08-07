@@ -43,7 +43,7 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
                         });
                 },
                 save: function (params, cb) {
-                    TestLegendsAPI.post('/games' + params.id, {
+                    TestLegendsAPI.post('/games/' + params.id, {
 
                     }).success(function (response) {
 						if (response.status === 'OK') {
@@ -54,7 +54,7 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
                     });
                 },
                 delete: function (id, cb) {
-					TestLegends.delete('/games' + params.id)
+					TestLegendsAPI.delete('/games/' + id)
 						.success(function (response) {
 							if (response.status === 'OK') {
 								cb(null);
