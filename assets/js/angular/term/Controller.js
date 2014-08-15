@@ -17,6 +17,7 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 					id: $scope.listId,
 					title: $scope.list.title,
 					desc: $scope.list.desc,
+					category: $scope.list.category,
 					terms: $scope.list.terms
 				}, function (err, response) {
 					if (!err) {
@@ -51,6 +52,20 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 				});
 			};
 
+			$scope.editTitle = function ($event) {
+				$($event.currentTarget).siblings('textarea').show().focus();
+				$($event.currentTarget).hide();
+			};
+
+			$scope.doneEditTitle = function ($event) {
+				$($event.currentTarget).siblings('h4').show().focus();
+				$($event.currentTarget).hide();
+			};
+
+			$scope.changeCategory = function (category) {
+				$scope.list.category = category;
+			};
+
 			$scope.init = function () {
 				$scope.listId = $routeParams.listId;
 
@@ -64,23 +79,23 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 						$scope.list = data;
 						$scope.list.isOwner = data.meta.userId === Auth.user().id;
 					});
+
+					$scope.$watch('list', _.debounce(function () {
+						if ($scope.list) {
+							$scope.list.terms.forEach(function (element) {
+								if (element.options_raw) {
+									var options = element.options_raw.split(',').map(function (elem) { return elem.trim(); });
+									element.term = options[0];
+									element.options = options.slice(1, options.length);
+								} else {
+									element.options_raw = element.term + ',' + element.options.join();
+								}
+							});
+
+							$scope.save();
+						}
+					}, 500), true);
 				}
-
-				$scope.$watch('list', _.debounce(function () {
-					if ($scope.list) {
-						$scope.list.terms.forEach(function (element) {
-							if (element.options_raw) {
-								var options = element.options_raw.split(',').map(function (elem) { return elem.trim(); });
-								element.term = options[0];
-								element.options = options.slice(1, options.length);
-							} else {
-								element.options_raw = element.term + ',' + element.options.join();
-							}
-						});
-
-						$scope.save();
-					}
-				}, 500), true);
 			};
 
 			$scope.init();

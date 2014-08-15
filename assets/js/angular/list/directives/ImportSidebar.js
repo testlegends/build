@@ -30,8 +30,7 @@ define(['list/directives', 'list/Service'], function (listDirectives) {
                             oldListId: $scope.list.id
                         }, function (err, response) {
                             if (!err) {
-                                $scope.list = response;
-                                $scope.list.isOwner = true;
+                                window.location.href = "/list/" + response.id;
                             }
                         });
                     };
@@ -41,9 +40,13 @@ define(['list/directives', 'list/Service'], function (listDirectives) {
                         $('.icon-selected').removeClass('icon-selected');
                         $($event.currentTarget).addClass('icon-selected');
                     };
+
+                    $scope.category = 'other';
                 }],
                 link: function (scope, elem, attrs) {
-
+                    if (attrs.disable === "true") {
+                        $('.sidebar').addClass('sidebar-disabled');
+                    }
                 }
             };
         }]);

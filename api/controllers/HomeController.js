@@ -7,7 +7,8 @@
  * @created     :: 2014/02/08
  */
 
-var Html = require('../helpers/HtmlHelper.js');
+var Html = require('../helpers/HtmlHelper.js'),
+    md5 = require('MD5');
 
 module.exports = (function(){
 
@@ -15,15 +16,18 @@ module.exports = (function(){
 
 	function index (req, res) {
         if (!req.user) {
-            // return res.redirect(process.env.TESTLEGENDS_OAUTH_SERVER_URL) // a.k.a Home Page
             return res.redirect('/login');
         }
+
+        if (!req.user.profile_img) {
+            req.user.profile_img = 'https://www.gravatar.com/avatar/' + md5(req.user.email);
+        }
+
 		return res.view();
 	}
 
     function index_old (req, res) {
         if (!req.user) {
-            // return res.redirect(process.env.TESTLEGENDS_OAUTH_SERVER_URL) // a.k.a Home Page
             return res.redirect('/login');
         }
         return res.view('home/index', sails.util.merge(helpers, {

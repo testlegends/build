@@ -27,4 +27,8 @@ $(document).ready(function(){
     $('#list_search').bindr({
         target: '#list_search_btn'
     });
+
+    // TODO: need to find a better way to do this
+    $('#library-nav').removeClass('active-nav');
+    $('#import-nav').addClass('active-nav');
 });

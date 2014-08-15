@@ -70,10 +70,10 @@ define(['angular', 'angularCookies', 'list/Service', 'common/services/Quizlet'],
 				}
 
 				if ($scope.selectedList.length === 1) {
-					$('.action-toolbox button').prop('disabled', false);
+					$('.sidebar').removeClass('sidebar-disabled');
 					$scope.listId = $scope.selectedList[0];
 				} else {
-					$('.action-toolbox button').prop('disabled', true);
+					$('.sidebar').addClass('sidebar-disabled');
 					$scope.listId = null;
 				}
 			};
@@ -110,8 +110,23 @@ define(['angular', 'angularCookies', 'list/Service', 'common/services/Quizlet'],
 							})
 						};
 					});
+
+					$scope.listOrder = 'alpha';
+					$scope.$watch('listOrder', function (value) {
+						if (!value) { return; }
+
+						var orders = {
+							alpha: { predicate: 'title', reverse: false },
+							alphaReverse: { predicate: 'title', reverse: true },
+							date: { predicate: 'createdAt', reverse: false },
+							dateReverse: { predicate: 'createdAt', reverse: true }
+						};
+
+						$scope.predicate = orders[value].predicate;
+						$scope.reverse = orders[value].reverse;
+					});
 				} else {
-					// Search page init
+					// Import page init
 					var query = $location.search();
 					if (query.q) {
 						$scope.search_params = { q: query.q, page: query.page };

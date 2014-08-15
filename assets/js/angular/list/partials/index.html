@@ -28,18 +28,18 @@
             </div>
             <div class="sort-header">
                 <label id="list-sort-label">
-                    <select id="list-sort">
-                        <option value="" selected><p>a-z</p></option> <!-- value="alpha" -->
-                        <option value=""><p>z-a</p></option> <!-- value="alpha-reverse" -->
-                        <option value=""><p>newest</p></option> <!-- value="date" -->
-                        <option value=""><p>oldest</p></option> <!-- value="date-reverse" -->
+                    <select id="list-sort" ng-model="listOrder">
+                        <option value="alpha" selected><p>a-z</p></option>
+                        <option value="alphaReverse"><p>z-a</p></option>
+                        <option value="date"><p>oldest</p></option>
+                        <option value="dateReverse"><p>newest</p></option>
                     </select>
                     <!--::after-->
                 </label>
             </div>
         </div>
         <div class="library-content">
-            <div class="study_set" ng-repeat="list in userLists.saved" id="studySet-{{ list.id }}">
+            <div class="study_set" ng-repeat="list in userLists.saved | orderBy:predicate:reverse" id="studySet-{{ list.id }}">
                 <div class="set-content" ng-click="viewList(list.id)">
                     <div class="icon-study {{ list.category }}-icon"></div>
                     <div class="text-study">
@@ -47,7 +47,7 @@
                         <h5>{{ list.terms.length }} terms</h5>
                     </div>
                     <div class="date-study">
-                        <p>11/08/2013</p>
+                        <p>{{ list.createdAt | date: 'MM/dd/yyyy' }}</p>
                     </div>
                 </div>
                 <div class="set-edit">
@@ -66,14 +66,13 @@
                     <h5>Your Study Sets live here</h5>
                 </div>
                 <div class="text">
-                    <p>Add your own Study Sets, or explore Quizlet to import your favourite topics</p>
+                    <p>Add your own Study Sets, or explore our database to import your favourite topics</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- TODO: if it's own list play, if quizlet, save -->
 <play-sidebar></play-sidebar>
 
 <script src="/js/angular/list/partials/js/index.js"></script>

@@ -18,4 +18,8 @@ $(document).ready(function(){
             $menu.hide();
         }
     });
+
+    // TODO: need to find a better way to do this
+    $('#import-nav').removeClass('active-nav');
+    $('#library-nav').addClass('active-nav');
 });

@@ -23,22 +23,22 @@
             </div>
             <nav class="navbar-nav">
                 <ul>
-                    <li id="library-nav" class="active-nav">
+                    <li id="library-nav">
                         <a href="/"><h5>Library</h5></a>
                     </li>
                     <li id="import-nav">
                         <a href="/import"><h5>Import</h5></a>
                     </li>
-                    <li id="game-nav">
+                    <!--li id="game-nav">
                         <a href="#"><h5>Game</h5></a>
-                    </li>
+                    </li-->
                 </ul>
             </nav>
             <div class="user-nav">
                 <div class="name-user">
-                    <h5>Emily Van Wychen</h5>
+                    <h5><%- req.user.name %></h5>
                 </div>
-                <img class="image-user" src="https://www.gravatar.com/avatar/9116994a95b11f219055306520647168" />
+                <img class="image-user" src="<%- req.user.profile_img %>" />
                 <div class="menu-user">
                     <div class="arrow-menu"></div>
                     <div class="box-menu">

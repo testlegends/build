@@ -434,6 +434,17 @@ small {font-size: @smallTextSize;}
                         position: relative;
                         color: white;
 
+                        textarea {
+                            border: none;
+                            resize: none;
+                            color: white;
+                            outline: none;
+                            display: none;
+                            font-size: 24px;
+                            width: 100%;
+                            line-height: 24px;
+                        }
+
                         h4 {
                             height: @setTitleSize *2 + 1px;
                             overflow: hidden;
@@ -534,6 +545,7 @@ small {font-size: @smallTextSize;}
                         border: 2px solid @backgroundColor;
                         border-radius: @buttonRadius;
                         padding: 5px 10px;
+                        outline: none;
                     }
                 }
 
@@ -602,6 +614,20 @@ small {font-size: @smallTextSize;}
                 }
             }
 
+            /*----------------------import---------------------*/
+            .import-header {
+                ul.pagination {
+                    color: white;
+                    position: absolute;
+                    right: 40px;
+                    bottom: 10px;
+                }
+
+                ul.pagination li {
+                    display: inline;
+                }
+            }
+
             /*----------------------study set---------------------*/
             .study_set {
                 height: @headerHeight;
@@ -650,6 +676,7 @@ small {font-size: @smallTextSize;}
                         h5 {
                             height: @actionTextSize * 2 + 2px;
                             overflow: hidden;
+                            width: 100%;
                         }
                     }
 
@@ -908,6 +935,7 @@ small {font-size: @smallTextSize;}
                         border: none;
                         display: inline-block;
                         cursor: pointer;
+                        outline: none;
                         .borderBox();
 
                         div {
@@ -936,6 +964,12 @@ small {font-size: @smallTextSize;}
             }
         }
     }
+
+    .sidebar-disabled {
+        opacity: 0.5;
+        z-index: -1;
+        position: relative;
+    }
 }
 
 /*---------------------page specific overrides--------------------*/
@@ -943,6 +977,30 @@ small {font-size: @smallTextSize;}
     background: @importHeaderColor !important;
 }
 
-.study-header { /* temporary - should conform to icon colour */
+.-background {
+    background: @grey !important;
+}
+
+.math-background { /* temporary - should conform to icon colour */
     background: @purple !important;
+}
+
+.language-background {
+    background: @blue !important;
+}
+
+.science-background {
+    background: @red !important;
+}
+
+.history-background {
+    background: @yellow !important;
+}
+
+.geography-background {
+    background: @orange !important;
+}
+
+.other-background {
+    background: @green !important;
 }
