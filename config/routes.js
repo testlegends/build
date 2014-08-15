@@ -26,13 +26,13 @@ module.exports.routes = {
     '/list/:id'                : 'HomeController.index', // (3)
     '/import'                  : 'HomeController.index', // (6)
     '/import/:id'              : 'HomeController.index', // (7)
-    '/games'                   : 'HomeController.index',
-    '/game/:id/questions'      : 'HomeController.index',
-    '/game/:id/questions/edit' : 'HomeController.index',
-    '/game/:id/items'          : 'HomeController.index',
-    '/game/:id/theme'          : 'HomeController.index',
-    '/track'                   : 'HomeController.index',
-    '/user'                    : 'HomeController.index',
+    '/games'                   : 'HomeController.index_old',
+    '/game/:id/questions'      : 'HomeController.index_old',
+    '/game/:id/questions/edit' : 'HomeController.index_old',
+    '/game/:id/items'          : 'HomeController.index_old',
+    '/game/:id/theme'          : 'HomeController.index_old',
+    '/track'                   : 'HomeController.index_old',
+    '/user'                    : 'HomeController.index_old',
     '/user/login'              : 'HomeController.index',
     '/user/logout'             : 'HomeController.index'
 

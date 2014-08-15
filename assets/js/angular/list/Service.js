@@ -45,6 +45,7 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 						params = {
 							title: 'New List',
 							desc: 'New List',
+							category: 'other',
 							terms: [],
 							oldListId: null
 						};
@@ -57,6 +58,7 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 						data: {
 							title: params.title,
 							desc: params.desc,
+							category: params.category,
 							terms: params.terms,
 							oldListId: params.oldListId
 						}
@@ -75,6 +77,7 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 						data: {
 							title: params.title,
 							desc: params.desc,
+							category: params.category,
 							terms: params.terms
 						}
 					}).success(function (response) {

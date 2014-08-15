@@ -2,6 +2,7 @@ var gulp = require('gulp');
 var rjs = require('gulp-requirejs');
 var uglifyJs = require('gulp-uglify');
 var minifyCSS = require('gulp-cssmin');
+var less = require('gulp-less');
 var concat = require('gulp-concat');
 
 var paths = {
@@ -10,7 +11,9 @@ var paths = {
 		'assets/**',
 		'!assets/js/angular/*.js',
 		'!assets/js/angular/*/*.js',
-		'!assets/styles/*.css'
+		'!assets/js/angular/*/*/*.js',
+		'!assets/styles/*.css',
+		'!assets/styles/*.less'
 	],
 	assetsToWatch: [
 		'assets/**',
@@ -18,12 +21,20 @@ var paths = {
 	]
 };
 
-var cssFiles = [
-	'assets/js/vendor/angular-loading-bar/build/loading-bar.min.css',
-	'assets/js/vendor/toastr/toastr.min.css',
-	'assets/js/vendor/select2/select2.css',
-	'assets/styles/style.css'
-];
+var cssFiles = {
+	old: [
+		'assets/js/vendor/angular-loading-bar/build/loading-bar.min.css',
+		'assets/js/vendor/toastr/toastr.min.css',
+		'assets/js/vendor/select2/select2.css',
+		'assets/styles/style.old.css'
+	],
+	new: [
+		'assets/js/vendor/angular-loading-bar/build/loading-bar.min.css',
+		'assets/styles/reset.css',
+		'assets/styles/jquery.nouislider.css',
+		'assets/styles/style.less'
+	]
+};
 
 gulp.task('uglifyJs', function () {
 	rjs({
@@ -32,13 +43,19 @@ gulp.task('uglifyJs', function () {
 		mainConfigFile: "assets/js/angular/TestLegends.js",
 		out: "testlegends.min.js"
 	})
-	.pipe(uglifyJs())
+	// .pipe(uglifyJs())
 	.pipe(gulp.dest(paths.target + '/js/angular'));
 });
 
 gulp.task('minifyCSS', function () {
-	gulp.src(cssFiles)
-		.pipe(concat('style.min.css'))
+	gulp.src(cssFiles.new)
+		.pipe(concat('style.min.less'))
+		.pipe(less())
+		.pipe(minifyCSS())
+		.pipe(gulp.dest(paths.target + '/styles'));
+
+	gulp.src(cssFiles.old)
+		.pipe(concat('style.old.min.css'))
         .pipe(minifyCSS())
         .pipe(gulp.dest(paths.target + '/styles'));
 });

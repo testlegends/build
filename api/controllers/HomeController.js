@@ -18,22 +18,32 @@ module.exports = (function(){
             // return res.redirect(process.env.TESTLEGENDS_OAUTH_SERVER_URL) // a.k.a Home Page
             return res.redirect('/login');
         }
-		return res.view(helpers);
+		return res.view();
 	}
+
+    function index_old (req, res) {
+        if (!req.user) {
+            // return res.redirect(process.env.TESTLEGENDS_OAUTH_SERVER_URL) // a.k.a Home Page
+            return res.redirect('/login');
+        }
+        return res.view('home/index', sails.util.merge(helpers, {
+            layout: 'layouts/bootstrap'
+        }));
+    }
 
     function oauth_request (req, res) {
         // Do nothing, handled in TestLegendsOAuthRequest policy
     }
 
     function oauth_callback (req, res) {
-        var thirtyMinutes = 30 * 60 * 1000;
+        var sixHours = 6 * 60 * 60 * 1000;
 
-        res.cookie('access_token', req.user.accessToken, { maxAge: thirtyMinutes });
+        res.cookie('access_token', req.user.accessToken, { maxAge: sixHours });
         res.cookie('user', JSON.stringify({
             id: req.user.id,
             role: req.user.role,
             email: req.user.email
-        }), { maxAge: thirtyMinutes });
+        }), { maxAge: sixHours });
 
         res.redirect('/user/login'); // /user/login Handles the after login random stuff
     }
@@ -49,6 +59,7 @@ module.exports = (function(){
 
     return {
         index: index,
+        index_old: index_old,
         oauth_request: oauth_request,
         oauth_callback: oauth_callback,
         oauth_logout: oauth_logout,

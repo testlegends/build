@@ -9,6 +9,7 @@ define([
 	'angular',
 	'angularLoadingBar',
 	'term/Controller',
+	'term/Filters',
     'term/Routes'
 ], function (angular) {
 	'use strict';
@@ -16,6 +17,7 @@ define([
 	return angular.module('Term', [
 		'chieffancypants.loadingBar',
 		'Term.controllers',
+		'Term.filters',
         'Term.routes'
 	]);
 });

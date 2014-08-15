@@ -1,4 +1,4 @@
-<h3 class="pull-left">{{ list.title }}</h3>
+<!--h3 class="pull-left">{{ list.title }}</h3>
 
 <div class="pull-right">
     <play-sidebar></play-sidebar>
@@ -19,4 +19,105 @@
         <td>{{ term.term }}</td>
         <td>{{ term.definition }}</td>
     </tr>
-</table>
+</table-->
+
+<div class="core">
+    <div class="content-core">
+        <div class="header-content study-header"> <!-- header colour changes based on icon chosen => study-header -->
+            <div class="set-header">
+                <div class="icon-set-header">
+                    <div class="math-icon icon-image"></div>
+                    <div class="hover-icon">
+                        <p>change icon</p>
+                    </div>
+                    <div class="menu-icon">
+                        <div class="arrow-menu"></div>
+                        <div class="box-menu">
+                            <button class="icon-set">
+                                <div class="geography-icon"></div>
+                                <p>Geography</p>
+                            </button>
+                            <button class="icon-set">
+                                <div class="language-icon"></div>
+                                <p>Language</p>
+                            </button>
+                            <button class="icon-set">
+                                <div class="history-icon"></div>
+                                <p>History</p>
+                            </button>
+                            <button class="icon-set">
+                                <div class="science-icon"></div>
+                                <p>Science</p>
+                            </button>
+                            <button class="icon-set">
+                                <div class="math-icon"></div>
+                                <p>Math</p>
+                            </button>
+                            <button class="icon-set icon-selected">
+                                <div class="other-icon"></div>
+                                <p>Other</p>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="study-set-header">
+                    <h4>{{ list.title }}</h4>
+                    <h5>{{ list.terms.length }} terms</h5>
+                </div>
+            </div>
+            <div class="add_new">
+                <button ng-click="addTerm()"><h5>Add new</h5></button>
+                <div class="hover-add"> <!-- hidden, add if necessary -->
+                    <p>Add new Term</p>
+                </div>
+            </div>
+            <div class="sort-header">
+                <label id="list-sort-label">
+                    <select id="list-sort">
+                        <option value="" selected><p>a-z</p></option> <!-- value="alpha" -->
+                        <option value=""><p>z-a</p></option> <!-- value="alpha-reverse" -->
+                        <option value=""><p>newest</p></option> <!-- value="date" -->
+                        <option value=""><p>oldest</p></option> <!-- value="date-reverse" -->
+                    </select>
+                    <!--::after-->
+                </label>
+            </div>
+        </div>
+        <div class="legend-content study-header">
+            <div class="term-legend">
+                <p>Terms</p>
+            </div><div class="def-legend">
+                <p>Definitions / Questions</p>
+            </div>
+        </div>
+        <div class="study-content">
+            <div class="study_set term-set" ng-repeat="term in list.terms">
+                <div class="term-content">
+                    <div class="terms">
+                        <textarea ng-blur="doneEditTerm($event)" class="term-input" placeholder="term / correct choice here, multiple-choice 1, multiple-choice 2, multiple-choice 3" ng-model="term.options_raw"></textarea>
+                        <p ng-click="editTerm($event)" ng-bind-html="term.options_raw | GreyOutOptions"></p>
+                    </div><div class="definitions">
+                        <textarea ng-blur="doneEditTerm($event)" class="definitionInput" placeholder="definition / question here" rows="1" ng-model="term.definition"></textarea>
+                        <p ng-click="editTerm($event)">{{ term.definition }}</p>
+                    </div>
+                </div>
+                <div class="set-edit">
+                    <div class="delete-set">
+                        <button ng-click="removeTerm(term.term)"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="placeholder-content">
+            <div class="icon"></div>
+            <div class="title">
+                <h5>Your Terms and Definitions live here</h5>
+            </div>
+            <div class="text text-study_set">
+                <p>Add your own Terms and Definitions, or edit existing ones from imported Study Sets.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<play-sidebar></play-sidebar>

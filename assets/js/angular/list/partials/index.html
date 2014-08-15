@@ -1,45 +1,79 @@
-<h3 class="pull-left">Created Lists</h3>
+<div class="core">
+    <div class="content-core">
+        <div class="header-content">
+            <div class="title-header">
+                <h3><span>L</span>ibrary</h3>
+            </div>
+            <div class="add_new">
+                <button><h5>Add new</h5></button>
+                <div class="hover-add"> <!-- hidden, add if necessary -->
+                    <p>Add new Study Set</p>
+                </div>
+                <div class="menu-add">
+                    <div class="arrow-menu"></div>
+                    <div class="box-menu">
+                        <a href="#" class="blank" ng-click="createList()">
+                            <div class="icon"></div>
+                            <div class="text">
+                                <h5>New blank</h5>
+                            </div>
+                        </a><a href="/import" class="import">
+                            <div class="icon"></div>
+                            <div class="text">
+                                <h5>Import</h5>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="sort-header">
+                <label id="list-sort-label">
+                    <select id="list-sort">
+                        <option value="" selected><p>a-z</p></option> <!-- value="alpha" -->
+                        <option value=""><p>z-a</p></option> <!-- value="alpha-reverse" -->
+                        <option value=""><p>newest</p></option> <!-- value="date" -->
+                        <option value=""><p>oldest</p></option> <!-- value="date-reverse" -->
+                    </select>
+                    <!--::after-->
+                </label>
+            </div>
+        </div>
+        <div class="library-content">
+            <div class="study_set" ng-repeat="list in userLists.saved" id="studySet-{{ list.id }}">
+                <div class="set-content" ng-click="viewList(list.id)">
+                    <div class="icon-study {{ list.category }}-icon"></div>
+                    <div class="text-study">
+                        <h4>{{ list.title }}</h4>
+                        <h5>{{ list.terms.length }} terms</h5>
+                    </div>
+                    <div class="date-study">
+                        <p>11/08/2013</p>
+                    </div>
+                </div>
+                <div class="set-edit">
+                    <div class="select-set">
+                        <input type="checkbox" id="select-set-{{ list.id }}" ng-click="selectList(list.id)" />
+                        <label for="select-set-{{ list.id }}"><span></span></label>
+                    </div><div class="delete-set">
+                        <button ng-click="deleteList(list.id, 'saved')"></button>
+                    </div>
+                </div>
+            </div>
 
-<div class="pull-right">
-    <button class="btn btn-primary" ng-click="createList()"><i class="fa fa-plus"></i> Create New List</button>
-    <button class="btn btn-primary" ng-click="importList()"><i class="fa fa-plus"></i> Import List</button>
+            <div class="placeholder-content">
+                <div class="icon"></div>
+                <div class="title">
+                    <h5>Your Study Sets live here</h5>
+                </div>
+                <div class="text">
+                    <p>Add your own Study Sets, or explore Quizlet to import your favourite topics</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
-<hr class="clearfix" />
-
-<table class="table table-striped table-hover table-bordered">
-    <tr>
-        <td>&nbsp;</td>
-        <td>Title</td>
-        <td>Description</td>
-    </tr>
-    <tr ng-repeat="list in userLists.created">
-        <td>
-            <a href="#" ng-click="deleteList(list.id, 'created')" title="Delete List"><i class="fa fa-times"></i></a>
-        </td>
-        <td><a href="/list/{{ list.id }}">{{ list.title }}</a></td>
-        <td>{{ list.desc }}</td>
-    </tr>
-</table>
-
-<hr />
-
-<h3>Saved Lists</h3>
-
-<table class="table table-striped table-hover table-bordered">
-    <tr>
-        <td>&nbsp</td>
-        <td>Title</td>
-        <td>Description</td>
-    </tr>
-    <tr ng-repeat="list in userLists.saved">
-        <td>
-            <a href="/list/{{ list.id }}/edit" title="Edit List"><i class="fa fa-pencil"></i></a>
-            <a href="#" ng-click="deleteList(list.id, 'saved')" title="Delete List"><i class="fa fa-times"></i></a>
-        </td>
-        <td><a href="/list/{{ list.id }}">{{ list.title }}</a></td>
-        <td>{{ list.desc }}</td>
-    </tr>
-</table>
-
+<!-- TODO: if it's own list play, if quizlet, save -->
 <play-sidebar></play-sidebar>
+
+<script src="/js/angular/list/partials/js/index.js"></script>

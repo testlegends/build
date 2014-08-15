@@ -1,11 +1,11 @@
 /**
- * List.app
+ * import.js
  *
  * @author      :: Jeff Lee
- * @created     :: 2014/06/24
+ * @created     :: 2014/08/13
  */
-(function ($) {
 
+(function ($) {
     $.fn.bindr = function (config) {
         config = $.extend({
             target: null
@@ -21,7 +21,6 @@
             }
         });
     };
-
 })(jQuery);
 
 $(document).ready(function(){

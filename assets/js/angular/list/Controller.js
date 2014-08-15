@@ -51,8 +51,31 @@ define(['angular', 'angularCookies', 'list/Service', 'common/services/Quizlet'],
 				});
 			};
 
-			$scope.importList = function () {
-				window.location.href = '/import';
+			$scope.viewList = function (id, quizlet) {
+				if (quizlet) {
+					window.location.href = '/import/' + id;
+				} else {
+					window.location.href = '/list/' + id;
+				}
+			};
+
+			$scope.selectList = function (id) {
+				var index = $scope.selectedList.indexOf(id);
+				if (index === -1) {
+					$scope.selectedList.push(id);
+					$('#studySet-' + id).addClass('studySetSelected');
+				} else {
+					$scope.selectedList.splice(index, 1);
+					$('#studySet-' + id).removeClass('studySetSelected');
+				}
+
+				if ($scope.selectedList.length === 1) {
+					$('.action-toolbox button').prop('disabled', false);
+					$scope.listId = $scope.selectedList[0];
+				} else {
+					$('.action-toolbox button').prop('disabled', true);
+					$scope.listId = null;
+				}
 			};
 
 			$scope.deleteList = function (id, type) {
@@ -95,6 +118,8 @@ define(['angular', 'angularCookies', 'list/Service', 'common/services/Quizlet'],
 						$scope.search();
 					}
 				}
+
+				$scope.selectedList = [];
 			};
 
 			$scope.init();

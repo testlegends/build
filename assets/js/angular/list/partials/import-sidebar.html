@@ -1,1 +1,17 @@
-<button class="btn btn-primary" ng-click="import()">Save List</button>
+<div class="sidebar">
+    <div class="toolbox-sidebar">
+        <div class="action-toolbox">
+            <button ng-click="import()"><h2>Save</h2></button>
+        </div>
+        <div class="divider-toolbox"></div>
+        <div class="options-toolbox">
+            <h5>Study Set icon</h5>
+            <div class="set_icon-options">
+                <button class="icon-set" ng-repeat="cat in categories" ng-click="selectCategory(cat, $event)">
+                    <div class="{{ cat }}-icon"></div>
+                    <p>{{ cat.charAt(0).toUpperCase() + cat.slice(1) }}</p>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

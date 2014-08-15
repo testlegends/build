@@ -5,7 +5,7 @@
  * @created     :: 2014/07/06
  */
 
-define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'common/services/Quizlet'], function (angular) {
+define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'common/services/Quizlet', 'jqueryAutosize'], function (angular) {
 	'use strict';
 
 	return angular.module('Term.controllers', ['Term.services', 'List.services', 'Common.services'])
@@ -26,11 +26,21 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 			};
 
 			$scope.addTerm = function () {
-				$scope.list.terms.push({
-					term: '',
-					definition: '',
+				$scope.list.terms.unshift({
+					term: 'New Term',
+					definition: 'Definition',
 					options: []
 				});
+			};
+
+			$scope.editTerm = function ($event) {
+				$($event.currentTarget).siblings('textarea').show().focus();
+				$($event.currentTarget).hide();
+			};
+
+			$scope.doneEditTerm = function ($event) {
+				$($event.currentTarget).siblings('p').show().focus();
+				$($event.currentTarget).hide();
 			};
 
 			$scope.removeTerm = function (term) {
@@ -58,9 +68,19 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 
 				$scope.$watch('list', _.debounce(function () {
 					if ($scope.list) {
+						$scope.list.terms.forEach(function (element) {
+							if (element.options_raw) {
+								var options = element.options_raw.split(',').map(function (elem) { return elem.trim(); });
+								element.term = options[0];
+								element.options = options.slice(1, options.length);
+							} else {
+								element.options_raw = element.term + ',' + element.options.join();
+							}
+						});
+
 						$scope.save();
 					}
-				}, 300), true);
+				}, 500), true);
 			};
 
 			$scope.init();

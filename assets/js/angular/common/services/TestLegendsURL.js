@@ -11,16 +11,16 @@ define(['common/services'], function (commonServices) {
     return commonServices
 
         .constant('TestLegendsURL', {
-            api: 'http://leejefon.local:1339',
-            app: 'http://leejefon.local:1337',
-            build: 'http://leejefon.local:1336',
-            home: 'http://leejefon.local:1338',
-            mobile: 'http://leejefon.local:1335'
+            api: 'https://leejefon.local:1339',
+            app: 'https://leejefon.local:1337',
+            build: 'https://leejefon.local:1336',
+            home: 'https://leejefon.local:1338',
+            mobile: 'https://leejefon.local:1335'
 
-            // api: 'http://api.testlegends.com',
-            // app: 'http://app.testlegends.com',
-            // build: 'http://build.testlegends.com',
-            // home: 'http://testlegends.com',
-            // mobile: 'http://m.testlegends.com'
+            // api: 'https://api.testlegends.com',
+            // app: 'https://app.testlegends.com',
+            // build: 'https://build.testlegends.com',
+            // home: 'https://testlegends.com',
+            // mobile: 'https://m.testlegends.com'
         });
 });

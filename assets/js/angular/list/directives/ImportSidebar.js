@@ -16,6 +16,8 @@ define(['list/directives', 'list/Service'], function (listDirectives) {
                 replace: true,
                 templateUrl: '/js/angular/list/partials/import-sidebar.html',
                 controller: ['$scope', function ($scope) {
+                    $scope.categories = ['geography', 'language', 'history', 'science', 'math', 'other']
+
                     $scope.import = function () {
                         // For Quizlet
                         $scope.list.desc = $scope.list.desc || $scope.list.description;
@@ -24,6 +26,7 @@ define(['list/directives', 'list/Service'], function (listDirectives) {
                             title: $scope.list.title,
                             desc: $scope.list.desc,
                             terms: $scope.list.terms,
+                            category: $scope.category,
                             oldListId: $scope.list.id
                         }, function (err, response) {
                             if (!err) {
@@ -31,6 +34,12 @@ define(['list/directives', 'list/Service'], function (listDirectives) {
                                 $scope.list.isOwner = true;
                             }
                         });
+                    };
+
+                    $scope.selectCategory = function (category, $event) {
+                        $scope.category = category;
+                        $('.icon-selected').removeClass('icon-selected');
+                        $($event.currentTarget).addClass('icon-selected');
                     };
                 }],
                 link: function (scope, elem, attrs) {

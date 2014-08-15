@@ -10,6 +10,9 @@ require.config({
     paths: {
         jquery: '../vendor/jquery/dist/jquery',
         jqueryUI: '../vendor/jquery-ui/ui/minified/jquery-ui.min',
+        jqueryAutosize: '../vendor/jquery-autosize/jquery.autosize.min',
+        jqueryNoUiSlider: '../vendor/nouislider/jquery.nouislider.min',
+        jqueryKnob: '../vendor/jquery-knob/dist/jquery.knob.min',
         bootstrap: '../vendor/bootstrap/dist/js/bootstrap',
         underscore: '../vendor/underscore/underscore',
 
@@ -22,8 +25,12 @@ require.config({
     shim: {
         jquery: { exports: '$' },
         jqueryUI: ['jquery'] ,
+        jqueryAutosize: ['jquery'],
+        jqueryNoUiSlider: ['jquery'],
+        jqueryKnob: ['jquery'],
         bootstrap: ['jquery'],
         underscore: { exports: '_' },
+
         angular: { exports: 'angular', deps: ['jquery'] },
         angularCookies: ['angular'],
         angularRoute: ['angular'],
