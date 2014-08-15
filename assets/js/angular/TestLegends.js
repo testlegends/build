@@ -10,7 +10,7 @@ require.config({
     paths: {
         jquery: '../vendor/jquery/dist/jquery',
         jqueryUI: '../vendor/jquery-ui/ui/minified/jquery-ui.min',
-        jqueryAutosize: '../vendor/jquery-autosize/jquery.autosize.min',
+        jqueryAutosize: '../vendor/jquery-autosize/jquery.autosize',
         jqueryNoUiSlider: '../vendor/nouislider/jquery.nouislider.min',
         jqueryKnob: '../vendor/jquery-knob/dist/jquery.knob.min',
         bootstrap: '../vendor/bootstrap/dist/js/bootstrap',

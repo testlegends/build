@@ -8,7 +8,8 @@
  */
 
 var Html = require('../helpers/HtmlHelper.js'),
-    md5 = require('MD5');
+    md5 = require('MD5'),
+    request = require('request');
 
 module.exports = (function(){
 
@@ -53,7 +54,8 @@ module.exports = (function(){
     }
 
     function oauth_logout (req, res) {
-        //TODO: remote logout home
+        // Remote logout
+        request(process.env.TESTLEGENDS_OAUTH_SERVER_URL + '/user/logout?remote=1', function (err, response, body) { /* Do nothing */ });
 
         req.logout();
         res.clearCookie('access_token');

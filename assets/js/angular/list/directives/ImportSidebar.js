@@ -5,12 +5,12 @@
  * @created     :: 2014/08/03
  */
 
-define(['list/directives', 'list/Service'], function (listDirectives) {
+define(['list/directives', 'list/Service', 'common/services/Quizlet'], function (listDirectives) {
     'use strict';
 
     return listDirectives
 
-        .directive('importSidebar', ['lists', function (lists) {
+        .directive('importSidebar', ['lists', 'Quizlet', function (lists, Quizlet) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -19,15 +19,29 @@ define(['list/directives', 'list/Service'], function (listDirectives) {
                     $scope.categories = ['geography', 'language', 'history', 'science', 'math', 'other']
 
                     $scope.import = function () {
+                        if ($scope.list) {
+                            $scope.importData($scope.list);
+                        } else {
+                            $scope.importById($scope.listId);
+                        }
+                    };
+
+                    $scope.importById = function (id) {
+                        Quizlet.getSet(id, function (err, data) {
+                            $scope.importData(data);
+                        });
+                    };
+
+                    $scope.importData = function (list) {
                         // For Quizlet
-                        $scope.list.desc = $scope.list.desc || $scope.list.description;
+                        list.desc = list.desc || list.description;
 
                         lists.create({
-                            title: $scope.list.title,
-                            desc: $scope.list.desc,
-                            terms: $scope.list.terms,
+                            title: list.title,
+                            desc: list.desc,
+                            terms: list.terms,
                             category: $scope.category,
-                            oldListId: $scope.list.id
+                            oldListId: list.id
                         }, function (err, response) {
                             if (!err) {
                                 window.location.href = "/list/" + response.id;

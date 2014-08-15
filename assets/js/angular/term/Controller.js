@@ -80,8 +80,12 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 						$scope.list.isOwner = data.meta.userId === Auth.user().id;
 					});
 
-					$scope.$watch('list', _.debounce(function () {
+					$scope.$watch('list', _.debounce(function (newValue, oldValue) {
 						if ($scope.list) {
+							setTimeout(function(){
+								$('textarea').autosize();
+							}, 1);
+
 							$scope.list.terms.forEach(function (element) {
 								if (element.options_raw) {
 									var options = element.options_raw.split(',').map(function (elem) { return elem.trim(); });
@@ -95,6 +99,20 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 							$scope.save();
 						}
 					}, 500), true);
+
+					$scope.listOrder = 'default';
+					$scope.$watch('listOrder', function (value) {
+						if (!value) { return; }
+
+						var orders = {
+							default: { predicate: '', reverse: false },
+							alpha: { predicate: 'term', reverse: false },
+							alphaReverse: { predicate: 'term', reverse: true },
+						};
+
+						$scope.predicate = orders[value].predicate;
+						$scope.reverse = orders[value].reverse;
+					});
 				}
 			};
 

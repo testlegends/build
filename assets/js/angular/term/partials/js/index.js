@@ -18,4 +18,6 @@ $(document).ready(function(){
             $menu.hide();
         }
     });
+
+    $('textarea').hide();
 });

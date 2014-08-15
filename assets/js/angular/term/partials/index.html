@@ -51,11 +51,10 @@
             </div>
             <div class="sort-header">
                 <label id="list-sort-label">
-                    <select id="list-sort">
-                        <option value="" selected><p>a-z</p></option> <!-- value="alpha" -->
-                        <option value=""><p>z-a</p></option> <!-- value="alpha-reverse" -->
-                        <option value=""><p>newest</p></option> <!-- value="date" -->
-                        <option value=""><p>oldest</p></option> <!-- value="date-reverse" -->
+                    <select id="list-sort" ng-model="listOrder">
+                        <option value="default" selected><p>Default</p></option>
+                        <option value="alpha" selected><p>a-z</p></option>
+                        <option value="alphaReverse"><p>z-a</p></option>
                     </select>
                     <!--::after-->
                 </label>
@@ -69,13 +68,13 @@
             </div>
         </div>
         <div class="study-content">
-            <div class="study_set term-set" ng-repeat="term in list.terms">
+            <div class="study_set term-set" ng-repeat="term in list.terms | orderBy:predicate:reverse">
                 <div class="term-content">
                     <div class="terms">
-                        <textarea ng-blur="doneEditTerm($event)" class="term-input" placeholder="term / correct choice here, multiple-choice 1, multiple-choice 2, multiple-choice 3" ng-model="term.options_raw"></textarea>
+                        <textarea ng-blur="doneEditTerm($event)" placeholder="term / correct choice here, multiple-choice 1, multiple-choice 2, multiple-choice 3" ng-model="term.options_raw"></textarea>
                         <p ng-click="editTerm($event)" ng-bind-html="term.options_raw | GreyOutOptions"></p>
                     </div><div class="definitions">
-                        <textarea ng-blur="doneEditTerm($event)" class="definitionInput" placeholder="definition / question here" rows="1" ng-model="term.definition"></textarea>
+                        <textarea ng-blur="doneEditTerm($event)" placeholder="definition / question here" rows="1" ng-model="term.definition"></textarea>
                         <p ng-click="editTerm($event)">{{ term.definition }}</p>
                     </div>
                 </div>
