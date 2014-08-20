@@ -90,7 +90,7 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 								if (element.options_raw) {
 									var options = element.options_raw.split(',').map(function (elem) { return elem.trim(); });
 									element.term = options[0];
-									element.options = options.slice(1, options.length);
+									element.options = options.slice(1, options.length).filter(function (elem) { return elem.length > 0; });
 								} else {
 									element.options_raw = element.term + ',' + element.options.join();
 								}
