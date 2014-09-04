@@ -2,7 +2,7 @@
     <div class="content-core">
         <div class="header-content">
             <div class="title-header">
-                <h3><span>L</span>ibrary</h3>
+                <h3>{{ class.name }}</h3>
             </div>
             <div class="add_new">
                 <button><h5>Add new</h5></button>
@@ -39,7 +39,7 @@
             </div>
         </div>
         <div class="library-content">
-            <div class="study_set" ng-repeat="list in userLists.saved | orderBy:predicate:reverse" id="studySet-{{ list.id }}">
+            <div class="study_set" ng-repeat="list in lists | orderBy:predicate:reverse" id="studySet-{{ list.id }}">
                 <div class="set-content" ng-click="viewList(list.id)">
                     <div class="icon-study {{ list.category }}-icon"></div>
                     <div class="text-study">
@@ -73,6 +73,6 @@
     </div>
 </div>
 
-<class-sidebar></class-sidebar>
+<student-sidebar></student-sidebar>
 
 <script src="/js/angular/list/partials/js/index.js"></script>

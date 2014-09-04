@@ -15,18 +15,7 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 				search: function (params, cb) {
 
 				},
-				getList: function (id, cb) {
-					$TestLegendsAPI({
-						url: '/list/' + id,
-						method: 'GET'
-					}).success(function (response) {
-						if (response.status === 'OK') {
-							cb(null, response.data);
-						} else {
-							cb(response.error, null);
-						}
-					});
-				},
+
 				getLists: function (cb) {
 					$TestLegendsAPI({
 						url: '/lists',
@@ -39,6 +28,7 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 						}
 					});
 				},
+
 				create: function (params, cb) {
 					if (typeof params === 'function') {
 						cb = params;
@@ -70,6 +60,20 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 						}
 					});
 				},
+
+				getList: function (id, cb) {
+					$TestLegendsAPI({
+						url: '/list/' + id,
+						method: 'GET'
+					}).success(function (response) {
+						if (response.status === 'OK') {
+							cb(null, response.data);
+						} else {
+							cb(response.error, null);
+						}
+					});
+				},
+
 				save: function (params, cb) {
 					$TestLegendsAPI({
 						url: '/list/' + params.id,
@@ -88,6 +92,7 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 						}
 					});
 				},
+
 				delete: function (id, cb) {
 					$TestLegendsAPI({
 						url: '/list/' + id,
@@ -100,6 +105,7 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 						}
 					});
 				},
+
 				generateGame: function (params, cb) {
 					$TestLegendsAPI({
 						url: '/games',

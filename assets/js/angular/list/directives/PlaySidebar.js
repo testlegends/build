@@ -10,7 +10,7 @@ define(['list/directives', 'list/Service', 'common/services/TestLegendsURL', 'jq
 
     return listDirectives
 
-        .directive('playSidebar', ['$location', 'lists', 'TestLegendsURL', function ($location, lists, TestLegendsURL) {
+        .directive('playSidebar', ['lists', 'TestLegendsURL', function (lists, TestLegendsURL) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -32,10 +32,6 @@ define(['list/directives', 'list/Service', 'common/services/TestLegendsURL', 'jq
                     };
                 }],
                 link: function (scope) {
-                    if ($location.url() === '/') {
-                        $('.sidebar').addClass('sidebar-disabled');
-                    }
-
                     $(".bar-health").noUiSlider({
                         start: 5,
                         step: 1,

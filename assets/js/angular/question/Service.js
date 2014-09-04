@@ -14,9 +14,8 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 			return {
                 list: function (gameId, cb) {
                     return $TestLegendsAPI({
-                        url: '/questions',
-                        method: 'GET',
-                        params: { gameId: gameId }
+                        url: '/game/' + gameId + '/questions',
+                        method: 'GET'
                     }).success(function (response) {
                         if (response.status === 'OK') {
 							cb(null, response.data);
@@ -26,16 +25,11 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
                     });
                 },
 
-                get: function (id, cb) {
-
-                },
-
                 create: function (params, cb) {
                     return $TestLegendsAPI({
-                        url: '/questions',
+                        url: '/game/' + params.meta.gameId + '/questions',
                         method: 'PUT',
                         data: {
-                            gameId: params.meta.gameId,
                             order: params.meta.order,
                             num_wrongs: params.options.wrong,
                             type: params.type,
@@ -50,6 +44,10 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
                     });
                 },
 
+                get: function (id, cb) {
+
+                },
+
                 save: function (params, cb) {
                     var wrongAnswers = (function (wrongOptions) {
                         var result = '';
@@ -61,7 +59,7 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
                     })(params.options.wrong);
 
                     return $TestLegendsAPI({
-                        url: '/question/' + params.id,
+                        url: '/game/__gameId__/question/' + params.id,
                         method: 'POST',
                         data: {
                             type: params.type,
@@ -81,7 +79,7 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 
                 delete: function (params, cb) {
                     return $TestLegendsAPI({
-                        url: '/question/' + params.id,
+                        url: '/game/__gameId__/question/' + params.id,
                         method: 'DELETE'
                     }).success(function (response) {
 						if (response.status === 'OK') {
@@ -90,10 +88,6 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 							cb(response.error, null);
 						}
                     });
-                },
-
-                updateOrder: function (list, cb) {
-
                 }
 			};
 		}]);

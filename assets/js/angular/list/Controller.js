@@ -69,12 +69,21 @@ define(['angular', 'angularCookies', 'list/Service', 'common/services/Quizlet'],
 					$('#studySet-' + id).removeClass('studySetSelected');
 				}
 
-				if ($scope.selectedList.length === 1) {
-					$('.sidebar').removeClass('sidebar-disabled');
-					$scope.listId = $scope.selectedList[0];
+				if ($location.url() === '/') {
+					if ($scope.selectedList.length > 0) {
+						$('.addClass').hide();
+						$('.addToClass').show();
+					} else {
+						$('.addClass').show();
+						$('.addToClass').hide();
+					}
 				} else {
-					$('.sidebar').addClass('sidebar-disabled');
-					$scope.listId = null;
+					// Import list
+					if ($scope.selectedList.length > 0) {
+						$('.sidebar').removeClass('sidebar-disabled');
+					} else {
+						$('.sidebar').addClass('sidebar-disabled');
+					}
 				}
 			};
 

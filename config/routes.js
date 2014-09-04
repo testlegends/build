@@ -22,16 +22,21 @@ module.exports.routes = {
     '/quizlet/search'   : 'QuizletController.search',
 
     // Angular Routes
-    '/'                        : 'HomeController.index', // (1)
-    '/list/:id'                : 'HomeController.index', // (3)
-    '/import'                  : 'HomeController.index', // (6)
-    '/import/:id'              : 'HomeController.index', // (7)
+    '/'                        : 'HomeController.index',
+    '/list/:id'                : 'HomeController.index',
+    '/import'                  : 'HomeController.index',
+    '/import/:id'              : 'HomeController.index',
+    // '/classes'                 : 'HomeController.index',
+    '/class/:id'               : 'HomeController.index',
+    // '/class/:id/students'      : 'HomeController.index',
+    '/class/:id/student/:sid'  : 'HomeController.index',
+    '/class/:id/overview'      : 'HomeController.index',
+
     '/games'                   : 'HomeController.index_old',
     '/game/:id/questions'      : 'HomeController.index_old',
     '/game/:id/questions/edit' : 'HomeController.index_old',
     '/game/:id/items'          : 'HomeController.index_old',
     '/game/:id/theme'          : 'HomeController.index_old',
-    '/track'                   : 'HomeController.index_old',
     '/user'                    : 'HomeController.index_old',
     '/user/login'              : 'HomeController.index',
     '/user/logout'             : 'HomeController.index'

@@ -30,6 +30,7 @@ module.exports = (function(){
         if (!req.user) {
             return res.redirect('/login');
         }
+
         return res.view('home/index', sails.util.merge(helpers, {
             layout: 'layouts/bootstrap'
         }));

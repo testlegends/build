@@ -22,13 +22,15 @@ define(['list/directives', 'list/Service', 'common/services/Quizlet'], function 
                         if ($scope.list) {
                             $scope.importData($scope.list);
                         } else {
-                            $scope.importById($scope.listId);
+                            $scope.importById($scope.selectedList);
                         }
                     };
 
-                    $scope.importById = function (id) {
-                        Quizlet.getSet(id, function (err, data) {
-                            $scope.importData(data);
+                    $scope.importById = function (ids) {
+                        ids.forEach(function (id) {
+                            Quizlet.getSet(id, function (err, data) {
+                                $scope.importData(data);
+                            });
                         });
                     };
 

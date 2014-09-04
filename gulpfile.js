@@ -43,7 +43,7 @@ gulp.task('uglifyJs', function () {
 		mainConfigFile: "assets/js/angular/TestLegends.js",
 		out: "testlegends.min.js"
 	})
-	.pipe(uglifyJs())
+	// .pipe(uglifyJs())
 	.pipe(gulp.dest(paths.target + '/js/angular'));
 });
 

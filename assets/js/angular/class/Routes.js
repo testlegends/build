@@ -1,19 +1,19 @@
 /**
-* TrackRoutes
+* ClassRoutes
 *
 * @author      :: Jeff Lee
-* @created     :: 2014/05/08
+* @created     :: 2014/08/21
 */
 
 define(['angular', 'angularRoute'], function(angular) {
 	'use strict';
 
-	return angular.module('Track.routes', ['ngRoute'])
+	return angular.module('Class.routes', ['ngRoute'])
 
 		.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
-			$routeProvider.when('/track', {
-				templateUrl: '/js/angular/track/partials/index.html',
-				controller: 'TrackController',
+			$routeProvider.when('/class/:classId', {
+				templateUrl: '/js/angular/class/partials/index.html',
+				controller: 'ClassController',
 				needAuthentication: true
 			});
 

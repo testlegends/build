@@ -1,0 +1,19 @@
+<div class="sidebar">
+    <div class="toolbox-sidebar">
+        Students
+
+        <ul>
+            <li ng-repeat="student in students">
+                <a href="#">{{ student.name }}</a>
+                <button ng-click="removeStudent(student.id)">Delete</button>
+            </li>
+        </ul>
+
+        <div class="divider-toolbox"></div>
+
+        <div>
+            <input type="text" ng-model="studentToAdd" />
+            <button ng-click="addStudent()">Add Student</button>
+        </div>
+    </div>
+</div>
