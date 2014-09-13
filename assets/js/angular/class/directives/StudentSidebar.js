@@ -5,12 +5,12 @@
  * @created     :: 2014/08/31
  */
 
-define(['class/directives', 'class/Service'], function (classDirectives) {
+define(['class/directives', 'class/Service', 'user/Service'], function (classDirectives) {
     'use strict';
 
     return classDirectives
 
-        .directive('studentSidebar', ['classes', function (classes) {
+        .directive('studentSidebar', ['classes', 'users', function (classes, users) {
             return {
                 restrict: 'E',
                 replace: true,

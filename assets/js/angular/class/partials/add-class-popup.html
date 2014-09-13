@@ -14,18 +14,18 @@
                     </div>
                     <div class="sort-header">
                         <label id="create-sort-label">
-                            <select id="create-sort">
-                                <option value="" selected><p>a-z</p></option> <!-- value="alpha" -->
-                                <option value=""><p>z-a</p></option> <!-- value="alpha-reverse" -->
-                                <option value=""><p>newest</p></option> <!-- value="date" -->
-                                <option value=""><p>oldest</p></option> <!-- value="date-reverse" -->
+                            <select id="create-sort" ng-model="classListOrder">
+                                <option value="alpha" selected><p>a-z</p></option>
+                                <option value="alphaReverse"><p>z-a</p></option>
+                                <option value="date"><p>oldest</p></option>
+                                <option value="dateReverse"><p>newest</p></option>
                             </select>
                             <!--::after-->
                         </label>
                     </div>
                 </div>
                 <div class="select-library">
-                    <div class="study_set-select" ng-repeat="list in userLists.saved" id="list-{{ list.id }}" ng-click="selectClassList(list.id)">
+                    <div class="study_set-select" ng-repeat="list in userLists.saved | orderBy:classListPredicate:classListReverse" id="list-{{ list.id }}" ng-click="selectClassList(list.id)">
                         <div class="icon-set {{ list.category }}-icon"></div>
                         <div class="name-set">
                             <h5>{{ list.title }}</h5>

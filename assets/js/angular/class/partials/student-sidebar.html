@@ -2,7 +2,8 @@
     <div class="toolbox-sidebar">
         <div class="header-toolbox">
             <div class="title-header">
-                <h4>Students</h4>
+                <h4 ng-if="classOwner.email === currUser.email">Students</h4>
+                <h4 ng-if="classOwner.email !== currUser.email">Class Mates</h4>
             </div>
             <div class="invite-header">
                 <button ng-click="inviteCodePopup()"><h5>Invite</h5></button>
@@ -14,14 +15,13 @@
                 <li ng-repeat="student in students">
                     <div class="user-student">
                         <a href="#">
-                            <!--img class="image-user" ng-src="{{ student.avatar }}" /-->
-                            <img class="image-user" src="/images/jeff.png" />
+                            <img class="image-user" ng-src="{{ student.email | gravatar:80 }}" />
                             <div class="name-user">
                                 <h5>{{ student.name }}</h5>
                             </div>
                         </a>
                         <div class="leave-user">
-                            <button ng-click="removeStudent(student.id)"></button>
+                            <button ng-click="removeStudent(student.id)" ng-if="classOwner.email === currUser.email || currUser.id === student.id"></button>
                         </div>
                     </div>
                 </li>

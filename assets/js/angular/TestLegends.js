@@ -15,6 +15,7 @@ require.config({
         jqueryKnob: '../vendor/jquery-knob/dist/jquery.knob.min',
         bootstrap: '../vendor/bootstrap/dist/js/bootstrap',
         underscore: '../vendor/underscore/underscore',
+        toastr: '../vendor/toastr/toastr',
 
         angular: '../vendor/angular/angular',
         angularCookies: '../vendor/angular-cookies/angular-cookies',
@@ -30,6 +31,7 @@ require.config({
         jqueryKnob: ['jquery'],
         bootstrap: ['jquery'],
         underscore: { exports: '_' },
+        toastr: { exports: 'toastr' },
 
         angular: { exports: 'angular', deps: ['jquery'] },
         angularCookies: ['angular'],
@@ -42,6 +44,7 @@ require.config({
 
 require([
     'angular',
+    'toastr',
     'class/app',
     'stats/app',
     'list/app',
@@ -50,7 +53,7 @@ require([
     'question/app',
     'user/app',
     'item/app'
-], function (angular, classApp, statsApp, listApp, termApp, gameApp, questionApp, userApp, itemApp) {
+], function (angular, toastr, classApp, statsApp, listApp, termApp, gameApp, questionApp, userApp, itemApp) {
     'use strict';
 
     angular.element(document).ready(function () {
@@ -65,4 +68,6 @@ require([
             itemApp.name
         ]);
     });
+
+    toastr.options.positionClass = 'toast-bottom-right';
 });

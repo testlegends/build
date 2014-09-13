@@ -8,10 +8,12 @@
 define([
 	'angular',
 	'angularLoadingBar',
+	'common/filters/Gravatar',
 	'class/directives/ClassSidebar',
 	'class/directives/StudentSidebar',
 	'class/directives/AddClassPopup',
 	'class/directives/AddListPopup',
+	'class/directives/AddStudentPopup',
 	'class/directives/InviteCodePopup',
 	'class/directives/JoinClassPopup',
 	'class/directives/StatsPopup',
@@ -22,6 +24,7 @@ define([
 
 	return angular.module('Class', [
 		'chieffancypants.loadingBar',
+		'Common.filters',
 		'Class.directives',
 		'Class.controllers',
         'Class.routes'

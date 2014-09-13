@@ -5,7 +5,7 @@
  * @created     :: 2014/08/21
  */
 
-define(['angular', 'class/Service', 'list/Service', 'user/Service'], function (angular) {
+define(['angular', 'toastr', 'class/Service', 'list/Service', 'user/Service'], function (angular, toastr) {
 	'use strict';
 
 	return angular.module('Class.controllers', ['Class.services', 'List.services', 'User.services'])
@@ -20,11 +20,10 @@ define(['angular', 'class/Service', 'list/Service', 'user/Service'], function (a
 				$('#addListPopup').show();
 			};
 
-			$scope.removeClass = function (id) {
-				classes.removeClass(id, function (err, data) {
-					$scope.classes = $scope.classes.filter(function (classObj) {
-						return classObj.id !== id;
-					});
+			$scope.removeClass = function () {
+				classes.removeClass($scope.classId, function (err, data) {
+					window.location.href = '/';
+					toastr.success('Class deleted successfully');
 				});
 			};
 
@@ -53,6 +52,8 @@ define(['angular', 'class/Service', 'list/Service', 'user/Service'], function (a
 				classes.getLists($scope.classId, function (err, data) {
 					$scope.lists = data;
 				});
+
+				$scope.currUser = users.getCurrentUser();
 
 				$scope.listOrder = 'alpha';
 				$scope.$watch('listOrder', function (value) {

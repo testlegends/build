@@ -5,12 +5,12 @@
  * @created     :: 2014/07/06
  */
 
-define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
+define(['angular', 'common/services/TestLegendsAPI', 'common/services/Auth'], function (angular) {
 	'use strict';
 
 	return angular.module('User.services', ['Common.services'])
 
-		.factory('users', ['TestLegendsAPI', function (TestLegendsAPI) {
+		.factory('users', ['TestLegendsAPI', 'Auth', function (TestLegendsAPI, Auth) {
 			return {
 				getUser: function (id, cb) {
 					TestLegendsAPI.get('/user/' + id).success(function (response) {
@@ -20,6 +20,9 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 							cb(response.data);
 						}
 					});
+				},
+				getCurrentUser: function () {
+					return Auth.user();
 				}
 			};
 		}]);

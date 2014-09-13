@@ -5,7 +5,7 @@
  * @created     :: 2014/08/30
  */
 
-define(['class/directives', 'class/Service', 'user/Service'], function (classDirectives) {
+define(['class/directives', 'toastr', 'class/Service', 'user/Service'], function (classDirectives, toastr) {
     'use strict';
 
     return classDirectives
@@ -22,11 +22,15 @@ define(['class/directives', 'class/Service', 'user/Service'], function (classDir
 
                     $scope.joinClassPopup = function () {
                         classes.findClass($scope.inviteCode, function (err, data) {
-                            $scope.classToJoin = data;
-                            users.getUser(data.meta.userId, function (err, user) {
-                                $scope.classToJoin.classOwner = user;
-                            });
-                            $('#joinClassPopup').show();
+                            if (err) {
+                                toastr.error(err);
+                            } else {
+                                $scope.classToJoin = data;
+                                users.getUser(data.meta.userId, function (err, user) {
+                                    $scope.classToJoin.classOwner = user;
+                                });
+                                $('#joinClassPopup').show();
+                            }
                         });
                     };
 

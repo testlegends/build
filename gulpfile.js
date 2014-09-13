@@ -30,6 +30,7 @@ var cssFiles = {
 	],
 	new: [
 		'assets/js/vendor/angular-loading-bar/build/loading-bar.min.css',
+		'assets/js/vendor/toastr/toastr.min.css',
 		'assets/styles/reset.css',
 		'assets/styles/jquery.nouislider.css',
 		'assets/styles/style.less'

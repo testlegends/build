@@ -49,6 +49,21 @@ define(['class/directives', 'class/Service', 'list/Service'], function (listDire
                     $scope.addListPopupInit = function () {
                         $scope.selectedClassLists = [];
 
+                        $scope.classListOrder = 'alpha';
+                        $scope.$watch('classListOrder', function (value) {
+                            if (!value) { return; }
+
+                            var orders = {
+                                alpha: { predicate: 'title', reverse: false },
+                                alphaReverse: { predicate: 'title', reverse: true },
+                                date: { predicate: 'createdAt', reverse: false },
+                                dateReverse: { predicate: 'createdAt', reverse: true }
+                            };
+
+                            $scope.classListPredicate = orders[value].predicate;
+                            $scope.classListReverse = orders[value].reverse;
+                        });
+
                         // Hack: wait until $scope.lists is ready
                         setTimeout(function(){
                             lists.getLists(function (err, data) {
