@@ -42,7 +42,7 @@
                     <!--div class="select-set">
                         <input type="checkbox" id="select-set-{{ list.id }}" ng-click="selectList(list.id)" />
                         <label for="select-set-{{ list.id }}"><span></span></label>
-                    </div--><div class="delete-set">
+                    </div--><div class="delete-set" ng-if="classOwner.email === currUser.email">
                         <button ng-click="removeList(list.id)"></button>
                     </div>
                 </div>

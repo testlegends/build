@@ -65,6 +65,8 @@ define(['class/directives', 'toastr', 'class/Service', 'user/Service'], function
                             classId: $scope.selectedClass[0],
                             listIds: $scope.selectedList
                         }, function (err, data) {
+                            toastr.success("Lists successfully added to class!");
+
                             $scope.selectedList.forEach(function (lid) {
                                 $('#studySet-' + lid).removeClass('studySetSelected');
                                 $('#select-set-' + lid).prop("checked", false);
