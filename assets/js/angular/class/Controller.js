@@ -5,35 +5,19 @@
  * @created     :: 2014/08/21
  */
 
-define(['angular', 'class/Service'], function (angular) {
+define(['angular', 'class/Service', 'list/Service', 'user/Service'], function (angular) {
 	'use strict';
 
-	return angular.module('Class.controllers', ['Class.services'])
+	return angular.module('Class.controllers', ['Class.services', 'List.services', 'User.services'])
 
-		.controller('ClassController', ['$scope', '$location', '$routeParams', 'classes', 'lists', function ($scope, $location, $routeParams, classes, lists) {
+		.controller('ClassController', ['$scope', '$location', '$routeParams', 'classes', 'lists', 'users', function ($scope, $location, $routeParams, classes, lists, users) {
 
-			$scope.addClass = function () {
-				classes.addClass({
-					name: $scope.newClass.name,
-					desc: $scope.newClass.desc
-				}, function (err, data) {
-					$scope.classes.push(data);
-					$scope.newClass = {};
-				});
+			$scope.viewList = function (id) {
+				window.location.href = '/list/' + id;
 			};
 
-			$scope.addList = function (id) {
-				classes.addList({
-					classId: $scope.classId,
-					listId: id || $scope.newList.id
-				}, function (err, data) {
-					if (err) {
-
-					} else {
-						$scope.lists.push(data);
-						$scope.newList = {};
-					}
-				});
+			$scope.addListPopup = function () {
+				$('#addListPopup').show();
 			};
 
 			$scope.removeClass = function (id) {
@@ -60,6 +44,10 @@ define(['angular', 'class/Service'], function (angular) {
 
 				classes.findClass($scope.classId, function (err, data) {
 					$scope.class = data;
+
+					users.getUser(data.meta.userId, function (err, data) {
+						$scope.classOwner = data;
+					});
 				});
 
 				classes.getLists($scope.classId, function (err, data) {

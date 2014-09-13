@@ -15,16 +15,24 @@ define(['angular', 'common/services/TestLegendsAPI', 'common/services/Auth'], fu
 				findClass: function (id, cb) {
 					TestLegendsAPI
 						.get('/class/' + id)
-						.success(function (data) {
-							cb(null, data.data);
+						.success(function (response) {
+							if (response.status === 'OK') {
+								cb(null, response.data);
+							} else {
+								cb(response.data);
+							}
 						});
 				},
 
 				getClasses: function (cb) {
 					TestLegendsAPI
 						.get('/classes')
-						.success(function (data) {
-							cb(null, data.data);
+						.success(function (response) {
+							if (response.status === 'OK') {
+								cb(null, response.data);
+							} else {
+								cb(response.data);
+							}
 						});
 				},
 
@@ -56,7 +64,9 @@ define(['angular', 'common/services/TestLegendsAPI', 'common/services/Auth'], fu
 					TestLegendsAPI
 						.put('/classes', {
 							name: params.name,
-							desc: params.desc
+							// desc: params.desc,
+							desc: params.name,
+							lists: params.selectedClassList
 						})
 						.success(function (response) {
 							if (response.status === 'OK') {
@@ -67,10 +77,10 @@ define(['angular', 'common/services/TestLegendsAPI', 'common/services/Auth'], fu
 						});
 				},
 
-				addList: function (params, cb) {
+				addLists: function (params, cb) {
 					TestLegendsAPI
 						.put('/class/' + params.classId + '/lists', {
-							listId: params.listId
+							listIds: params.listIds
 						})
 						.success(function (response) {
 							if (response.status === 'OK') {

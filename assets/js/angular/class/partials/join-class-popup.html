@@ -1,0 +1,29 @@
+<div class="popup-block" id="joinClassPopup">
+    <div class="join-popup">
+        <div class="box-join">
+            <div class="title-popup">
+                <h5>You are joining class:</h5>
+            </div>
+            <div class="class_info-join">
+                <div class="icon-class history-icon"></div>
+                <div class="text-class">
+                    <h4>{{ classToJoin.name }}</h4>
+                    <div class="create-user">
+                        <h5>created by</h5>
+                        <a href="#"><h5 class="username">{{ classToJoin.classOwner.name }}</h5></a>
+                    </div>
+                </div>
+            </div>
+            <div class="invite_code-join">
+                <small>Invite code:</small>
+                <small class="invite_code">{{ classToJoin.id }}</small>
+            </div>
+            <div class="okay-popup">
+                <button ng-click="joinClass()"><h4>Join</h4></button>
+            </div>
+            <div class="close-popup">
+                <button ng-click="closePopup('joinClassPopup')"></button>
+            </div>
+        </div>
+    </div>
+</div>

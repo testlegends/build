@@ -5,14 +5,22 @@
  * @created     :: 2014/07/06
  */
 
-define(['angular'], function (angular) {
+define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 	'use strict';
 
-	return angular.module('User.services', [])
+	return angular.module('User.services', ['Common.services'])
 
-		.factory('user', ['$http', function ($http) {
+		.factory('users', ['TestLegendsAPI', function (TestLegendsAPI) {
 			return {
-
+				getUser: function (id, cb) {
+					TestLegendsAPI.get('/user/' + id).success(function (response) {
+						if (response.status === 'OK') {
+							cb(null, response.data);
+						} else {
+							cb(response.data);
+						}
+					});
+				}
 			};
 		}]);
 });

@@ -1,39 +1,52 @@
 <div class="sidebar">
     <div class="toolbox-sidebar">
-        Classes
-        <button class="addClass" ng-click="addClassPopup()" id="addClassBtn">Add Class</button>
-
-        <button class="addToClass" ng-click="addToClass()">Add To Class</button>
-
+        <div class="header-toolbox">
+            <div class="title-header">
+                <h4>Classes</h4>
+            </div>
+            <div class="create-header">
+                <button class="addClass" ng-click="addClassPopup()" id="addClassBtn"><h5>Create new</h5></button>
+            </div>
+            <div class="add-header">
+                <button class="addToClass" ng-click="addToClass()"><h5>Add to</h5></button>
+            </div>
+        </div>
         <div class="divider-toolbox"></div>
 
-        <ul class="addClass">
-            <li ng-repeat="class in classes">
-                <a href="/class/{{ class.id }}">{{ class.name }}</a> | <button ng-click="showInviteCode(class.id)">Invite Code</button>
-            </li>
-        </ul>
+        <div class="classes-toolbox">
+            <ul class="addClass">
+                <li ng-repeat="class in classes">
+                    <a class="class" href="/class/{{ class.id }}" title="{{ class.name }}">
+                        <div class="icon-class other-icon"></div>
+                        <div class="name-class">
+                            <h5>{{ class.name | limitTo: 21 }}</h5>
+                        </div>
+                        <!--div class="notif-class">
+                            <p>555</p>
+                        </div-->
+                    </a>
+                    <!-- <button ng-click="showInviteCode(class.id)">Invite Code</button> -->
+                </li>
+            </ul>
 
-        <ul class="addToClass">
-            <li ng-repeat="class in classes" id="class-{{ class.id }}">
-                <a href="#" ng-click="selectClass(class.id)">{{ class.name }}</a>
-            </li>
-        </ul>
+            <ul class="addToClass">
+                <li ng-repeat="class in classes" id="class-{{ class.id }}" title="{{ class.name }}">
+                    <a class="class" href="#" ng-click="selectClass(class.id)">
+                        <div class="icon-class other-icon"></div>
+                        <div class="name-class">
+                            <h5>{{ class.name | limitTo: 21 }}</h5>
+                        </div>
+                        <!--div class="notif-class">
+                            <p>2</p>
+                        </div-->
+                    </a>
+                </li>
+            </ul>
+        </div>
 
-        <div class="divider-toolbox"></div>
-
-        <div>
-            <input type="text" ng-model="classToJoin" />
-            <button ng-click="joinClass()">Join Class</button>
+        <div class="join-toolbox">
+            <input type="text" ng-model="inviteCode" placeholder="Invite code"/>
+            <button ng-click="joinClassPopup()">Join class</button>
         </div>
     </div>
-
-    <style type="text/css">
-        .addToClass {
-            display: none;
-        }
-        .classSelected {
-            background-color: blue;
-            color: white;
-        }
-    </style>
 </div>

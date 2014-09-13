@@ -16,6 +16,17 @@ define(['class/directives', 'class/Service'], function (classDirectives) {
                 replace: true,
                 templateUrl: '/js/angular/class/partials/student-sidebar.html',
                 controller: ['$scope', function ($scope) {
+                    $scope.inviteCodePopup = function () {
+                        $('#inviteCodePopup').show();
+                    };
+
+                    $scope.statsPopup = function () {
+                        $('#statsPopup').show();
+                    };
+
+                    $scope.closePopup = function (id) {
+                        $('#' + id).hide();
+                    };
 
                     $scope.addStudent = function () {
                         classes.addStudent({

@@ -1,29 +1,16 @@
 <div class="core">
     <div class="content-core">
         <div class="header-content">
-            <div class="title-header">
-                <h3>{{ class.name }}</h3>
+            <div class="set-header">
+                <div class="study-set-header">
+                    <h4>{{ class.name }}</h4>
+                    <h5>created by</h5><a href="#"><h5 class="username">{{ classOwner.name }}</h5></a>
+                </div>
             </div>
             <div class="add_new">
-                <button><h5>Add new</h5></button>
+                <button ng-click="addListPopup()"><h5>Add new</h5></button>
                 <div class="hover-add"> <!-- hidden, add if necessary -->
                     <p>Add new Study Set</p>
-                </div>
-                <div class="menu-add">
-                    <div class="arrow-menu"></div>
-                    <div class="box-menu">
-                        <a href="#" class="blank" ng-click="createList()">
-                            <div class="icon"></div>
-                            <div class="text">
-                                <h5>New blank</h5>
-                            </div>
-                        </a><a href="/import" class="import">
-                            <div class="icon"></div>
-                            <div class="text">
-                                <h5>Import</h5>
-                            </div>
-                        </a>
-                    </div>
                 </div>
             </div>
             <div class="sort-header">
@@ -51,11 +38,11 @@
                     </div>
                 </div>
                 <div class="set-edit">
-                    <div class="select-set">
+                    <!--div class="select-set">
                         <input type="checkbox" id="select-set-{{ list.id }}" ng-click="selectList(list.id)" />
                         <label for="select-set-{{ list.id }}"><span></span></label>
-                    </div><div class="delete-set">
-                        <button ng-click="deleteList(list.id, 'saved')"></button>
+                    </div--><div class="delete-set">
+                        <button ng-click="removeList(list.id)"></button>
                     </div>
                 </div>
             </div>
@@ -74,5 +61,8 @@
 </div>
 
 <student-sidebar></student-sidebar>
+<stats-popup></stats-popup>
+<add-list-popup></add-list-popup>
+<invite-code-popup></invite-code-popup>
 
 <script src="/js/angular/list/partials/js/index.js"></script>

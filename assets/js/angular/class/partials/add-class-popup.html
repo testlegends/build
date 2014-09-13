@@ -1,0 +1,44 @@
+<div class="popup-block" id="addClassPopup">
+    <div class="create-popup">
+        <div class="box-create">
+            <div class="title-popup">
+                <h4>Create a new class</h4>
+            </div>
+            <div class="class_name-create">
+                <input type="text" placeholder="Class name" ng-model="newClass.name" />
+            </div>
+            <div class="library-create">
+                <div class="header-library">
+                    <div class="title-header">
+                        <h5>Select from your Library</h5>
+                    </div>
+                    <div class="sort-header">
+                        <label id="create-sort-label">
+                            <select id="create-sort">
+                                <option value="" selected><p>a-z</p></option> <!-- value="alpha" -->
+                                <option value=""><p>z-a</p></option> <!-- value="alpha-reverse" -->
+                                <option value=""><p>newest</p></option> <!-- value="date" -->
+                                <option value=""><p>oldest</p></option> <!-- value="date-reverse" -->
+                            </select>
+                            <!--::after-->
+                        </label>
+                    </div>
+                </div>
+                <div class="select-library">
+                    <div class="study_set-select" ng-repeat="list in userLists.saved" id="list-{{ list.id }}" ng-click="selectClassList(list.id)">
+                        <div class="icon-set {{ list.category }}-icon"></div>
+                        <div class="name-set">
+                            <h5>{{ list.title }}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="okay-popup">
+                <button ng-click="addClass()"><h4>Save</h4></button>
+            </div>
+            <div class="close-popup">
+                <button ng-click="closePopup('addClassPopup')"></button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -10,5 +10,5 @@ define([
 ], function (angular) {
     'use strict';
 
-    return angular.module('Class.directives', ['Class.services', 'Common.services']);
+    return angular.module('Class.directives', ['Class.services', 'User.services', 'Common.services']);
 });

@@ -5,70 +5,76 @@
  * @created     :: 2014/08/30
  */
 
-define(['class/directives', 'class/Service'], function (listDirectives) {
+define(['class/directives', 'class/Service', 'user/Service'], function (classDirectives) {
     'use strict';
 
-    return listDirectives
+    return classDirectives
 
-        .directive('classSidebar', ['classes', '$window', function (classes, $window) {
+        .directive('classSidebar', ['classes', 'users', '$window', function (classes, users, $window) {
             return {
                 restrict: 'E',
                 replace: true,
                 templateUrl: '/js/angular/class/partials/class-sidebar.html',
                 controller: ['$scope', function ($scope) {
                     $scope.addClassPopup = function () {
-
+                        $('#addClassPopup').show();
                     };
 
-                    $scope.addClass = function () {
-                        classes.addClass($scope.newClass, function (err, data) {
-                            $scope.classes.push(data);
-                            $scope.newClass = {}
+                    $scope.joinClassPopup = function () {
+                        classes.findClass($scope.inviteCode, function (err, data) {
+                            $scope.classToJoin = data;
+                            users.getUser(data.meta.userId, function (err, user) {
+                                $scope.classToJoin.classOwner = user;
+                            });
+                            $('#joinClassPopup').show();
                         });
                     };
 
+                    $scope.closePopup = function (id) {
+                        $('#' + id).hide();
+                    };
+
                     $scope.selectClass = function (id) {
-                        var index = $scope.selectedClass.indexOf(id);
-                        if (index === -1) {
-                            $scope.selectedClass.push(id);
-                            $('#class-' + id).addClass('classSelected');
-                        } else {
-                            $scope.selectedClass.splice(index, 1);
+                        if ($scope.selectedClass[0] === id) {
                             $('#class-' + id).removeClass('classSelected');
+                            $scope.selectedClass = [];
+                        } else {
+                            $('#class-' + $scope.selectedClass[0]).removeClass('classSelected');
+                            $('#class-' + id).addClass('classSelected');
+                            $scope.selectedClass = [id];
                         }
+
+                        // var index = $scope.selectedClass.indexOf(id);
+                        // if (index === -1) {
+                        //     $scope.selectedClass.push(id);
+                        //     $('#class-' + id).addClass('classSelected');
+                        // } else {
+                        //     $scope.selectedClass.splice(index, 1);
+                        //     $('#class-' + id).removeClass('classSelected');
+                        // }
 
                         return false;
                     };
 
                     $scope.addToClass = function () {
-                        $scope.selectedList.forEach(function (listId) {
-                            $scope.selectedClass.forEach(function (classId) {
-                                classes.addList({
-                                    classId: classId,
-                                    listId: listId
-                                }, function (err, data) {
-                                    // TODO: unselect lists and classes, change back to normal class view
-                                });
-                            });
-                        });
-                    };
-
-                    $scope.showInviteCode = function (id) {
-                        $window.alert(id);
-                    };
-
-                    $scope.joinClass = function () {
-                        classes.addStudent({
-                            classId: $scope.classToJoin
+                        classes.addLists({
+                            classId: $scope.selectedClass[0],
+                            listIds: $scope.selectedList
                         }, function (err, data) {
-                            if (err) {
-                                console.log(err);
-                                return;
-                            }
-
-                            classes.findClass($scope.classToJoin, function (err, data) {
-                                $scope.classes.push(data);
+                            $scope.selectedList.forEach(function (lid) {
+                                $('#studySet-' + lid).removeClass('studySetSelected');
+                                $('#select-set-' + lid).prop("checked", false);
                             });
+
+                            $scope.selectedClass.forEach(function (cid) {
+                                $('#class-' + cid).removeClass('classSelected');
+                            });
+
+                            $('.addClass').show();
+                            $('.addToClass').hide();
+
+                            $scope.selectedClass = [];
+                            $scope.selectedList = [];
                         });
                     };
 

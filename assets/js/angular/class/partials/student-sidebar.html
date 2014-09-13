@@ -1,19 +1,39 @@
 <div class="sidebar">
     <div class="toolbox-sidebar">
-        Students
-
-        <ul>
-            <li ng-repeat="student in students">
-                <a href="#">{{ student.name }}</a>
-                <button ng-click="removeStudent(student.id)">Delete</button>
-            </li>
-        </ul>
-
+        <div class="header-toolbox">
+            <div class="title-header">
+                <h4>Students</h4>
+            </div>
+            <div class="invite-header">
+                <button ng-click="inviteCodePopup()"><h5>Invite</h5></button>
+            </div>
+        </div>
         <div class="divider-toolbox"></div>
+        <div class="students-toolbox">
+            <ul>
+                <li ng-repeat="student in students">
+                    <div class="user-student">
+                        <a href="#">
+                            <!--img class="image-user" ng-src="{{ student.avatar }}" /-->
+                            <img class="image-user" src="/images/jeff.png" />
+                            <div class="name-user">
+                                <h5>{{ student.name }}</h5>
+                            </div>
+                        </a>
+                        <div class="leave-user">
+                            <button ng-click="removeStudent(student.id)"></button>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="stats-toolbox">
+            <button ng-click="statsPopup()">See class stats</button>
+        </div>
 
-        <div>
+        <!-- <div>
             <input type="text" ng-model="studentToAdd" />
             <button ng-click="addStudent()">Add Student</button>
-        </div>
+        </div> -->
     </div>
 </div>

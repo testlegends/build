@@ -56,6 +56,7 @@
 
 // @hoverColor: #4C4C4C;
 @highlightColor: #27D6FF;
+@notificationColor: #FF5B00;
 
 @libraryHeaderColor: @green;
 @importHeaderColor: @blue;
@@ -81,12 +82,16 @@
 @hoverAnimation: 0.4s;
 
 @iconSize: 69px;
+@iconSizeSmall: 24px;
 @contentMargin: 2px;
 @set-editSize: 19px;
 @set-editAnimation: 0.2s;
 
 @sidebarWidth: 340px;
 @dividerMargin: 24px;
+
+@smallPopupWidth: 400px;
+@mediumPopupWidth: 500px;
 
 /*************
     MIXINS
@@ -168,6 +173,11 @@
 html {height: 100%; overflow-y: scroll;}
 body {height: 100%; background: @backgroundColor;}
 
+input::-webkit-input-placeholder {color: @fadeTextColor;}
+input:-moz-placeholder {color: @fadeTextColor;}
+input::-moz-placeholder {color: @fadeTextColor;}
+input:-ms-input-placholder {color: @fadeTextColor;}
+
 /*----------------------------font set----------------------------*/
 h1, h1 span, h2, h3, h3 span {font-family: @brandFont; color: @titleTextColor;}
 h1 {font-size: @brandTitleSize; span {font-size: 1.15em;}}
@@ -195,7 +205,7 @@ small {font-size: @smallTextSize;}
     color: @titleTextColor;
     background: rgba(255,190,8,0.95);
     position: fixed;
-    z-index: 30;
+    z-index: 4000;
 
     .container {
         max-width: @maxWidth;
@@ -299,6 +309,7 @@ small {font-size: @smallTextSize;}
 
 /*------------------------------main------------------------------*/
 .main {
+    position: relative;
     max-width: @maxWidth;
     min-width: @minWidth;
     padding: @navbarHeight+@sitePadding 0 0 0;
@@ -343,6 +354,7 @@ small {font-size: @smallTextSize;}
                     }
 
                     .icon-set-header {
+                        margin-right: 15px;
                         cursor: pointer;
 
                         .hover-icon {
@@ -369,7 +381,7 @@ small {font-size: @smallTextSize;}
                             }
 
                             .box-menu {
-                                width: (@iconSize + 10px)*3 + (@dividerMargin / 2.5)*8 + 8px; /* 8px=(div spacing from html)*/
+                                width: (@iconSize + 10px)*3 + (@dividerMargin / 2.5)*8 + 9px; /* 8px=(div spacing from html)*/
                                 padding: @dividerMargin / 2.5;
                                 .borderBox();
 
@@ -429,8 +441,7 @@ small {font-size: @smallTextSize;}
 
                     .study-set-header {
                         height: @iconSize;
-                        width: calc(~"100% - 69px - 19px");
-                        margin-left: 15px;
+                        width: calc(~"100% - 69px - 20px");
                         position: relative;
                         color: white;
 
@@ -454,6 +465,11 @@ small {font-size: @smallTextSize;}
                             position: absolute;
                             bottom: 0;
                             color: rgba(255,255,255,0.7);
+                        }
+
+                        .username {
+                            left: 98px;
+                            text-decoration: underline;
                         }
                     }
 
@@ -879,7 +895,7 @@ small {font-size: @smallTextSize;}
 
         .toolbox-sidebar {
             width: @sidebarWidth;
-            padding: @mainPadding;
+            padding: @mainPadding 0;
             background: white;
             border-radius: @borderRadius;
             position: fixed;
@@ -904,13 +920,15 @@ small {font-size: @smallTextSize;}
             /*----------------------divider-----------------------*/
             .divider-toolbox {
                 height: 2px;
-                width: 100%;
+                width: calc(~"100% - 50px");
                 background: @backgroundColor;
-                margin: @dividerMargin 0 @dividerMargin / 2;
+                margin: @dividerMargin auto @dividerMargin / 1.4;
             }
 
             /*----------------------options-----------------------*/
             .options-toolbox {
+                padding: 0 @mainPadding;
+
                 .game-options {
                     margin: @dividerMargin auto 0;
                     width: 85%;
@@ -925,10 +943,12 @@ small {font-size: @smallTextSize;}
                 }
 
                 .set_icon-options {
+                    padding-left: 3px;
+
                     .icon-set {
                         width: @iconSize + 10px;
                         height: @iconSize + 20px + @mainTextSize;
-                        margin: @dividerMargin @dividerMargin / 3.2 0;
+                        margin: @dividerMargin 8px 0;
                         padding-top: 5px;
                         text-align: center;
                         background: transparent;
@@ -962,6 +982,191 @@ small {font-size: @smallTextSize;}
                     margin: 0 auto;
                 }
             }
+
+            /*----------------------classes-----------------------*/
+            .header-toolbox {
+                padding: 0 @mainPadding;
+                position: relative;
+
+                div {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                button {
+                    padding: 8px 15px;
+                    background: @blue;
+                    border: none;
+                    color: @titleTextColor;
+                    right: @mainPadding;
+                    .button();
+                    .centering(38px);
+
+                    &:hover {
+                        .scale(1.08);
+                    }
+                }
+            }
+
+            .classes-toolbox {
+                height: 350px;
+                overflow: scroll;
+
+                .class {
+                    padding: 8px @mainPadding;
+                    position: relative;
+                    display: block;
+
+                    div {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+
+                    .icon-class {
+                        height: @iconSizeSmall !important;
+                        width: @iconSizeSmall !important;
+                    }
+
+                    .name-class {
+                        margin-left: 5px;
+                    }
+
+                    .notif-class {
+                        padding: 4px 6px 2px;
+                        border: 1px solid white;
+                        border-radius: @buttonRadius;
+                        background: @notificationColor;
+                        color: @titleTextColor;
+                        right: @mainPadding;
+                        .centering(14px);
+                    }
+
+                    &:hover {
+                        background: @blue;
+                        color: @titleTextColor;
+
+                        .icon-class {
+                            .scale(1.2);
+                        }
+                    }
+                }
+
+                .classSelected {
+                    background: @blue;
+                    color: @titleTextColor;
+                }
+            }
+
+            .addToClass {
+                display: none;
+            }
+
+            .join-toolbox {
+                padding: @dividerMargin / 1.4 @mainPadding 0;
+
+                input {
+                    width: 145px;
+                    padding: 5px 13px;
+                    border: 2px solid @backgroundColor;
+                    border-radius: @buttonRadius;
+                    outline: none;
+                }
+
+                button {
+                    padding: 5px 13px;
+                    border: 2px solid @blue;
+                    background: white;
+                    color: @blue;
+                    float: right;
+                    .button();
+
+                    &:hover {
+                        background: #F3FCFF;
+                        .scale(1.08);
+                    }
+                }
+            }
+
+            .students-toolbox {
+                margin: 0 @mainPadding;
+                height: 350px;
+                overflow: scroll;
+
+                .user-student {
+                    margin: 8px 0;
+                    position: relative;
+
+                    img, div {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+
+                    img {
+                        height: 40px;
+                        width: 40px;
+                        border-radius: @buttonRadius;
+                    }
+
+                    a:hover {
+                        img {
+                            .scale(1.08);
+                        }
+
+                        .name-user {
+                            text-decoration: underline;
+                        }
+                    }
+
+                    .name-user {
+                        margin-left: 5px;
+                        color: @blue;
+                    }
+
+                    .leave-user {
+                        right: 0;
+                        .centering(19px);
+                        opacity: 0;
+
+                        button {
+                            .imageBackground("../images/delete.png", @set-editSize, @set-editSize);
+                            border: none;
+                            background-color: transparent;
+                            cursor: pointer;
+                            outline: none;
+                        }
+
+                        &:hover { /* want to make this a mixin - @scaleID */
+                            button {
+                                .scale(1.1);
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        .leave-user {
+                            .animate(delete, @set-editAnimation);
+                        }
+                    }
+                }
+            }
+
+            .stats-toolbox {
+                padding: @dividerMargin / 1.4 @mainPadding 0;
+                text-align: center;
+
+                button {
+                    padding: 5px 13px;
+                    border: 2px solid @blue;
+                    background: white;
+                    color: @blue;
+                    .button();
+
+                    &:hover {
+                        background: #F3FCFF;
+                        .scale(1.08);
+                    }
+                }
+            }
         }
     }
 
@@ -969,6 +1174,278 @@ small {font-size: @smallTextSize;}
         opacity: 0.5;
         z-index: -1;
         position: relative;
+    }
+}
+
+/*-----------------------------popups-----------------------------*/
+.popup-block {
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.05);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.create-popup {
+    width: 100%;
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    z-index: 3000;
+    .centering(400px);
+
+    .box-create {
+        width: @mediumPopupWidth;
+        padding: 21px @mainPadding;
+        border-radius: @borderRadius;
+        background: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        margin: 0 auto;
+        position: relative;
+
+        .class_name-create {
+            margin: @mainPadding / 2 0;
+
+            input {
+                width: calc(~"100% - 30px");
+                padding: 5px 13px;
+                border: 2px solid @backgroundColor;
+                border-radius: @buttonRadius;
+                outline: none;
+            }
+        }
+
+        .library-create {
+            margin: @mainPadding / 1.5 0 @mainPadding / 2;
+
+            .header-library {
+                position: relative;
+
+                div {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                .title-header {
+                    color: @blue;
+                }
+
+                .sort-header {
+                    right: 0;
+                    .centering(30px);
+
+                    #create-sort-label {
+                        position: relative;
+
+                        &::after {
+                            content:"";
+                            background-image: url("../images/drop-arrow-blue.png");
+                            background-size: contain;
+                            width: 13px;
+                            .centering(8px);
+                            top: 3px;
+                            right: 13px;
+                            pointer-events: none;
+                        }
+                    }
+
+                    #create-sort {
+                        color: @blue;
+                        border: 2px solid @blue;
+                        background: white;
+                        padding: 3px 35px 3px 15px;
+                        .button();
+                    }
+
+                    &:hover { /* want to make this a mixin - @scaleID */
+                        #create-sort-label::after{
+                            .scale(1.3);
+                        }
+                    }
+                }
+            }
+
+            .select-library {
+                height: 180px;
+                padding: @mainPadding / 5 0;
+                margin: @mainPadding / 2.5 0 0;
+                border: 2px solid @backgroundColor;
+                border-radius: @borderRadius;
+                overflow: scroll;
+
+                .study_set-select {
+                    padding: @mainPadding / 3 @mainPadding / 2;
+                    cursor: pointer;
+
+                    div {
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+
+                    .icon-set {
+                        height: @iconSizeSmall;
+                        width: @iconSizeSmall;
+                    }
+
+                    .name-set {
+                        margin-left: 5px;
+                    }
+
+                    &:hover {
+                        background: @blue;
+                        color: @titleTextColor;
+
+                        .icon-set {
+                            .scale(1.2);
+                        }
+                    }
+                }
+
+                .classListSelected {
+                    background: @blue;
+                    color: @titleTextColor;
+                }
+            }
+        }
+    }
+}
+
+.join-popup {
+    width: 100%;
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    z-index: 3000;
+    .centering(200px);
+
+    .box-join {
+        width: @smallPopupWidth;
+        padding: 21px @mainPadding;
+        border-radius: @borderRadius;
+        background: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        margin: 0 auto;
+        position: relative;
+
+        .class_info-join {
+            margin: @mainPadding / 1.5 0;
+
+            div {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .text-class {
+                margin-left: 5px;
+                width: calc(~"100% - 69px - 5px - 10px");
+                height: @iconSize;
+                position: relative;
+
+                h4 {
+                    height: @setTitleSize * 2;
+                    overflow: hidden;
+                }
+
+                .create-user {
+                    position: absolute;
+                    bottom: 0;
+
+                    h5 {
+                        color: @secondaryTextColor;
+                        display: inline-block;
+                        vertical-align: middle;
+                    }
+
+                    .username {
+                        color: @blue;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        .invite_code-join {
+            color: @secondaryTextColor;
+            position: absolute;
+            bottom: 21px;
+        }
+    }
+}
+
+.new_set-popup {
+    .centering(355px);
+}
+
+.invite-popup {
+    width: 100%;
+    position: fixed !important;
+    top: 0;
+    right: 0;
+    z-index: 3000;
+    .centering(200px);
+
+    .box-invite {
+        width: @smallPopupWidth;
+        padding: 21px @mainPadding;
+        border-radius: @borderRadius;
+        background: white;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        margin: 0 auto;
+        position: relative;
+
+        .code-invite {
+            height: @iconSize;
+            margin: @mainPadding / 1.5 0;
+            position: relative;
+
+            h4 {
+                text-align: center;
+                width: 100%;
+                .centering(24px);
+            }
+        }
+    }
+}
+
+.title-popup {
+    color: @blue;
+}
+
+.okay-popup {
+    text-align: right;
+
+    button {
+        padding: 5px 20px;
+        color: @titleTextColor;
+        background: @blue;
+        border: none;
+        .button();
+
+        &:hover {
+            .scale(1.1);
+        }
+    }
+}
+
+.close-popup {
+    right: @mainPadding / 2;
+    top: @mainPadding / 2;
+    position: absolute;
+
+    button {
+        .imageBackground("../images/delete.png", @set-editSize, @set-editSize);
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        outline: none;
+    }
+
+    &:hover { /* want to make this a mixin - @scaleID */
+        button {
+            .scale(1.1);
+        }
     }
 }
 

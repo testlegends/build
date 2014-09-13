@@ -5,12 +5,12 @@
  * @created     :: 2014/07/06
  */
 
-define(['angular', 'user/Service', 'common/services/Auth'], function (angular) {
+define(['angular', 'common/services/Auth'], function (angular) {
 	'use strict';
 
-	return angular.module('User.controllers', ['User.services', 'Common.services'])
+	return angular.module('User.controllers', ['Common.services'])
 
-		.controller('UserController', ['$scope', '$route', 'user', 'Auth', function ($scope, $route, user, Auth) {
+		.controller('UserController', ['$scope', '$route', 'Auth', function ($scope, $route, Auth) {
 
 			$scope.login = function () {
 				if (Auth.user()) {

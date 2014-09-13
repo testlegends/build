@@ -10,6 +10,11 @@ define([
 	'angularLoadingBar',
 	'class/directives/ClassSidebar',
 	'class/directives/StudentSidebar',
+	'class/directives/AddClassPopup',
+	'class/directives/AddListPopup',
+	'class/directives/InviteCodePopup',
+	'class/directives/JoinClassPopup',
+	'class/directives/StatsPopup',
 	'class/Controller',
     'class/Routes'
 ], function (angular) {
