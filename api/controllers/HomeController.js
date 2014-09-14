@@ -46,6 +46,7 @@ module.exports = (function(){
         res.cookie('access_token', req.user.accessToken, { maxAge: sixHours });
         res.cookie('user', JSON.stringify({
             id: req.user.id,
+            name: req.user.name,
             role: req.user.role,
             email: req.user.email
         }), { maxAge: sixHours });

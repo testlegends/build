@@ -5,12 +5,12 @@
  * @created     :: 2014/09/13
  */
 
-define(['class/directives', 'toastr', 'class/Service', 'common/services/TestLegendsURL'], function (listDirectives, toastr) {
+define(['class/directives', 'toastr', 'class/Service', 'user/Service', 'common/services/TestLegendsURL'], function (listDirectives, toastr) {
     'use strict';
 
     return listDirectives
 
-        .directive('addStudentPopup', ['classes', 'TestLegendsURL', '$http', function (classes, TestLegendsURL, $http) {
+        .directive('addStudentPopup', ['classes', 'users', 'TestLegendsURL', '$http', function (classes, users, TestLegendsURL, $http) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -25,10 +25,21 @@ define(['class/directives', 'toastr', 'class/Service', 'common/services/TestLege
 
                             if (err) {
                                 $http.post(TestLegendsURL.home + '/invite', {
-                                    classId: $scope.classId,
-                                    email: email
+                                    email: email,
+                                    classInfo: {
+                                        id: $scope.classId,
+                                        name: $scope.class.name,
+                                        owner: users.getCurrentUser()
+                                    }
                                 }).success(function (response) {
                                     toastr.warning('Sutdent not registered.  An invite e-mail has been sent.');
+
+                                    classes.addStudent({
+                                        classId: $scope.classId,
+                                        studentEmail: response.data.email
+                                    }, function (err, data) {
+                                        $scope.students.push(data);
+                                    });
                                 });
                             } else {
                                 $scope.students.push(data);
