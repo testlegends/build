@@ -4,10 +4,10 @@
             <div class="set-header">
                 <div class="icon-set-header">
                     <div class="{{ list.category }}-icon icon-image"></div>
-                    <div class="hover-icon">
+                    <div class="hover-icon" ng-if="currUser.id === list.meta.userId">
                         <p>change icon</p>
                     </div>
-                    <div class="menu-icon">
+                    <div class="menu-icon" ng-if="currUser.id === list.meta.userId">
                         <div class="arrow-menu"></div>
                         <div class="box-menu">
                             <button class="icon-set" ng-click="changeCategory('geography')">
@@ -43,10 +43,16 @@
                     <h5>{{ list.terms.length }} terms</h5>
                 </div>
             </div>
-            <div class="add_new">
+            <div class="add_new" ng-if="currUser.id === list.meta.userId">
                 <button ng-click="addTerm()"><h5>Add new</h5></button>
                 <div class="hover-add"> <!-- hidden, add if necessary -->
                     <p>Add new Term</p>
+                </div>
+            </div>
+            <div class="add_new" ng-if="currUser.id !== list.meta.userId">
+                <button ng-click="saveList()"><h5>Save StudySet</h5></button>
+                <div class="hover-add"> <!-- hidden, add if necessary -->
+                    <p>Save the StudySet to library</p>
                 </div>
             </div>
             <div class="sort-header">
@@ -79,7 +85,7 @@
                     </div>
                 </div>
                 <div class="set-edit">
-                    <div class="delete-set">
+                    <div class="delete-set" ng-if="currUser.id === list.meta.userId">
                         <button ng-click="removeTerm(term.term)"></button>
                     </div>
                 </div>

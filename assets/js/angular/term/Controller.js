@@ -5,12 +5,12 @@
  * @created     :: 2014/07/06
  */
 
-define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'common/services/Quizlet', 'jqueryAutosize'], function (angular) {
+define(['angular', 'term/Service', 'list/Service', 'user/Service', 'common/services/Quizlet', 'jqueryAutosize'], function (angular) {
 	'use strict';
 
-	return angular.module('Term.controllers', ['Term.services', 'List.services', 'Common.services'])
+	return angular.module('Term.controllers', ['Term.services', 'List.services', 'User.services', 'Common.services'])
 
-		.controller('TermController', ['$scope', '$routeParams', 'terms', 'lists', 'Auth', 'Quizlet', function ($scope, $routeParams, terms, lists, Auth, Quizlet) {
+		.controller('TermController', ['$scope', '$routeParams', 'terms', 'lists', 'users', 'Quizlet', function ($scope, $routeParams, terms, lists, users, Quizlet) {
 
 			$scope.save = function () {
 				lists.save({
@@ -19,10 +19,22 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 					desc: $scope.list.desc,
 					category: $scope.list.category,
 					terms: $scope.list.terms
-				}, function (err, response) {
+				}, function (err, data) {
 					if (!err) {
 						// TODO: show saved msg
 					}
+				});
+			};
+
+			$scope.saveList = function () {
+				lists.create({
+					title: $scope.list.title,
+					desc: $scope.list.desc,
+					category: $scope.list.category,
+					terms: $scope.list.terms,
+					oldListId: $scope.list.id
+				}, function (err, data) {
+					window.location.href = '/list/' + data.id;
 				});
 			};
 
@@ -35,8 +47,10 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 			};
 
 			$scope.editTerm = function ($event) {
-				$($event.currentTarget).siblings('textarea').show().focus();
-				$($event.currentTarget).hide();
+				if ($scope.currUser.id === $scope.listId) {
+					$($event.currentTarget).siblings('textarea').show().focus();
+					$($event.currentTarget).hide();
+				}
 			};
 
 			$scope.doneEditTerm = function ($event) {
@@ -53,8 +67,10 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 			};
 
 			$scope.editTitle = function ($event) {
-				$($event.currentTarget).siblings('textarea').show().focus();
-				$($event.currentTarget).hide();
+				if ($scope.currUser.id === $scope.listId) {
+					$($event.currentTarget).siblings('textarea').show().focus();
+					$($event.currentTarget).hide();
+				}
 			};
 
 			$scope.doneEditTitle = function ($event) {
@@ -69,15 +85,15 @@ define(['angular', 'term/Service', 'list/Service', 'common/services/Auth', 'comm
 			$scope.init = function () {
 				$scope.listId = $routeParams.listId;
 
+				$scope.currUser = users.getCurrentUser();
+
 				if (Quizlet.isQuizlet($scope.listId)) {
 					Quizlet.getSet($scope.listId, function (err, data) {
 						$scope.list = data;
-						$scope.list.isOwner = false;
 					});
 				} else {
 					lists.getList($scope.listId, function (err, data) {
 						$scope.list = data;
-						$scope.list.isOwner = data.meta.userId === Auth.user().id;
 					});
 
 					$scope.$watch('list', _.debounce(function (newValue, oldValue) {
