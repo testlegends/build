@@ -20,7 +20,7 @@ define(['common/services'], function (commonServices) {
             api: 'https://api.testlegends.com',
             app: 'https://app.testlegends.com',
             build: 'https://build.testlegends.com',
-            home: 'https://testlegends.com',
+            home: 'https://www.testlegends.com',
             mobile: 'https://m.testlegends.com'
         });
 });

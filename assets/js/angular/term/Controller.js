@@ -47,7 +47,7 @@ define(['angular', 'term/Service', 'list/Service', 'user/Service', 'common/servi
 			};
 
 			$scope.editTerm = function ($event) {
-				if ($scope.currUser.id === $scope.listId) {
+				if ($scope.currUser.id === $scope.list.meta.userId) {
 					$($event.currentTarget).siblings('textarea').show().focus();
 					$($event.currentTarget).hide();
 				}
@@ -67,7 +67,7 @@ define(['angular', 'term/Service', 'list/Service', 'user/Service', 'common/servi
 			};
 
 			$scope.editTitle = function ($event) {
-				if ($scope.currUser.id === $scope.listId) {
+				if ($scope.currUser.id === $scope.list.meta.userId) {
 					$($event.currentTarget).siblings('textarea').show().focus();
 					$($event.currentTarget).hide();
 				}
