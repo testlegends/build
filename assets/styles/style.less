@@ -1093,7 +1093,7 @@ small {font-size: @smallTextSize;}
                 overflow: scroll;
 
                 .user-student {
-                    margin: 8px 0;
+                    margin: 8px 2px 0 2px;
                     position: relative;
 
                     img, div {
@@ -1384,10 +1384,10 @@ small {font-size: @smallTextSize;}
     top: 0;
     right: 0;
     z-index: 3000;
-    .centering(200px);
+    .centering(195px);
 
     .box-invite {
-        width: @smallPopupWidth;
+        width: @mediumPopupWidth;
         padding: 21px @mainPadding;
         border-radius: @borderRadius;
         background: white;
@@ -1395,15 +1395,24 @@ small {font-size: @smallTextSize;}
         margin: 0 auto;
         position: relative;
 
-        .code-invite {
-            height: @iconSize;
-            margin: @mainPadding / 1.5 0;
-            position: relative;
+        .email-invite {
+            margin: @mainPadding / 2 0;
 
-            h4 {
-                text-align: center;
-                width: 100%;
-                .centering(24px);
+            input {
+                width: calc(~"100% - 30px");
+                padding: 5px 13px;
+                border: 2px solid @backgroundColor;
+                border-radius: @buttonRadius;
+                outline: none;
+            }
+        }
+
+        .code-invite {
+            margin-bottom: @mainPadding / 2;
+
+            h5 {
+                display: inline-block;
+                margin-right: 5px;
             }
         }
     }
@@ -1480,4 +1489,19 @@ small {font-size: @smallTextSize;}
 
 .other-background {
     background: @green !important;
+}
+
+/*---------------------temporary--------------------------------*/
+.deleteClassBtn {
+    background-color: #e91e63;
+    border: 1px white solid;
+    padding: 5px 13px;
+    color: white;
+    font-size: 0.4em;
+    vertical-align: top;
+    .button();
+
+    &:hover {
+        .scale(1.08);
+    }
 }

@@ -16,8 +16,8 @@ define(['class/directives', 'class/Service', 'user/Service'], function (classDir
                 replace: true,
                 templateUrl: '/js/angular/class/partials/student-sidebar.html',
                 controller: ['$scope', function ($scope) {
-                    $scope.inviteCodePopup = function () {
-                        $('#inviteCodePopup').show();
+                    $scope.addStudentPopup = function () {
+                        $('#addStudentPopup').show();
                     };
 
                     $scope.statsPopup = function () {
@@ -26,15 +26,6 @@ define(['class/directives', 'class/Service', 'user/Service'], function (classDir
 
                     $scope.closePopup = function (id) {
                         $('#' + id).hide();
-                    };
-
-                    $scope.addStudent = function () {
-                        classes.addStudent({
-                            classId: $scope.classId,
-                            studentEmail: $scope.studentToAdd
-                        }, function (err, data) {
-                            $scope.students.push(data);
-                        });
                     };
 
                     $scope.removeStudent = function (id) {

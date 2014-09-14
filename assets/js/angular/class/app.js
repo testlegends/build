@@ -14,7 +14,6 @@ define([
 	'class/directives/AddClassPopup',
 	'class/directives/AddListPopup',
 	'class/directives/AddStudentPopup',
-	'class/directives/InviteCodePopup',
 	'class/directives/JoinClassPopup',
 	'class/directives/StatsPopup',
 	'class/Controller',

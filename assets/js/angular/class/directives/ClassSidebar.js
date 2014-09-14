@@ -10,7 +10,7 @@ define(['class/directives', 'toastr', 'class/Service', 'user/Service'], function
 
     return classDirectives
 
-        .directive('classSidebar', ['classes', 'users', '$window', function (classes, users, $window) {
+        .directive('classSidebar', ['classes', 'users', function (classes, users) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -61,11 +61,16 @@ define(['class/directives', 'toastr', 'class/Service', 'user/Service'], function
                     };
 
                     $scope.addToClass = function () {
+                        if ($scope.selectedClass.length === 0) {
+                            toastr.error('You need to create and select one class to add to.');
+                            return false;
+                        }
+
                         classes.addLists({
                             classId: $scope.selectedClass[0],
                             listIds: $scope.selectedList
                         }, function (err, data) {
-                            toastr.success("Lists successfully added to class!");
+                            toastr.success("Study Sets successfully added to class!");
 
                             $scope.selectedList.forEach(function (lid) {
                                 $('#studySet-' + lid).removeClass('studySetSelected');

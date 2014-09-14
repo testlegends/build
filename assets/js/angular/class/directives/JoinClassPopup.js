@@ -35,8 +35,17 @@ define(['class/directives', 'class/Service'], function (listDirectives) {
                         });
                     };
                 }],
-                link: function (scope, elem, attrs) {
-
+                link: function (scope) {
+                    $(document).keyup(function(e){
+                        if (e.which === 27) { // ESC
+                            $('.popup-block').hide();
+                        }
+                    }).mousedown(function(e){
+                        var clicked = $(e.target);
+                        if (!clicked.hasClass('box') && !clicked.parents().hasClass('box')) {
+                            $('.popup-block').hide();
+                        }
+                    });
                 }
             };
         }]);
