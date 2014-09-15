@@ -3,6 +3,7 @@
         <div class="box box-invite">
             <div class="title-popup">
                 <h4 ng-if="classOwner.email === currUser.email">Add student to class</h4>
+                <h4 ng-if="classOwner.email !== currUser.email">Invite Code</h4>
             </div>
 
             <div class="email-invite" ng-if="classOwner.email === currUser.email">
@@ -10,7 +11,8 @@
             </div>
 
             <div class="code-invite">
-                <h5>Invite Code: </h5><h5>{{ classId }}</h5>
+                <h5 ng-if="classOwner.email === currUser.email">Invite Code: {{ classId }}</h5>
+                <h4 ng-if="classOwner.email !== currUser.email">{{ classId }}</h4>
             </div>
 
             <div class="okay-popup" ng-if="classOwner.email === currUser.email">

@@ -43,10 +43,10 @@
                     <div class="arrow-menu"></div>
                     <div class="box-menu">
                         <ul>
-                            <!-- <li id="profile-user">
-                                <a href="#">Your Profile</a>
+                            <li id="profile-user">
+                                <a href="<%- process.env.TESTLEGENDS_OAUTH_SERVER_URL %>/user/profile" target="_blank">Your Profile</a>
                             </li>
-                            <li id="settings-user">
+                            <!--li id="settings-user">
                                 <a href="#">Settings</a>
                             </li> -->
                             <li id="logout-user">
@@ -62,5 +62,6 @@
     <div class="main">
         <%- body %>
     </div>
+    <%- partial('../partials/uservoice') %>
 </body>
 </html>
