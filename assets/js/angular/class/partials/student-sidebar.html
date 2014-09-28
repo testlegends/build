@@ -3,7 +3,7 @@
         <div class="header-toolbox">
             <div class="title-header">
                 <h4 ng-if="classOwner.email === currUser.email">Students</h4>
-                <h4 ng-if="classOwner.email !== currUser.email">Class Mates</h4>
+                <h4 ng-if="classOwner.email !== currUser.email">Classmates</h4>
             </div>
             <div class="invite-header">
                 <button ng-click="addStudentPopup()"><h5>Invite</h5></button>
@@ -26,6 +26,15 @@
                     </div>
                 </li>
             </ul>
+
+            <div class="placeholder-toolbox">
+                <div class="title">
+                    <h5>These are your students</h5>
+                </div>
+                <div class="text">
+                    <p>Invite more students to study this class together</p>
+                </div>
+            </div>
         </div>
         <div class="stats-toolbox">
             <button ng-click="statsPopup()">See class stats</button>

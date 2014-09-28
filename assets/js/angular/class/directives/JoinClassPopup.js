@@ -1,14 +1,14 @@
 /**
- * JoinClassPopup Directives
+ * JoinClassPopup Directive
  *
  * @author      :: Jeff Lee
  * @created     :: 2014/09/04
  */
 
-define(['class/directives', 'class/Service'], function (listDirectives) {
+define(['class/directives', 'class/Service'], function (classDirectives) {
     'use strict';
 
-    return listDirectives
+    return classDirectives
 
         .directive('joinClassPopup', ['classes', function (classes) {
             return {

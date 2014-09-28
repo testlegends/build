@@ -46,7 +46,7 @@ define(['list/directives', 'list/Service', 'common/services/Quizlet'], function 
                             oldListId: list.id
                         }, function (err, response) {
                             if (!err) {
-                                window.location.href = "/list/" + response.id;
+                                window.location.href = "/";
                             }
                         });
                     };

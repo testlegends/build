@@ -1,14 +1,14 @@
 /**
- * StatsPopup Directives
+ * StatsPopup Directive
  *
  * @author      :: Jeff Lee
  * @created     :: 2014/09/04
  */
 
-define(['class/directives', 'class/Service'], function (listDirectives) {
+define(['class/directives', 'class/Service'], function (classDirectives) {
     'use strict';
 
-    return listDirectives
+    return classDirectives
 
         .directive('statsPopup', ['classes', function (classes) {
             return {
@@ -16,7 +16,9 @@ define(['class/directives', 'class/Service'], function (listDirectives) {
                 replace: true,
                 templateUrl: '/js/angular/class/partials/stats-popup.html',
                 controller: ['$scope', function ($scope) {
-
+                    classes.getClassStats($scope.classId, function (err, data) {
+                        $scope.classStats = data;
+                    });
                 }],
                 link: function (scope) {
                     $(document).keyup(function(e){

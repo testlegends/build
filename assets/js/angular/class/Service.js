@@ -60,6 +60,18 @@ define(['angular', 'common/services/TestLegendsAPI', 'common/services/Auth'], fu
 						});
 				},
 
+				getClassStats: function (classId, cb) {
+					TestLegendsAPI
+						.get('/stats/class/' + classId)
+						.success(function (response) {
+							if (response.status === 'OK') {
+								cb(null, response.data);
+							} else {
+								cb(response.data);
+							}
+						});
+				},
+
 				addClass: function (params, cb) {
 					TestLegendsAPI
 						.put('/classes', {

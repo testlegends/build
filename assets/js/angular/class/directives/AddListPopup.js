@@ -1,14 +1,14 @@
 /**
- * AddListPopup Directives
+ * AddListPopup Directive
  *
  * @author      :: Jeff Lee
  * @created     :: 2014/09/04
  */
 
-define(['class/directives', 'class/Service', 'list/Service'], function (listDirectives) {
+define(['class/directives', 'class/Service', 'list/Service'], function (classDirectives) {
     'use strict';
 
-    return listDirectives
+    return classDirectives
 
         .directive('addListPopup', ['classes', 'lists', function (classes, lists) {
             return {

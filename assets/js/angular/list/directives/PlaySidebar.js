@@ -69,7 +69,7 @@ define(['list/directives', 'list/Service', 'common/services/TestLegendsURL', 'jq
                         fgColor: '#FFDA00',
                         bgColor: '#E5E5E5',
                         inputColor: '#8F8F8F',
-                        // font: '',
+                        font: 'Varela Round',
                         // fontWeight: '',
                         draw: function () {
                             var c = this.g;

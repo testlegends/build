@@ -45,6 +45,8 @@ a {
 }
 input, select, textarea {
     -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     vertical-align: middle;
     font-family: Varela Round;
     font-size: 100%;

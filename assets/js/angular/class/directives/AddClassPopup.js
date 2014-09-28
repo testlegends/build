@@ -1,14 +1,14 @@
 /**
- * AddClassPopup Directives
+ * AddClassPopup Directive
  *
  * @author      :: Jeff Lee
  * @created     :: 2014/09/05
  */
 
-define(['class/directives', 'toastr', 'class/Service'], function (listDirectives, toastr) {
+define(['class/directives', 'toastr', 'class/Service'], function (classDirectives, toastr) {
     'use strict';
 
-    return listDirectives
+    return classDirectives
 
         .directive('addClassPopup', ['classes', function (classes) {
             return {

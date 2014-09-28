@@ -1,5 +1,5 @@
 /**
- * ClassSidebar Directives
+ * ClassSidebar Directive
  *
  * @author      :: Jeff Lee
  * @created     :: 2014/08/30

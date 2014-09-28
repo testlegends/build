@@ -1,14 +1,14 @@
 /**
- * AddStudentPopup Directives
+ * AddStudentPopup Directive
  *
  * @author      :: Jeff Lee
  * @created     :: 2014/09/13
  */
 
-define(['class/directives', 'toastr', 'class/Service', 'user/Service', 'common/services/TestLegendsURL'], function (listDirectives, toastr) {
+define(['class/directives', 'toastr', 'class/Service', 'user/Service', 'common/services/TestLegendsURL'], function (classDirectives, toastr) {
     'use strict';
 
-    return listDirectives
+    return classDirectives
 
         .directive('addStudentPopup', ['classes', 'users', 'TestLegendsURL', '$http', function (classes, users, TestLegendsURL, $http) {
             return {

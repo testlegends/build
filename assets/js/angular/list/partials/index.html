@@ -5,7 +5,7 @@
                 <h3><span>L</span>ibrary</h3>
             </div>
             <div class="add_new">
-                <button><h5>Add new</h5></button>
+                <button><h5>New Study Set</h5></button>
                 <div class="hover-add"> <!-- hidden, add if necessary -->
                     <p>Add new Study Set</p>
                 </div>
@@ -27,8 +27,8 @@
                 </div>
             </div>
             <div class="sort-header">
-                <label id="list-sort-label">
-                    <select id="list-sort" ng-model="listOrder">
+                <label id="sort-label">
+                    <select id="sort" ng-model="listOrder">
                         <option value="alpha" selected><p>a-z</p></option>
                         <option value="alphaReverse"><p>z-a</p></option>
                         <option value="date"><p>oldest</p></option>
@@ -76,5 +76,6 @@
 <class-sidebar></class-sidebar>
 <add-class-popup></add-class-popup>
 <join-class-popup></join-class-popup>
+<stats-popup></stats-popup>
 
 <script src="/js/angular/list/partials/js/index.js"></script>

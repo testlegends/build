@@ -1,11 +1,94 @@
 <div class="popup-block" id="statsPopup">
-    <div class="new_set-popup create-popup">
-        <div class="box box-create">
-            <div class="title-popup">
-                <h4>Class Stats Coming Soon...</h4>
-            </div>
-            <div class="close-popup">
-                <button ng-click="closePopup('statsPopup')"></button>
+    <div class="stats-popup">
+        <div class="stats-centering">
+            <div class="box box-stats">
+                <div class="title-stats">
+                    <h4>{{ class.name }} stats</h4>
+                </div>
+
+                <br /><br />
+                <!--div class="class-stats">
+                    <h5>For</h5>
+                    <div class="select-class">
+                        <label id="sort-label">
+                            <select id="sort">
+                                <option value="class" selected><h5>All Study Sets</h5></option>
+                                <option value="set 1"><h5>Study Set 1</h5></option>
+                                <option value="set 2"><h5>Study Set 2</h5></option>
+                                <option value="set 3"><h5>Study Set 3</h5></option>
+                            </select>
+                        </label>
+                    </div>
+                </div-->
+
+                <div class="metric_box-stats">
+                    <div class="score-metric">
+                        <div class="title-metric">
+                            <h5>Average score</h5>
+                        </div>
+                        <div class="container-metric">
+                            <div class="chart-container">
+                                <!-- <div class="center-chart"></div> -->
+                                <img ng-src="https://chart.googleapis.com/chart?cht=pc&chp=4.7&chs=120x120&chd=t:{{ classStats.totalGotRight / classStats.totalQuestions * 100 | number: 2 }},100|{{ classStats.totalQuestions / (classStats.totalLists * 8) * 100 | number: 2 }},100" />
+                                <!-- <piechart
+                                    inner="{{ classStats.totalGotRight / classStats.totalQuestions * 100 | number: 2 }}"
+                                    outer="{{ classStats.totalQuestions / (classStats.totalLists * 8) * 100 | number: 2 }}">
+                                </piechart> -->
+                            </div>
+                            <div class="info-container">
+                                <div class="primary-info">
+                                    <h4>{{ classStats.totalGotRight / classStats.totalQuestions * 100 | number: 2 }}%</h4>
+                                </div>
+                                <div class="secondary-info">
+                                    <h5>{{ classStats.totalQuestions / (classStats.totalLists * 8) * 100 | number: 2 }}% complete</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="time-metric">
+                        <div class="title-metric">
+                            <h5>Average time per question</h5>
+                        </div>
+                        <div class="container-metric">
+                            <div class="chart-container">
+                                <!-- <div class="center-chart"></div> -->
+                                <img ng-src="https://chart.googleapis.com/chart?cht=pc&chp=4.7&chs=120x120&chd=t:{{ classStats.totalTime / classStats.totalQuestions | number: 1 }},100|{{ classStats.shortestTime }},{{ classStats.longestTime - classStats.shortestTime }},100" />
+                                <!-- <piechart
+                                    inner="{{ classStats.totalTime / classStats.totalQuestions | number: 1 }}"
+                                    outer="{{ classStats.shortestTime }},{{ classStats.longestTime - classStats.shortestTime }}">
+                                </piechart> -->
+                            </div>
+                            <div class="info-container">
+                                <div class="primary-info">
+                                    <h4>{{ classStats.totalTime / classStats.totalQuestions | number: 1 }} sec</h4>
+                                </div>
+                                <div class="tertiary-info shortest">
+                                    <p>shortest: {{ classStats.shortestTime }} sec</p>
+                                </div>
+                                <div class="tertiary-info longest">
+                                    <p>longest: {{ classStats.longestTime }} sec</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div><div class="term_box-stats">
+                    <div class="title-term_box">
+                        <h5>Most difficult terms</h5>
+                    </div>
+                    <div class="container-term_box">
+                        <div class="item-container" ng-repeat="term in classStats.termStats">
+                            <div class="term-item">
+                                <p>{{ $index + 1 }}. {{ term.id }}</p>
+                            </div>
+                            <div class="counter-item">
+                                <p>(x{{ term.count }})</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="close-popup">
+                    <button ng-click="closePopup('statsPopup')"></button>
+                </div>
             </div>
         </div>
     </div>

@@ -31,7 +31,7 @@ require.config({
         jqueryKnob: ['jquery'],
         bootstrap: ['jquery'],
         underscore: { exports: '_' },
-        toastr: { exports: 'toastr' },
+        toastr: ['jquery'],
 
         angular: { exports: 'angular', deps: ['jquery'] },
         angularCookies: ['angular'],
