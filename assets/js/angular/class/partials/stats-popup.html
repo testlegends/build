@@ -3,7 +3,7 @@
         <div class="stats-centering">
             <div class="box box-stats">
                 <div class="title-stats">
-                    <h4>{{ class.name }} stats</h4>
+                    <h4>Class stats</h4>
                 </div>
 
                 <br /><br />
@@ -29,7 +29,7 @@
                         <div class="container-metric">
                             <div class="chart-container">
                                 <!-- <div class="center-chart"></div> -->
-                                <img ng-src="https://chart.googleapis.com/chart?cht=pc&chp=4.7&chs=120x120&chd=t:{{ classStats.totalGotRight / classStats.totalQuestions * 100 }},{{ 100 - classStats.totalGotRight / classStats.totalQuestions * 100 }}|{{ classStats.totalQuestions / (classStats.totalLists * 8) * 100 }},{{ 100 - classStats.totalQuestions / (classStats.totalLists * 8) * 100 }}" />
+                                <img ng-src="https://chart.googleapis.com/chart?cht=p&chp=4.7&chs=120x120&chd=t:{{ scorePieChartValues }}" />
                                 <!-- <piechart
                                     inner="{{ classStats.totalGotRight / classStats.totalQuestions * 100 | number: 2 }}"
                                     outer="{{ classStats.totalQuestions / (classStats.totalLists * 8) * 100 | number: 2 }}">
@@ -52,7 +52,7 @@
                         <div class="container-metric">
                             <div class="chart-container">
                                 <!-- <div class="center-chart"></div> -->
-                                <img ng-src="https://chart.googleapis.com/chart?cht=pc&chp=4.7&chs=120x120&chd=t:{{ classStats.totalTime / classStats.totalQuestions }},{{ 20 - classStats.totalTime / classStats.totalQuestions }}|{{ classStats.shortestTime }},{{ classStats.longestTime - classStats.shortestTime }},{{ 20 - classStats.longestTime }}" />
+                                <img ng-src="https://chart.googleapis.com/chart?cht=p&chp=4.7&chs=120x120&chd=t:{{ timePieChartValues }}" />
                                 <!-- <piechart
                                     inner="{{ classStats.totalTime / classStats.totalQuestions | number: 1 }}"
                                     outer="{{ classStats.shortestTime }},{{ classStats.longestTime - classStats.shortestTime }}">
