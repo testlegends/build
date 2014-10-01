@@ -24,8 +24,8 @@ define(['list/directives', 'list/Service', 'common/services/TestLegendsURL', 'jq
                     $scope.generateAndPlay = function () {
                         lists.generateGame({
                             listId: $scope.listId,
-                            heroHealth: $scope.gameSettings.heroHealth || 5,
-                            timer: $scope.gameSettings.timer || 20
+                            heroHealth: $scope.gameSettings.heroHealth,
+                            timer: $scope.gameSettings.timer
                         }, function (err, data) {
                             window.location.href = TestLegendsURL.app + '/game/' + data.id;
                         });
@@ -42,6 +42,7 @@ define(['list/directives', 'list/Service', 'common/services/TestLegendsURL', 'jq
                             'max': 6
                         }
                     }).on('slide', function(){
+                        console.log(scope.gameSettings);
                         var heroHealth = parseInt($(this).val());
                         scope.gameSettings.heroHealth = heroHealth;
                         $('.noUi-handle').html(heroHealth);
@@ -71,6 +72,9 @@ define(['list/directives', 'list/Service', 'common/services/TestLegendsURL', 'jq
                         inputColor: '#8F8F8F',
                         font: 'Varela Round',
                         // fontWeight: '',
+                        release: function (val) {
+                            scope.gameSettings.timer = val;
+                        },
                         draw: function () {
                             var c = this.g;
                             var a = arc(this.cv, this);
