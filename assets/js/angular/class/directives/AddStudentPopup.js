@@ -30,7 +30,8 @@ define(['class/directives', 'toastr', 'class/Service', 'user/Service', 'common/s
                                         id: $scope.classId,
                                         name: $scope.class.name,
                                         owner: users.getCurrentUser()
-                                    }
+                                    },
+                                    newUser: true
                                 }).success(function (response) {
                                     toastr.warning('Sutdent not registered.  An invite e-mail has been sent.');
 
@@ -42,8 +43,18 @@ define(['class/directives', 'toastr', 'class/Service', 'user/Service', 'common/s
                                     });
                                 });
                             } else {
-                                $scope.students.push(data);
-                                toastr.success('Successfully added student to class');
+                                $http.post(TestLegendsURL.home + '/invite', {
+                                    email: email,
+                                    classInfo: {
+                                        id: $scope.classId,
+                                        name: $scope.class.name,
+                                        owner: users.getCurrentUser()
+                                    },
+                                    newUser: false
+                                }).success(function (response) {
+                                    toastr.success('Successfully added student to class');
+                                    $scope.students.push(data);
+                                });
                             }
 
                             $scope.newStudent = {};
