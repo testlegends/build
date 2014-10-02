@@ -10,12 +10,15 @@
 
 module.exports.routes = {
 
-    '/login'          : 'HomeController.oauth_request',
-    '/logout'         : 'HomeController.oauth_logout',
+    'GET /logs'         : 'LoggrController.index',
+    'PUT /log'          : 'LoggrController.add',
 
-    '/oauth'          : 'HomeController.oauth_request',
-    '/oauth/logout'   : 'HomeController.oauth_logout',
-    '/oauth/callback' : 'HomeController.oauth_callback',
+    'GET /login'        : 'HomeController.oauth_request',
+    'GET /logout'       : 'HomeController.oauth_logout',
+
+    '/oauth'            : 'HomeController.oauth_request',
+    '/oauth/logout'     : 'HomeController.oauth_logout',
+    '/oauth/callback'   : 'HomeController.oauth_callback',
 
     '/quizlet/login'    : 'QuizletController.login',
     '/quizlet/callback' : 'QuizletController.oauth_callback',
@@ -26,11 +29,11 @@ module.exports.routes = {
     '/list/:id'                : 'HomeController.index',
     '/import'                  : 'HomeController.index',
     '/import/:id'              : 'HomeController.index',
-    // '/classes'                 : 'HomeController.index',
     '/class/:id'               : 'HomeController.index',
+    // '/classes'                 : 'HomeController.index',
     // '/class/:id/students'      : 'HomeController.index',
-    '/class/:id/student/:sid'  : 'HomeController.index',
-    '/class/:id/overview'      : 'HomeController.index',
+    // '/class/:id/student/:sid'  : 'HomeController.index',
+    // '/class/:id/overview'      : 'HomeController.index',
 
     '/games'                   : 'HomeController.index_old',
     '/game/:id/questions'      : 'HomeController.index_old',

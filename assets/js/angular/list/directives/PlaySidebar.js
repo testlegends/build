@@ -5,12 +5,12 @@
  * @created     :: 2014/08/03
  */
 
-define(['list/directives', 'list/Service', 'common/services/TestLegendsURL', 'jqueryNoUiSlider', 'jqueryKnob'], function (listDirectives) {
+define(['list/directives', 'list/Service', 'common/services/TestLegendsURL', 'common/services/Loggr', 'jqueryNoUiSlider', 'jqueryKnob'], function (listDirectives) {
     'use strict';
 
     return listDirectives
 
-        .directive('playSidebar', ['lists', 'TestLegendsURL', function (lists, TestLegendsURL) {
+        .directive('playSidebar', ['lists', 'TestLegendsURL', 'Loggr', function (lists, TestLegendsURL, Loggr) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -22,6 +22,8 @@ define(['list/directives', 'list/Service', 'common/services/TestLegendsURL', 'jq
                     };
 
                     $scope.generateAndPlay = function () {
+                        Loggr.log({ action: 'Click Game button' });
+
                         lists.generateGame({
                             listId: $scope.listId,
                             heroHealth: $scope.gameSettings.heroHealth,
