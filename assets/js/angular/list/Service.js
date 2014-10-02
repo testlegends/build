@@ -113,7 +113,8 @@ define(['angular', 'common/services/TestLegendsAPI'], function (angular) {
 						data: {
 							listId: params.listId,
 							heroHealth: params.heroHealth,
-							timer: params.timer
+							timer: params.timer,
+							classId: params.classId
 						}
 					}).success(function (response) {
 						if (response.status === 'OK') {

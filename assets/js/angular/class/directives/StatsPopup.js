@@ -19,9 +19,10 @@ define(['class/directives', 'class/Service'], function (classDirectives) {
                     classes.getClassStats($scope.classId, function (err, data) {
                         $scope.classStats = data;
 
-                        $scope.scorePieChartValues = $scope.classStats.totalGotRight / $scope.classStats.totalQuestions + "," +
-                            ($scope.classStats.totalQuestions / ($scope.classStats.totalLists * 8) - $scope.classStats.totalGotRight / $scope.classStats.totalQuestions) + "," +
-                            (1 - $scope.classStats.totalQuestions / ($scope.classStats.totalLists * 8));
+                        var avgScore = $scope.classStats.totalGotRight / $scope.classStats.totalQuestions;
+                        var complete = $scope.classStats.totalUniqQuestions / ($scope.classStats.totalLists * 8);
+                        if (avgScore < complete) $scope.scorePieChartValues = avgScore + "," + (complete - avgScore) + "," + (1 - complete);
+                        else $scope.scorePieChartValues = complete + "," + (avgScore - complete) + "," + (1 - avgScore);
 
                         $scope.timePieChartValues = $scope.classStats.shortestTime + "," +
                             ($scope.classStats.totalTime / $scope.classStats.totalQuestions - $scope.classStats.shortestTime) + "," +

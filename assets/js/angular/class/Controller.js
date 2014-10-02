@@ -13,7 +13,7 @@ define(['angular', 'toastr', 'class/Service', 'list/Service', 'user/Service'], f
 		.controller('ClassController', ['$scope', '$location', '$routeParams', 'classes', 'lists', 'users', function ($scope, $location, $routeParams, classes, lists, users) {
 
 			$scope.viewList = function (id) {
-				window.location.href = '/list/' + id;
+				window.location.href = '/list/' + id + '?cid=' + $scope.classId;
 			};
 
 			$scope.addListPopup = function () {

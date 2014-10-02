@@ -10,7 +10,7 @@ define(['list/directives', 'list/Service', 'common/services/TestLegendsURL', 'co
 
     return listDirectives
 
-        .directive('playSidebar', ['lists', 'TestLegendsURL', 'Loggr', function (lists, TestLegendsURL, Loggr) {
+        .directive('playSidebar', ['lists', 'TestLegendsURL', 'Loggr', '$location', function (lists, TestLegendsURL, Loggr, $location) {
             return {
                 restrict: 'E',
                 replace: true,
@@ -27,7 +27,8 @@ define(['list/directives', 'list/Service', 'common/services/TestLegendsURL', 'co
                         lists.generateGame({
                             listId: $scope.listId,
                             heroHealth: $scope.gameSettings.heroHealth,
-                            timer: $scope.gameSettings.timer
+                            timer: $scope.gameSettings.timer,
+                            classId: $location.search().cid || $scope.classId
                         }, function (err, data) {
                             window.location.href = TestLegendsURL.app + '/game/' + data.id;
                         });
