@@ -10,6 +10,7 @@
 
 module.exports.routes = {
 
+    'GET /help'         : 'HomeController.help',
     'GET /logs'         : 'LoggrController.index',
     'PUT /log'          : 'LoggrController.add',
 

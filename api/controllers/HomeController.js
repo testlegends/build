@@ -36,6 +36,10 @@ module.exports = (function(){
         }));
     }
 
+    function help (req, res) {
+        return res.view();
+    }
+
     function oauth_request (req, res) {
         // Do nothing, handled in TestLegendsOAuthRequest policy
     }
@@ -64,6 +68,7 @@ module.exports = (function(){
     return {
         index: index,
         index_old: index_old,
+        help: help,
         oauth_request: oauth_request,
         oauth_callback: oauth_callback,
         oauth_logout: oauth_logout,
